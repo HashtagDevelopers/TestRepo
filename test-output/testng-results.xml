@@ -1,0 +1,2619 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="1" total="73" passed="72" failed="0" skipped="0">
+  <reporter-output>
+    <line>
+      <![CDATA[OTP has been sent successfully<===>OTP has been sent successfully]]>
+    </line>
+  </reporter-output>
+  <suite started-at="2024-07-30T14:34:09 IST" name="Default suite" finished-at="2024-07-30T14:36:06 IST" duration-ms="117000">
+    <groups>
+    </groups>
+    <test started-at="2024-07-30T14:34:09 IST" name="Default test" finished-at="2024-07-30T14:36:06 IST" duration-ms="117000">
+      <class name="com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC">
+        <test-method is-config="true" signature="openBrowser()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:09 IST" name="openBrowser" finished-at="2024-07-30T14:34:21 IST" duration-ms="12109" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[OTP has been sent successfully<===>OTP has been sent successfully]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- openBrowser -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:22 IST" name="setUp" finished-at="2024-07-30T14:34:22 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:22 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:34:24 IST" duration-ms="1514" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Minor Listing Optimization On Amazon]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:24 IST" name="FailedTCSS" finished-at="2024-07-30T14:34:24 IST" duration-ms="6" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:24 IST" name="setUp" finished-at="2024-07-30T14:34:24 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:24 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:34:25 IST" duration-ms="1472" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[2]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Major Listing Optimization On Amazon]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:25 IST" name="setUp" finished-at="2024-07-30T14:34:25 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:25 IST" name="FailedTCSS" finished-at="2024-07-30T14:34:25 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:25 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:34:26 IST" duration-ms="1391" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[3]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Minor Listing Optimization On Ebay]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:26 IST" name="FailedTCSS" finished-at="2024-07-30T14:34:26 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:26 IST" name="setUp" finished-at="2024-07-30T14:34:26 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:26 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:34:28 IST" duration-ms="1472" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[4]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Major Listing Optimization On Ebay]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:28 IST" name="FailedTCSS" finished-at="2024-07-30T14:34:28 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:28 IST" name="setUp" finished-at="2024-07-30T14:34:28 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:28 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:34:29 IST" duration-ms="1413" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[5]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Minor Listing Optimization On Onbuy]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:29 IST" name="FailedTCSS" finished-at="2024-07-30T14:34:29 IST" duration-ms="3" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:29 IST" name="setUp" finished-at="2024-07-30T14:34:29 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:29 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:34:31 IST" duration-ms="1480" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[6]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Major Listing Optimization On Onbuy]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:31 IST" name="FailedTCSS" finished-at="2024-07-30T14:34:31 IST" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:31 IST" name="setUp" finished-at="2024-07-30T14:34:31 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:31 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:34:32 IST" duration-ms="1516" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[7]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Minor Listing Optimization On KitchenGlora]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:32 IST" name="FailedTCSS" finished-at="2024-07-30T14:34:32 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:32 IST" name="setUp" finished-at="2024-07-30T14:34:32 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:32 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:34:34 IST" duration-ms="1558" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[8]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Major Listing Optimization On KitchenGlora]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:34 IST" name="FailedTCSS" finished-at="2024-07-30T14:34:34 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:34 IST" name="setUp" finished-at="2024-07-30T14:34:34 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:34 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:34:36 IST" duration-ms="1565" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[9]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Minor Listing Optimization On Tiktok]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:36 IST" name="FailedTCSS" finished-at="2024-07-30T14:34:36 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:36 IST" name="setUp" finished-at="2024-07-30T14:34:36 IST" duration-ms="3" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:36 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:34:37 IST" duration-ms="1409" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[10]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Major Listing Optimization On Tiktok]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:37 IST" name="FailedTCSS" finished-at="2024-07-30T14:34:37 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:37 IST" name="setUp" finished-at="2024-07-30T14:34:37 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:37 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:34:38 IST" duration-ms="1387" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[11]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[New Listing Creation]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:38 IST" name="FailedTCSS" finished-at="2024-07-30T14:34:38 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:38 IST" name="setUp" finished-at="2024-07-30T14:34:38 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:38 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:34:40 IST" duration-ms="1405" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[12]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Daily Sale Report]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:40 IST" name="FailedTCSS" finished-at="2024-07-30T14:34:40 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:40 IST" name="setUp" finished-at="2024-07-30T14:34:40 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:40 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:34:41 IST" duration-ms="1465" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[13]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Mail check (Each)]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:41 IST" name="FailedTCSS" finished-at="2024-07-30T14:34:41 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:41 IST" name="setUp" finished-at="2024-07-30T14:34:41 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:41 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:34:43 IST" duration-ms="1550" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[14]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Daily sale report generate (Each)]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:43 IST" name="FailedTCSS" finished-at="2024-07-30T14:34:43 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:43 IST" name="setUp" finished-at="2024-07-30T14:34:43 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:43 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:34:44 IST" duration-ms="1508" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[15]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Market check, Competitor check/find (Each)]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:44 IST" name="FailedTCSS" finished-at="2024-07-30T14:34:44 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:44 IST" name="setUp" finished-at="2024-07-30T14:34:44 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:44 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:34:46 IST" duration-ms="1533" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[16]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Customer support (eBay, Amazon, Sites, Tiktok, OnBuy) (Each)]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:46 IST" name="FailedTCSS" finished-at="2024-07-30T14:34:46 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:46 IST" name="setUp" finished-at="2024-07-30T14:34:46 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:46 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:34:47 IST" duration-ms="1513" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[17]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Handling refund, return, Disputes, Cases (Each)]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:47 IST" name="FailedTCSS" finished-at="2024-07-30T14:34:47 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:47 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:34:49 IST" duration-ms="1388" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[18]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Analysis tiktok videos (Each)]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:47 IST" name="setUp" finished-at="2024-07-30T14:34:47 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:49 IST" name="FailedTCSS" finished-at="2024-07-30T14:34:49 IST" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:49 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:34:50 IST" duration-ms="1504" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[19]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Analysis tiktok accounts (Each)]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:49 IST" name="setUp" finished-at="2024-07-30T14:34:49 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:50 IST" name="FailedTCSS" finished-at="2024-07-30T14:34:50 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:50 IST" name="setUp" finished-at="2024-07-30T14:34:50 IST" duration-ms="3" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:50 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:34:52 IST" duration-ms="1497" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[20]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Daily FBA Inventory Check]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:52 IST" name="FailedTCSS" finished-at="2024-07-30T14:34:52 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:52 IST" name="setUp" finished-at="2024-07-30T14:34:52 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:52 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:34:53 IST" duration-ms="1475" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[21]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Product Research (Each)]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:53 IST" name="FailedTCSS" finished-at="2024-07-30T14:34:53 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:53 IST" name="setUp" finished-at="2024-07-30T14:34:53 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:53 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:34:55 IST" duration-ms="1396" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[22]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[New Product Research (Each)]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:55 IST" name="FailedTCSS" finished-at="2024-07-30T14:34:55 IST" duration-ms="3" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:55 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:34:56 IST" duration-ms="1452" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[23]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Weekly Report]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:55 IST" name="setUp" finished-at="2024-07-30T14:34:55 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:56 IST" name="FailedTCSS" finished-at="2024-07-30T14:34:56 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:56 IST" name="setUp" finished-at="2024-07-30T14:34:56 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:56 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:34:57 IST" duration-ms="1390" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[24]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Monthly sales Report]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:57 IST" name="FailedTCSS" finished-at="2024-07-30T14:34:57 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:57 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:34:59 IST" duration-ms="1373" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[25]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Site Check]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:57 IST" name="setUp" finished-at="2024-07-30T14:34:57 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:59 IST" name="FailedTCSS" finished-at="2024-07-30T14:34:59 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:59 IST" name="setUp" finished-at="2024-07-30T14:34:59 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:34:59 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:00 IST" duration-ms="1584" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[26]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Provide New Package Creative details]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:00 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:00 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:00 IST" name="setUp" finished-at="2024-07-30T14:35:00 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:00 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:02 IST" duration-ms="1400" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[27]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Email Sent]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:02 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:02 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:02 IST" name="setUp" finished-at="2024-07-30T14:35:02 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:02 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:03 IST" duration-ms="1429" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[28]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[FBA Shipment Issue Resolution]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:03 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:03 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:03 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:05 IST" duration-ms="1301" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[29]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Advertise Run]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:03 IST" name="setUp" finished-at="2024-07-30T14:35:03 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:05 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:05 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:05 IST" name="setUp" finished-at="2024-07-30T14:35:05 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:05 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:06 IST" duration-ms="1495" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[30]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Account Technical Issue Resolve]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:06 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:08 IST" duration-ms="1479" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[31]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Listing Technical Issue Resolve]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:06 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:06 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:06 IST" name="setUp" finished-at="2024-07-30T14:35:06 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:08 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:08 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:08 IST" name="setUp" finished-at="2024-07-30T14:35:08 IST" duration-ms="3" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:08 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:09 IST" duration-ms="1447" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[32]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Feedback Management]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:09 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:09 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:09 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:10 IST" duration-ms="1457" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[33]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Stock Managements]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:09 IST" name="setUp" finished-at="2024-07-30T14:35:09 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:10 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:10 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:10 IST" name="setUp" finished-at="2024-07-30T14:35:10 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:10 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:12 IST" duration-ms="1410" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[34]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[ Site Plugin Update]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:12 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:12 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:12 IST" name="setUp" finished-at="2024-07-30T14:35:12 IST" duration-ms="4" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:12 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:13 IST" duration-ms="1338" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[35]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Order List Create]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:13 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:13 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:13 IST" name="setUp" finished-at="2024-07-30T14:35:13 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:13 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:15 IST" duration-ms="1409" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[36]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Quatation List Create]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:15 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:15 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:15 IST" name="setUp" finished-at="2024-07-30T14:35:15 IST" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:15 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:16 IST" duration-ms="1452" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[37]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Product Image Made]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:16 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:16 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:16 IST" name="setUp" finished-at="2024-07-30T14:35:16 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:16 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:18 IST" duration-ms="1423" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[38]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Product Research]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:18 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:18 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:18 IST" name="setUp" finished-at="2024-07-30T14:35:18 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:18 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:19 IST" duration-ms="1481" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[39]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Product Banner Made]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:19 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:19 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:19 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:20 IST" duration-ms="1395" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[40]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Assets Research]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:19 IST" name="setUp" finished-at="2024-07-30T14:35:19 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:20 IST" name="setUp" finished-at="2024-07-30T14:35:20 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:20 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:20 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:20 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:22 IST" duration-ms="1337" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[41]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Package Made]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:22 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:22 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:22 IST" name="setUp" finished-at="2024-07-30T14:35:22 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:22 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:23 IST" duration-ms="1409" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[42]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Package Mockup Made]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:23 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:23 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:23 IST" name="setUp" finished-at="2024-07-30T14:35:23 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:23 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:25 IST" duration-ms="1414" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[43]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Package Research (Each)]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:25 IST" name="setUp" finished-at="2024-07-30T14:35:25 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:25 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:25 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:25 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:26 IST" duration-ms="1482" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[44]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Attributes Research (Each)]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:26 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:26 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:26 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:28 IST" duration-ms="1462" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[45]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Image Research (Each)]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:26 IST" name="setUp" finished-at="2024-07-30T14:35:26 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:28 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:28 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:28 IST" name="setUp" finished-at="2024-07-30T14:35:28 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:28 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:29 IST" duration-ms="1482" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[46]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Content Research (Each)]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:29 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:29 IST" duration-ms="4" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:29 IST" name="setUp" finished-at="2024-07-30T14:35:29 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:29 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:30 IST" duration-ms="1336" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[47]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Icon Research]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:30 IST" name="setUp" finished-at="2024-07-30T14:35:30 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:30 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:32 IST" duration-ms="1360" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[48]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Elements Research (Each)]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:30 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:30 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:32 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:32 IST" duration-ms="3" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:32 IST" name="setUp" finished-at="2024-07-30T14:35:32 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:32 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:33 IST" duration-ms="1401" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[49]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Site Banner Research]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:33 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:33 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:33 IST" name="setUp" finished-at="2024-07-30T14:35:33 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:33 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:35 IST" duration-ms="1439" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[50]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Image Research]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:35 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:35 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:35 IST" name="setUp" finished-at="2024-07-30T14:35:35 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:35 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:36 IST" duration-ms="1461" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[51]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Content Research]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:36 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:36 IST" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:36 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:37 IST" duration-ms="1450" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[52]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Banners Made]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:36 IST" name="setUp" finished-at="2024-07-30T14:35:36 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:37 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:37 IST" duration-ms="3" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:37 IST" name="setUp" finished-at="2024-07-30T14:35:37 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:37 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:39 IST" duration-ms="1399" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[53]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Image Made]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:39 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:39 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:39 IST" name="setUp" finished-at="2024-07-30T14:35:39 IST" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:39 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:40 IST" duration-ms="1334" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[54]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Icons Made]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:40 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:40 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:40 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:42 IST" duration-ms="1417" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[55]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Logo Made]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:40 IST" name="setUp" finished-at="2024-07-30T14:35:40 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:42 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:42 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:42 IST" name="setUp" finished-at="2024-07-30T14:35:42 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:42 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:43 IST" duration-ms="1437" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[56]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Logo Assets Research]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:43 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:43 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:43 IST" name="setUp" finished-at="2024-07-30T14:35:43 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:43 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:45 IST" duration-ms="1437" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[57]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Logo Research]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:45 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:45 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:45 IST" name="setUp" finished-at="2024-07-30T14:35:45 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:45 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:46 IST" duration-ms="1439" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[58]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Logo Resize]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:46 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:46 IST" duration-ms="3" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:46 IST" name="setUp" finished-at="2024-07-30T14:35:46 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:46 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:47 IST" duration-ms="1421" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[59]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Favicon Made]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:47 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:47 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:47 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:49 IST" duration-ms="1374" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[60]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Buttons Made]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:47 IST" name="setUp" finished-at="2024-07-30T14:35:47 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:49 IST" name="setUp" finished-at="2024-07-30T14:35:49 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:49 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:49 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:49 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:50 IST" duration-ms="1359" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[61]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Wireframing]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:50 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:50 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:50 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:52 IST" duration-ms="1507" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[62]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Ui Header Made]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:50 IST" name="setUp" finished-at="2024-07-30T14:35:50 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:52 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:52 IST" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:52 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:53 IST" duration-ms="1505" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[63]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Ui Footer Made]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:52 IST" name="setUp" finished-at="2024-07-30T14:35:52 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:53 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:53 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:53 IST" name="setUp" finished-at="2024-07-30T14:35:53 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:53 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:55 IST" duration-ms="1449" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[64]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Ui Module Made]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:55 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:55 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:55 IST" name="setUp" finished-at="2024-07-30T14:35:55 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:55 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:56 IST" duration-ms="1429" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[65]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Ui Infographic Made]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:56 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:56 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:56 IST" name="setUp" finished-at="2024-07-30T14:35:56 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:56 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:57 IST" duration-ms="1324" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[66]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Calls ]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Number]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:57 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:35:59 IST" duration-ms="1309" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[67]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Emails ]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Number]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:57 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:57 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:57 IST" name="setUp" finished-at="2024-07-30T14:35:57 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:59 IST" name="FailedTCSS" finished-at="2024-07-30T14:35:59 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:59 IST" name="setUp" finished-at="2024-07-30T14:35:59 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:35:59 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:36:00 IST" duration-ms="1350" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[68]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Meeting ]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Number]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:36:00 IST" name="FailedTCSS" finished-at="2024-07-30T14:36:00 IST" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:36:00 IST" name="setUp" finished-at="2024-07-30T14:36:00 IST" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:36:00 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:36:01 IST" duration-ms="1441" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[69]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Meeting Minutes ]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Number]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:36:01 IST" name="setUp" finished-at="2024-07-30T14:36:01 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:36:01 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:36:03 IST" duration-ms="1406" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[70]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Handover ]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Number]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:36:01 IST" name="FailedTCSS" finished-at="2024-07-30T14:36:01 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:36:03 IST" name="FailedTCSS" finished-at="2024-07-30T14:36:03 IST" duration-ms="3" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:36:03 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:36:04 IST" duration-ms="1495" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[71]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Training ]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:36:03 IST" name="setUp" finished-at="2024-07-30T14:36:03 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:36:04 IST" name="FailedTCSS" finished-at="2024-07-30T14:36:04 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:36:04 IST" name="setUp" finished-at="2024-07-30T14:36:04 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:36:04 IST" name="addTaskFromSheet" data-provider="AddTaskDS" finished-at="2024-07-30T14:36:06 IST" duration-ms="1429" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[72]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Other Tasks ]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Textarea]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addTaskFromSheet -->
+        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:36:06 IST" name="FailedTCSS" finished-at="2024-07-30T14:36:06 IST" duration-ms="3" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addTaskFromSheet status=SUCCESS method=AdAddTaskTC.addTaskFromSheet(java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FailedTCSS -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC@53bd8fca]" started-at="2024-07-30T14:36:06 IST" name="closeBrowser" finished-at="2024-07-30T14:36:06 IST" duration-ms="69" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
