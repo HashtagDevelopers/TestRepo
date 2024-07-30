@@ -118,7 +118,7 @@ public class AdVerifyTaskSequenceAlreadyAddedTaskTC extends BaseClass {
 		lp.clickStaffLoginPageLoginBtn();
 		log.info("Report Form Opening by Selecting Department and Date...");
 		esm.clickEmSideMenuDailyReportBtn();
-		erp.selEmReportPageDepartmentName(dept);
+		erp.selEmReportPageDepartmentName(driver,dept);
 		Thread.sleep(2000);
 		LinkedHashMap<String, String> taskLmpInEmRF = erp.getEmReportFormTaskAndTAskType(driver);
 

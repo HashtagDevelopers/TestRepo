@@ -108,7 +108,7 @@ public class FlowAddEditReport extends BaseClass {
 
 		log.info("Report Form Opening by Selecting Department and Date...");
 		esm.clickEmSideMenuDailyReportBtn();
-		erp.selEmReportPageDepartmentName(Department);
+		erp.selEmReportPageDepartmentName(driver,Department);
 		erp.inpEmReportPageDate(dd + mm);
 
 		log.info("Filling Report and collecting entered task....");
@@ -161,7 +161,7 @@ public class FlowAddEditReport extends BaseClass {
 		ehp.clickEmHistoryPageCurrentReportViewBtn(driver, CnDtTime);
 		String svt = evr.getEmViewReportPageTitle(driver);
 		soft.assertEquals(svt, "Daily Report: " + rpdt);
-		soft.assertEquals(evr.getEmViewReportChkUnChk(), "Unchecked","employee report is not unchecked");
+		soft.assertEquals(evr.getEmViewReportChkUnChk(driver), "Unchecked","employee report is not unchecked");
 		
 		log.info("Collecting task From Staff View...");
 		Thread.sleep(2000);
@@ -186,8 +186,8 @@ public class FlowAddEditReport extends BaseClass {
 
 		satr.clickSAEmTeamReportCurrentReportViewBtn(driver, CnDtTime);
 		Thread.sleep(5000);
-		soft.assertEquals(savr.getSAEmViewTeamReportChkUnChk(), "Unchecked","employee report is not unchecked in SAVr");
-		soft.assertFalse(savr.getSAEmViewTeamReportCheckBoxIsSelected(), "SA Em View TeamReport Checkbox Displayed");
+		soft.assertEquals(savr.getSAEmViewTeamReportChkUnChk(driver), "Unchecked","employee report is not unchecked in SAVr");
+		soft.assertFalse(savr.getSAEmViewTeamReportCheckBoxIsSelected(driver), "SA Em View TeamReport Checkbox Displayed");
 		LinkedHashMap<String, String> TVinSAViewReport = savr.getSAEmViewTeamReportTaskAndValue(driver);
 
 		log.info("Admin Signing in...");
@@ -232,8 +232,8 @@ public class FlowAddEditReport extends BaseClass {
 		
 		soft.assertTrue(avr.getAdViewReportTitle(driver));
 		Thread.sleep(5000);
-		soft.assertEquals(avr.getAdViewReportChkUnChk(), "Unchecked", "admin view Check status is not unchecked");
-		soft.assertFalse(avr.getAdViewReportChkBoxIsSelected(), "admin view Checkbox is not Displayed");
+		soft.assertEquals(avr.getAdViewReportChkUnChk(driver), "Unchecked", "admin view Check status is not unchecked");
+		soft.assertFalse(avr.getAdViewReportChkBoxIsSelected(driver), "admin view Checkbox is not Displayed");
 
 		log.info("collecting data in admin view report....");
 		Thread.sleep(2000);
@@ -368,7 +368,7 @@ public class FlowAddEditReport extends BaseClass {
 
 		satr.clickSAEmTeamReportCurrentReportViewBtn(driver, CnDtTime);
 		Thread.sleep(5000);
-		soft.assertFalse(savr.getSAEmViewTeamReportCheckBoxIsSelected(), "SA Em View TeamReport Checkbox Displayed");
+		soft.assertFalse(savr.getSAEmViewTeamReportCheckBoxIsSelected(driver), "SA Em View TeamReport Checkbox Displayed");
 		LinkedHashMap<String, String> TVinSAViewReport2 = savr.getSAEmViewTeamReportTaskAndValue(driver);
 		
 		

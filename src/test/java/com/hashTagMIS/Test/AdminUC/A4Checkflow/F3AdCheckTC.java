@@ -101,7 +101,7 @@ public class F3AdCheckTC extends BaseClass {
 
 		log.info("Report Form Opening by Selecting Department and Date...");
 		esm.clickEmSideMenuDailyReportBtn();
-		erp.selEmReportPageDepartmentName(Department);
+		erp.selEmReportPageDepartmentName(driver,Department);
 		erp.inpEmReportPageDate(dd + mm);
 		
 		erp.inpEmReportForm5Task();

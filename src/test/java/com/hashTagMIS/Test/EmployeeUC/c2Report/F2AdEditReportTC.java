@@ -104,7 +104,7 @@ public class F2AdEditReportTC extends BaseClass {
 
 		log.info("Report Form Opening by Selecting Department and Date...");
 		esm.clickEmSideMenuDailyReportBtn();
-		erp.selEmReportPageDepartmentName(Department);
+		erp.selEmReportPageDepartmentName(driver,Department);
 		erp.inpEmReportPageDate(dd + mm);
 
 		log.info("Filling Report and collecting entered task....");
@@ -181,7 +181,7 @@ public class F2AdEditReportTC extends BaseClass {
 		List<String> ActAdDashRD2 = ard.getAdReportDashboardReportInfoList(driver, CnDtTime);
 		UtilsClass.compareTwoList(ActAdDashRD2, ExpAdRpDLst2, soft);
 		ard.clickAdReportDashboardViewBtnForDateTime(driver, CnDtTime);
-		soft.assertTrue(avr.getAdViewReportChkBoxIsSelected());
+		soft.assertTrue(avr.getAdViewReportChkBoxIsSelected(driver));
 		
 		
 		log.info("SubAdmin Signing in...");
@@ -198,7 +198,7 @@ public class F2AdEditReportTC extends BaseClass {
 		satr.clickSAEmTeamReportCurrentReportViewBtn(driver, CnDtTime);
 		Thread.sleep(1000);
 		soft.assertEquals(savr.getSAEmViewTeamReportDate(), rpedt,"SAEm VR Date");
-		soft.assertEquals(savr.getSAEmViewTeamReportChkUnChk(), "Checked by: Admin","EmVR status is not unchecked in EmVr");
+		soft.assertEquals(savr.getSAEmViewTeamReportChkUnChk(driver), "Checked by: Admin","EmVR status is not unchecked in EmVr");
         soft.assertTrue(savr.getSAEmViewTeamReportCheckBoxIsPresent(), "SA Em View TeamReport Checkbox Displayed");
 		LinkedHashMap<String, String> TVinSAViewReport2 = savr.getSAEmViewTeamReportTaskAndValue(driver);
 
@@ -219,7 +219,7 @@ public class F2AdEditReportTC extends BaseClass {
 		log.info("Collecting data From Staff View...");
 		String svt1 = evr.getEmViewReportPageTitle(driver);
 		soft.assertEquals(svt1, "Daily Report: " + rpedt);
-		soft.assertEquals(evr.getEmViewReportChkUnChk(), "Checked by: Admin","EmVR status is not unchecked in EmVr");
+		soft.assertEquals(evr.getEmViewReportChkUnChk(driver), "Checked by: Admin","EmVR status is not unchecked in EmVr");
 		LinkedHashMap<String, String> TVinEmViewReport2 = evr.getEmViewReportTaskAndValue(driver);
 
 		log.info("Verify all Report...");

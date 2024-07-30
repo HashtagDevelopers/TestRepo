@@ -107,7 +107,7 @@ public class F1EmAddReportTC extends BaseClass {
 
 		log.info("Report Form Opening by Selecting Department and Date...");
 		esm.clickEmSideMenuDailyReportBtn();
-		erp.selEmReportPageDepartmentName(Department);
+		erp.selEmReportPageDepartmentName(driver,Department);
 		erp.inpEmReportPageDate(dd + mm);
 
 		log.info("Filling Report and collecting entered task....");
@@ -151,7 +151,7 @@ public class F1EmAddReportTC extends BaseClass {
 		log.info("Moving to Employee view Report...");
 		ehp.clickEmHistoryPageCurrentReportViewBtn(driver, CnDtTime);
 		soft.assertEquals(evr.getEmViewReportPageTitle(driver), "Daily Report: " + rpdt,"EmVR title");	
-		soft.assertEquals(evr.getEmViewReportChkUnChk(), "Unchecked","EmVR status is not unchecked in EmVr");
+		soft.assertEquals(evr.getEmViewReportChkUnChk(driver), "Unchecked","EmVR status is not unchecked in EmVr");
 			
 		log.info("Collecting task From Staff View...");
 		Thread.sleep(2000);
@@ -175,7 +175,7 @@ public class F1EmAddReportTC extends BaseClass {
 		log.info("Moving to SubAdmin View Team Report...");
 		satr.clickSAEmTeamReportCurrentReportViewBtn(driver, CnDtTime);
 		Thread.sleep(2000);	
-		soft.assertFalse(savr.getSAEmViewTeamReportCheckBoxIsSelected(), "SAVr checkbox");	
+		soft.assertFalse(savr.getSAEmViewTeamReportCheckBoxIsSelected(driver), "SAVr checkbox");	
 		List<String> SAEmVTRUpperInfo = savr.getSAEmViewTeamReportUpperInfo();	
 		LinkedHashMap<String, String> TVinSAViewReport = savr.getSAEmViewTeamReportTaskAndValue(driver);
 
@@ -206,7 +206,7 @@ public class F1EmAddReportTC extends BaseClass {
 	
 		log.info("collecting data in admin view report....");
 		Thread.sleep(1000);
-		soft.assertFalse(avr.getAdViewReportChkBoxIsSelected(), "AdViewReport checkbox");	
+		soft.assertFalse(avr.getAdViewReportChkBoxIsSelected(driver), "AdViewReport checkbox");	
 		List<String> AdVRUpperInfo = avr.getAdViewReportUpperInfo();
 		LinkedHashMap<String, String> TVinAdViewReport = avr.getAdViewReportTaskAndValue(driver);
 		avr.getAdViewReportBackBtn();

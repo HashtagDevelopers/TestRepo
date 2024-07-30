@@ -3,13 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.hashTagMIS.Test.Flow.CheckUncheckFlow.F1AdCheckTC">
+      <class name="com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC">
         <methods>
-          <include name="Flow2AdminCheckAfterFormSubmitAndSubAdminCheck"/>
+          <include name="addTaskFromSheet"/>
+          <include name="closeBrowser"/>
           <include name="openBrowser"/>
-          <include name="openLogIn"/>
+          <include name="setUp"/>
+          <include name="FailedTCSS"/>
         </methods>
-      </class> <!-- com.hashTagMIS.Test.Flow.CheckUncheckFlow.F1AdCheckTC -->
+      </class> <!-- com.hashTagMIS.Test.AdminUC.A3Task.AdAddTaskTC -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
