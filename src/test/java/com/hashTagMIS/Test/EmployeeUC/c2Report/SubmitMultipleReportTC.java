@@ -1,4 +1,4 @@
-package com.hashTagMIS.Test.AdminUC.A4Checkflow;
+package com.hashTagMIS.Test.EmployeeUC.c2Report;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,47 +38,46 @@ import LibraryFiles.BaseClass;
 import LibraryFiles.UtilityClass;
 import LibraryFiles.UtilsClass;
 
-public class F3AdCheckTC extends BaseClass {
+/*Add Multiple Report*/
+public class SubmitMultipleReportTC extends BaseClass {
 	AdLogin1 alp1;
 	AdLogin2 alp2;
 	AdSideMenu asm;
 	AdReportDashboard ard;
 	AdViewReport avr;
 	AdEditReport aer;
-	
 	EmLogin elp;
 	EmSideMenu esm;
 	EmReportForm erp;
 	EmHistory ehp;
 	EmViewReport evr;
-	
 	SAEmTeamReport satr;
 	SAEmViewTeamReport savr;
-	
 	SoftAssert soft;
-	Logger log = LogManager.getLogger(F3AdCheckTC.class);
+	String CnDtTime, cntDate, yestDate, tomDate, StaffName = "Employee";
+	int cd, cm, cy;
+	Logger log = LogManager.getLogger(SubmitMultipleReportTC.class);
 	PrintWriter pw, pw1;
-	
-	String CnDtTime, cntDate, StaffName = "Employee";
 	StringBuilder sb;
-	ArrayList<String> ExpEmHPDLst2;
-	ArrayList<String> ExpAdRpDLst2;
-	ArrayList<String> ExpSATRpDLst2;
-	ArrayList<String> ExpAdVRUI2;
+	ArrayList<String> ExpEmHPDLst;
+	ArrayList<String> ExpAdRpDLst;
+	ArrayList<String> ExpSATRpDLst;
+	ArrayList<String> ExpAdVRUI;
+	String Department = "System Admin";
+	int d = 31;
 
 	@BeforeClass
 	public void openBrowser() throws IOException, InterruptedException {
 		initialiseBrowser();
-		
+		elp = new EmLogin(driver);
 		alp1 = new AdLogin1(driver);
-		alp2 = new AdLogin2(driver);	
+		alp2 = new AdLogin2(driver);
+		esm = new EmSideMenu(driver);
 		asm = new AdSideMenu(driver);
-		aer = new AdEditReport(driver);
+
 		ard = new AdReportDashboard(driver);
 		avr = new AdViewReport(driver);
-		
-		elp = new EmLogin(driver);	
-		esm = new EmSideMenu(driver);
+		aer = new AdEditReport(driver);
 		erp = new EmReportForm(driver);
 		ehp = new EmHistory(driver);
 		evr = new EmViewReport(driver);
@@ -91,46 +90,36 @@ public class F3AdCheckTC extends BaseClass {
 	@BeforeMethod
 	public void openLogIn() throws IOException, InterruptedException {
 		soft = new SoftAssert();
+		ExpEmHPDLst = new ArrayList<String>();
+		ExpAdRpDLst = new ArrayList<String>();
+		ExpSATRpDLst = new ArrayList<String>();
+		ExpAdVRUI = new ArrayList<String>();
+		sb = new StringBuilder();
+
 		elp.inpEmLoginPageSignIn(UtilityClass.getPFData("Email"), UtilityClass.getPFData("Password"));
 		log.info("Login success");
 	}
 
-	@Test(enabled = true, dataProvider = "ReportFlowDS1", dataProviderClass = DataProviders.C2DSEmReport.class)
-	public void AdEditReport(String Scenario, String textarea, String Department, String dd, String mm, String toastmsg)
-			throws IOException, InterruptedException {
+	@Test()
+	public void FillReport() throws IOException, InterruptedException {
+		int d = 30;
+		for (int i = 1; i < 30; i++) {
+			log.info("Report Form Opening by Selecting Department and Date...");
+			esm.clickEmSideMenuDailyReportBtn();
+			erp.selEmReportPageDepartmentName(driver, Department);
 
-		log.info("Report Form Opening by Selecting Department and Date...");
-		esm.clickEmSideMenuDailyReportBtn();
-		erp.selEmReportPageDepartmentName(driver,Department);
-		erp.inpEmReportPageDate(dd + mm);
-		
-		erp.inpEmReportForm5Task();
+			erp.inpEmReportPageDateForMultipleForm("" + d + "");
+			d = d - 1;
 
-		log.info("Submitting Report....");
-		// Function to repeatedly check millisecond value and click if it's 1
-		while (true) {
-			// Get current millisecond value using JavaScript (adjust if needed)
-			if ((int) (System.currentTimeMillis() % 1000) == 1) {
-				System.out.println("Button clicked at millisecond 1!");
-				long currentTimeMillis1 = System.currentTimeMillis();
-				int milliseconds1 = (int) (currentTimeMillis1 % 1000);
-				// Extract milliseconds (0-999)
-				System.out.println(milliseconds1);
-				break;
-				// Exit the loop after clicking
-			}
-			// Adjust sleep time based on your needs (consider shorter intervals)
-			Thread.sleep(1); // Sleep for 10 milliseconds
+			Thread.sleep(100);
+			log.info("Filling Report and collecting entered task....");
+			erp.inpEmReportForm5Task();
+			log.info("Submitting Report....");
+			Thread.sleep(200);
+			erp.clickEmReportPageAreYouSureOKBtn();
+			Thread.sleep(200);
+			driver.navigate().refresh();
 		}
-		CnDtTime = getTimeDate();
-		erp.clickEmReportPageSubmitBtn();
-		erp.clickEmReportPageAreYouSureOKBtn();
-
-//Admin Scenario		
-		log.info("Admin Signing in...");
-		adminSignIn();
-
-		
 		soft.assertAll();
 		Reporter.log("<=======================================>", true);
 	}
@@ -152,15 +141,5 @@ public class F3AdCheckTC extends BaseClass {
 		alp2.inpAdLoginPage2Otp(UtilityClass.getPFData("AdPassword"));
 		alp2.clickAdLoginPage2SubmitBtn();
 		log.info("Admin Sign in Success");
-	}
-
-	public void employeeSignIn() throws IOException {
-		driver.get(UtilityClass.getPFData("URL"));
-		elp.inpEmLoginPageSignIn(UtilityClass.getPFData("Email"), UtilityClass.getPFData("Password"));
-	}
-
-	public void SubadminSignIn() throws IOException {
-		driver.get(UtilityClass.getPFData("URL"));
-		elp.inpEmLoginPageSignIn(UtilityClass.getPFData("SAEmail"), UtilityClass.getPFData("SAPassword"));
 	}
 }

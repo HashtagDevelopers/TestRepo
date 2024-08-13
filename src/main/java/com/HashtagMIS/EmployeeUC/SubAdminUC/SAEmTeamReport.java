@@ -11,7 +11,7 @@ import LibraryFiles.UtilityClass;
 
 public class SAEmTeamReport {
 
-	@FindBy(xpath = "//h1[text()='Team Reports']")
+	@FindBy(xpath = "//h1[contains(text(),'Team')]")
 	private WebElement SAPtitle;
 	
 	ArrayList<String> al;
@@ -34,7 +34,6 @@ public class SAEmTeamReport {
 		for (WebElement s1 : infoList) {
 			al.add(s1.getText());
 		}
-		al.remove(0);
 		al.remove(al.size()-1);
 		return al;
 	}

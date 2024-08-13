@@ -68,21 +68,28 @@ public class EmHistory {
 	public String getEmHistoryPageReportTime() {
 		return cnDateTime.getText();
 	}
-
+	public String getEmHistoryPageCurrentReportStatus(WebDriver driver, String cnDate) {
+		WebElement wb = driver.findElement(By.xpath("//div[text()='" + cnDate + "']/ancestor::div[2]/div/span"));
+		 UtilityClass.DrawBorder(driver, wb);
+		 
+		return wb.getText();
+	}
 	public List<String> getEmHistoryPageCurrentReportData(WebDriver driver, String cnDate) {
-		List<WebElement> data = driver.findElements(By.xpath("//div[text()='" + cnDate + "']/ancestor::div[2]/div"));
+		List<WebElement> data = driver.findElements(By.xpath("//div[text()='" + cnDate + "']/ancestor::div[2]/div/div"));
 		ArrayList<String> al = new ArrayList<String>();
 		for (WebElement f : data) {
 			al.add(f.getText());
 		}
 		al.remove(0);
 		al.remove(al.size()-1);
+		al.add(driver.findElement(By.xpath("//div[text()='" + cnDate + "']/ancestor::div[2]/div/span")).getText());
+		//System.out.println(al);
 		return al;
 	}
 
 	public void clickEmHistoryPageCurrentReportViewBtn(WebDriver driver, String cnDatetime) throws InterruptedException {
 		Thread.sleep(2500);
-		driver.findElement(By.xpath("//div[text()='"+cnDatetime+"']/ancestor::div[2]/div[5]/div")).click();
+		driver.findElement(By.xpath("//div[text()='"+cnDatetime+"']/ancestor::div[2]/div[6]/div")).click();
 
 	}
 	public void inpEmHistoryPageTaskList(WebDriver driver, String task, String num) {

@@ -48,7 +48,7 @@ public class F1AdCheckTC extends BaseClass {
 	Logger log = LogManager.getLogger(F1AdCheckTC.class);
 	PrintWriter pw, pw1;
 
-	String StaffName = "Krunal", subadmin = "Jay", dd = "25", mm = "07", Department = "Software Development",
+	String StaffName = "Krunal", subadmin = "Jay",admin="DEVELOPERS", dd = "25", mm = "07", Department = "Incident",
 			CnDtTime, cntDate;
 
 	StringBuilder sb;
@@ -80,10 +80,8 @@ public class F1AdCheckTC extends BaseClass {
 		// form fill
 		submitReport();
 		Thread.sleep(200);
-		driver.navigate().refresh();
-		Thread.sleep(200);
 		esm.clickEmSideMenuHistoryBtn();
-		
+		soft.assertEquals(ehp.getEmHistoryPageCurrentReportStatus(driver,CnDtTime), "Unchecked");
 		Thread.sleep(1500);
 		ehp.clickEmHistoryPageCurrentReportViewBtn(driver, CnDtTime);
 		Thread.sleep(200);
@@ -106,7 +104,7 @@ public class F1AdCheckTC extends BaseClass {
 		Reporter.log(12 + savr.getSAEmViewTeamReportChkUnChk(driver) + " = Unchecked", true);
 		Reporter.log(13 + String.valueOf(savr.getSAEmViewTeamReportCheckBoxIsSelected(driver)) + " = False", true);
 		soft.assertEquals(savr.getSAEmViewTeamReportChkUnChk(driver), "Unchecked", "12");
-		soft.assertFalse(savr.getSAEmViewTeamReportCheckBoxIsSelected(driver), "53");
+		soft.assertFalse(savr.getSAEmViewTeamReportCheckBoxIsSelected(driver), "13");
 		// SA check
 		log.info("SA check");
 		savr.clickSAEmViewTeamReportSubmitBtn();
@@ -129,6 +127,8 @@ public class F1AdCheckTC extends BaseClass {
 		employeeSignIn();
 		log.info("Verify in employee...");
 		esm.clickEmSideMenuHistoryBtn();
+		Reporter.log(ehp.getEmHistoryPageCurrentReportStatus(driver,CnDtTime) + " = Checked", true);
+		soft.assertEquals(ehp.getEmHistoryPageCurrentReportStatus(driver,CnDtTime), "Checked");
 		ehp.clickEmHistoryPageCurrentReportViewBtn(driver, CnDtTime);
 		Thread.sleep(1500);
 		Reporter.log(2 + evr.getEmViewReportChkUnChk(driver) + " = Checked by: " + subadmin, true);
@@ -149,16 +149,18 @@ public class F1AdCheckTC extends BaseClass {
 		soft.assertEquals(ard.getAdReportDashboardCurrentReportStatus(Department, StaffName, driver, CnDtTime),
 				"Unchecked", "34");
 		ard.clickAdReportDashboardViewBtnForDateTime(driver, CnDtTime);
-		Reporter.log(35 + avr.getAdViewReportChkUnChk(driver) + " = Unchecked by : Admin", true);
+		Reporter.log(35 + avr.getAdViewReportChkUnChk(driver) + " = Unchecked by : "+admin, true);
 		soft.assertEquals(avr.getAdViewReportChkUnChk(driver), "Unchecked by : Admin", "35");
 		soft.assertFalse(avr.getAdViewReportChkBoxIsSelected(driver), "36");
 		// 4
 		employeeSignIn();
 		log.info("Admn Uncheck= verify in employee...");
 		esm.clickEmSideMenuHistoryBtn();
+		soft.assertEquals(ehp.getEmHistoryPageCurrentReportStatus(driver,CnDtTime), "Unchecked");
 		ehp.clickEmHistoryPageCurrentReportViewBtn(driver, CnDtTime);
+		
 		Thread.sleep(3000);
-		Reporter.log(4 + evr.getEmViewReportChkUnChk(driver) + " = Unchecked by : Admin", true);
+		Reporter.log(4 + evr.getEmViewReportChkUnChk(driver) + " = Unchecked by : "+admin, true);
 		soft.assertEquals(evr.getEmViewReportChkUnChk(driver), "Unchecked by : Admin", "4");
 
 		// 5
@@ -169,7 +171,7 @@ public class F1AdCheckTC extends BaseClass {
 		soft.assertEquals(satr.getSAEmTeamReportCurrentReportStatus(driver, CnDtTime), "Unchecked", "51");
 		satr.clickSAEmTeamReportCurrentReportViewBtn(driver, CnDtTime);
 		log.info("admin uncheck=Verify SAdmin View Report");
-		soft.assertEquals(savr.getSAEmViewTeamReportChkUnChk(driver), "Unchecked by : Admin", "52");
+		soft.assertEquals(savr.getSAEmViewTeamReportChkUnChk(driver), "Unchecked by : "+admin, "52");
 		soft.assertFalse(savr.getSAEmViewTeamReportCheckBoxIsSelected(driver), "53");
 
 		// 3 SA check after admin uncheck
@@ -196,6 +198,7 @@ public class F1AdCheckTC extends BaseClass {
 		employeeSignIn();
 		log.info("SA check= Verify in employee...");
 		esm.clickEmSideMenuHistoryBtn();
+		soft.assertEquals(ehp.getEmHistoryPageCurrentReportStatus(driver,CnDtTime), "Unchecked");
 		ehp.clickEmHistoryPageCurrentReportViewBtn(driver, CnDtTime);
 		Thread.sleep(1500);
 		Reporter.log(2 + evr.getEmViewReportChkUnChk(driver) + " = Checked by: " + subadmin, true);
@@ -218,17 +221,18 @@ public class F1AdCheckTC extends BaseClass {
 		soft.assertEquals(ard.getAdReportDashboardCurrentReportStatus(Department, StaffName, driver, CnDtTime),
 				"Checked", "34");
 		ard.clickAdReportDashboardViewBtnForDateTime(driver, CnDtTime);
-		Reporter.log(35 + avr.getAdViewReportChkUnChk(driver) + " = Checked by : Admin", true);
-		soft.assertEquals(avr.getAdViewReportChkUnChk(driver), "Checked by : Admin", "35");
+		Reporter.log(35 + avr.getAdViewReportChkUnChk(driver) + " = Checked by : "+admin, true);
+		soft.assertEquals(avr.getAdViewReportChkUnChk(driver), "Checked by : "+admin, "35");
 		soft.assertFalse(avr.getAdViewReportChkBoxIsSelected(driver), "36");
 		// 4
 		employeeSignIn();
 		log.info("Admn check= verify in employee...");
 		esm.clickEmSideMenuHistoryBtn();
+		soft.assertEquals(ehp.getEmHistoryPageCurrentReportStatus(driver,CnDtTime), "Unchecked");
 		ehp.clickEmHistoryPageCurrentReportViewBtn(driver, CnDtTime);
 		Thread.sleep(1500);
-		Reporter.log(4 + evr.getEmViewReportChkUnChk(driver) + " = Checked by : Admin", true);
-		soft.assertEquals(evr.getEmViewReportChkUnChk(driver), "Checked by : Admin", "4");
+		Reporter.log(4 + evr.getEmViewReportChkUnChk(driver) + " = Checked by : "+admin, true);
+		soft.assertEquals(evr.getEmViewReportChkUnChk(driver), "Checked by : "+admin, "4");
 
 		// 5
 		log.info("Admn check= SubAdmin Signing select current report...");
@@ -238,13 +242,13 @@ public class F1AdCheckTC extends BaseClass {
 		soft.assertEquals(satr.getSAEmTeamReportCurrentReportStatus(driver, CnDtTime), "Unchecked", "51");
 		satr.clickSAEmTeamReportCurrentReportViewBtn(driver, CnDtTime);
 		log.info("Admn check= Verify SAdmin View Report");
-		soft.assertEquals(savr.getSAEmViewTeamReportChkUnChk(driver), "Checked by : Admin", "52");
+		soft.assertEquals(savr.getSAEmViewTeamReportChkUnChk(driver), "Checked by : "+admin, "52");
 		soft.assertFalse(savr.getSAEmViewTeamReportCheckBoxIsPresent(), "53");
 
 		//// Delete report
-		adminSignIn();
-		asm.clickAdSideMenuReportsBtn();
-		ard.clickAdReportDashboardDeleteBtnForDateTime(driver, CnDtTime);
+//		adminSignIn();
+//		asm.clickAdSideMenuReportsBtn();
+//		ard.clickAdReportDashboardDeleteBtnForDateTime(driver, CnDtTime);
 
 	}
 
@@ -258,29 +262,37 @@ public class F1AdCheckTC extends BaseClass {
 				"Unchecked", "31");
 		ard.clickAdReportDashboardViewBtnForDateTime(driver, CnDtTime);
 		soft.assertEquals(avr.getAdViewReportChkUnChk(driver), "Unchecked", "32");
-		soft.assertTrue(avr.getAdViewReportChkBoxIsSelected(driver), "33");
+	
+		soft.assertFalse(avr.getAdViewReportChkBoxIsSelected(driver), "33");
 
 		log.info("Direct admin check= flow...");
 		
-		avr.clickAdViewReportSubmitBtn();
+		//avr.clickAdViewReportSubmitBtn();
+		
+		
+		
 		
 		Thread.sleep(5000);
 		avr.clickAdViewReportChkBox();
+		
 		avr.clickAdViewReportSubmitBtn();
+		
 		soft.assertEquals(ard.getAdReportDashboardCurrentReportStatus(Department, StaffName, driver, CnDtTime),
 				"Checked", "34");
+		
 		ard.clickAdReportDashboardViewBtnForDateTime(driver, CnDtTime);
-		Reporter.log(35 + avr.getAdViewReportChkUnChk(driver) + " = Checked by : Admin", true);
-		soft.assertEquals(avr.getAdViewReportChkUnChk(driver), "Checked by : Admin", "35");
-		soft.assertFalse(avr.getAdViewReportChkBoxIsSelected(driver), "36");
+		Reporter.log(35 + avr.getAdViewReportChkUnChk(driver) + " = Checked by: "+admin, true);
+		soft.assertEquals(avr.getAdViewReportChkUnChk(driver), "Checked by: "+admin, "35");
+		soft.assertTrue(avr.getAdViewReportChkBoxIsSelected(driver), "36");
 		// 4
 		employeeSignIn();
 		log.info("Direct Admn check= verify in employee...");
 		esm.clickEmSideMenuHistoryBtn();
+		soft.assertEquals(ehp.getEmHistoryPageCurrentReportStatus(driver,CnDtTime), "Checked");
 		ehp.clickEmHistoryPageCurrentReportViewBtn(driver, CnDtTime);
 		Thread.sleep(1500);
-		Reporter.log(4 + evr.getEmViewReportChkUnChk(driver) + " = Checked by : Admin", true);
-		soft.assertEquals(evr.getEmViewReportChkUnChk(driver), "Checked by : Admin", "4");
+		Reporter.log(4 + evr.getEmViewReportChkUnChk(driver) + " = Checked by: "+admin, true);
+		soft.assertEquals(evr.getEmViewReportChkUnChk(driver), "Checked by: "+admin, "4");
 
 		// 5
 		log.info("Direct Admn check= SubAdmin Signing select current report...");
@@ -290,7 +302,7 @@ public class F1AdCheckTC extends BaseClass {
 		soft.assertEquals(satr.getSAEmTeamReportCurrentReportStatus(driver, CnDtTime), "Checked", "51");
 		satr.clickSAEmTeamReportCurrentReportViewBtn(driver, CnDtTime);
 		log.info("DirectAdmn check= Verify SAdmin View Report");
-		soft.assertEquals(savr.getSAEmViewTeamReportChkUnChk(driver), "Checked by : Admin", "52");
+		soft.assertEquals(savr.getSAEmViewTeamReportChkUnChk(driver), "Checked by: "+admin, "52");
 		soft.assertFalse(savr.getSAEmViewTeamReportCheckBoxIsPresent(), "53");
 
 		soft.assertAll();
@@ -299,7 +311,7 @@ public class F1AdCheckTC extends BaseClass {
 
 	public String getTimeDate() {
 		LocalDateTime currentDate = LocalDateTime.now();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm a");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
 		cntDate = currentDate.format(formatter);
 		return cntDate.toUpperCase();
 	}
@@ -331,7 +343,7 @@ public class F1AdCheckTC extends BaseClass {
 		esm.clickEmSideMenuDailyReportBtn();
 		Thread.sleep(300);
 		erp.selEmReportPageDepartmentName(driver, Department);
-		erp.inpEmReportPageDate(dd + mm);
+		erp.inpEmReportPageDate(dd , mm);
 
 		erp.inpEmReportForm5Task();
 

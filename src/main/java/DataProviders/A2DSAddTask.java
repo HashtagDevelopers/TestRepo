@@ -9,13 +9,13 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.DataProvider;
 
 public class A2DSAddTask {
-	String filePath = ".\\TestData\\Account.xlsx";
+	String filePath = ".\\Test Data\\Incident.xlsx";
 	@DataProvider(name = "AddTaskDS")
 	public String[][] DataContainerTask() throws IOException {
-		return getDataFromSheet("Sheet9");
+		return getAllDataFromSheet("Sheet1");
 	}
 
-	private String[][] getDataFromSheet(String sheetName) throws IOException {
+	private String[][] getAllDataFromSheet(String sheetName) throws IOException {
 		FileInputStream file = new FileInputStream(filePath);
 		XSSFWorkbook workbook = new XSSFWorkbook(file);
 		XSSFSheet sheet = workbook.getSheet(sheetName);
@@ -41,7 +41,7 @@ public class A2DSAddTask {
 	int startRowS1 = 1;
 	int endRowS1 = 1;
 
-	public String[][] getDataFromSheet1(String sheetName) throws IOException {
+	public String[][] getSelectiveDataFromSheet(String sheetName) throws IOException {
 		FileInputStream file = new FileInputStream(filePath);
 		XSSFWorkbook workbook = new XSSFWorkbook(file);
 		XSSFSheet sheet = workbook.getSheet(sheetName);

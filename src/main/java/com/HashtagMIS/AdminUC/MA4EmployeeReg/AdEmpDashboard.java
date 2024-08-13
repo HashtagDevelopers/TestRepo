@@ -61,7 +61,6 @@ public class AdEmpDashboard {
 				ar.add(s.getText());
 			}
 		}
-		ar.remove(0);
 		ArrayList<String> al = new ArrayList<String>();
 		String st = ar.toString();
 		String str = st.substring(1, st.length() - 1);
@@ -79,7 +78,7 @@ public class AdEmpDashboard {
 	}
 
 	public void clickAdEmpDashboardEditBtnForName(WebDriver driver, String name) {
-		driver.findElement(By.xpath("(//div[text()='" + name + "']/ancestor::div[2]/div)[6]/div/button[1]")).click();
+		driver.findElement(By.xpath("(//div[text()='" + name + "']/ancestor::div[2]/div)[5]/div/button[1]")).click();
 	}
 
 	public void clickAdEmpDashboardDeleteBtn() {

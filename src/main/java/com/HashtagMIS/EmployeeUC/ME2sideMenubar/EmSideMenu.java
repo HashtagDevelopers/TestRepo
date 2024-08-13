@@ -10,7 +10,7 @@ public class EmSideMenu {
 	private WebElement dailyReportBtn;
 	@FindBy(xpath = "//span[contains(text(),'History')]")
 	private WebElement historyBtn;
-	@FindBy(xpath = "//span[contains(text(),'Team Reports')]")
+	@FindBy(xpath = "//span[contains(text(),'Team')]")
 	private WebElement teamReportBtn;
 	@FindBy(xpath = "//span[contains(text(),'Profile')]")
 	private WebElement profileBtn;

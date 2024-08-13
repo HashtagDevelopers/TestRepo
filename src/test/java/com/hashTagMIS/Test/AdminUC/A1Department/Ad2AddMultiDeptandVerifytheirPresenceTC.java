@@ -5,6 +5,7 @@ import org.apache.logging.log4j.*;
 import java.lang.reflect.Method;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.By;
@@ -34,8 +35,8 @@ import com.HashtagMIS.EmployeeUC.ME3Report.EmHistory;
 import LibraryFiles.BaseClass;
 import LibraryFiles.UtilityClass;
 import net.bytebuddy.utility.RandomString;
-
-public class Ad2DepartmentMultiTC extends BaseClass {
+/*Add Multiple Dept and verify their presence in all dropdown*/
+public class Ad2AddMultiDeptandVerifytheirPresenceTC extends BaseClass {
 	SoftAssert soft;
 	AdLogin1 lp1;
 	AdLogin2 lp2;
@@ -49,8 +50,7 @@ public class Ad2DepartmentMultiTC extends BaseClass {
 	String msg;
 	EmLogin lp;
 	AdEditDepartmentForm de;
-	Logger log = LogManager.getLogger(Ad2DepartmentMultiTC.class);
-
+	Logger log = LogManager.getLogger(Ad2AddMultiDeptandVerifytheirPresenceTC.class);
 	@BeforeClass
 	public void openBrowser() throws IOException, InterruptedException {
 		initialiseBrowser();
@@ -89,25 +89,27 @@ public class Ad2DepartmentMultiTC extends BaseClass {
 		soft = new SoftAssert();
 	}
 
-	@Test(enabled = true, dataProvider = "DepartmentMultiDS", dataProviderClass = DataProviders.A1DSAddEmp.class)
-	public void AddDepartmentMulti(String Scenario, String Error, String Department, String toastmsg)
+	@Test(enabled = true, dataProvider = "DepartmentMultiDS",priority = 1, dataProviderClass = DataProviders.A1DSAddDeptAndEmp.class)
+	public void testAddDepartmentMulti(String Scenario, String Error, String Department, String toastmsg)
 			throws IOException, InterruptedException {
 
 		sm.clickAdSideMenuDepartmentBtn();
 		ad.inpAdAddDepartmentFormDept(Department);
-		Thread.sleep(100);
+		Thread.sleep(5000);
 		ad.clickAdAddDepartmentFormAddBtn(driver);
 		log.info("Department added");
 		String tm = ad.getAdAddDepartmentFormToastMsg(driver);
-		Reporter.log(tm + "<====>" + toastmsg, true);
+		Thread.sleep(200);
+		Reporter.log(tm + "<====>" + toastmsg, true);	
 		soft.assertEquals(tm, toastmsg);
+		Thread.sleep(200);
 		soft.assertTrue(ad.getAdAddDepartmentFormDeptList().contains(Department));
-		log.info("assertion added");
+		log.info("assertion added");		
 		soft.assertAll();
 	}
 
-	@Test(enabled=false,dependsOnMethods = "AddDepartmentMulti")
-	public void VerifyAllDepInAllDropdown() throws IOException, InterruptedException {
+	@Test(enabled=false,priority = 2)
+	public void testVerifyAllDepInAllDropdown() throws IOException, InterruptedException {
 		sm.clickAdSideMenuDepartmentBtn();
 		List<String> deptList = ad.getAdAddDepartmentFormDeptList();
 		Thread.sleep(4000);
@@ -139,7 +141,7 @@ public class Ad2DepartmentMultiTC extends BaseClass {
 	public void FailedTCSS(ITestResult s1, Method m) throws IOException {
 
 		LocalDateTime currentDate = LocalDateTime.now();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyyHHmmss");
 		String cntDate = currentDate.format(formatter);
 		// System.out.println(m.getName());
 		String rs = m.getName() + cntDate + RandomString.make(2);

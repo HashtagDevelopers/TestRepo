@@ -8,7 +8,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.DataProvider;
 
 public class C2DSEmReport {
-	 String filePath =".\\TestData\\excelDataProviderReport.xlsx";
+	 String filePath =".\\Test Data\\excelDataProviderReport.xlsx";
 	 int startRowMulti = 1;  //9
 	 int endRowMulti = 1;
 	 @DataProvider(name = "ReportFlowDS1")

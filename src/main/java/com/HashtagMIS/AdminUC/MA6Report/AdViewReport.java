@@ -1,8 +1,11 @@
 package com.HashtagMIS.AdminUC.MA6Report;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -63,7 +66,7 @@ public class AdViewReport {
 	}
 	public boolean getAdViewReportChkBoxIsSelected(WebDriver driver) throws InterruptedException {
 		UtilityClass.DrawBorder(driver, chkBox);
-		Thread.sleep(1500);
+		Thread.sleep(500);
 		return chkBox.isSelected();
 
 	}
@@ -84,18 +87,28 @@ public class AdViewReport {
 		return SVtitle.isDisplayed();
 	}
 
-	public String getAdViewReportDate() {
-		return reportDate.getAttribute("value");
+	public String getAdViewReportDate() throws ParseException {
+		String dateValue = reportDate.getAttribute("value");
+		SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
 
+		// Parse the date string into a Date object
+		Date date = inputFormat.parse(dateValue);
+
+		// Define the output format (desired format: DD-MMM-YYYY)
+		SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MMM-yyyy");
+
+		// Format the Date object into the desired string format
+		String formattedDate = outputFormat.format(date);
+		return formattedDate;
 	}
 
 	
 
-	public List<String> getAdViewReportUpperInfo() {
+	public List<String> getAdViewReportUpperInfo() throws ParseException {
 		al = new ArrayList<String>();
 		al.add(SVtitle.getText());		
 		al.add(dept.getAttribute("value"));
-		al.add(reportDate.getAttribute("value"));
+		al.add(getAdViewReportDate());
 		al.add(ChkUnChk.getText());
 		return al;
 	}

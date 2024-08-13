@@ -32,6 +32,7 @@ import LibraryFiles.BaseClass;
 import LibraryFiles.UtilityClass;
 import net.bytebuddy.utility.RandomString;
 
+/*Check Datatype and duplicate dept*/
 public class Ad1DepartmentFunctionalTC extends BaseClass {
 	SoftAssert soft;
 	AdLogin1 lp1;
@@ -85,7 +86,7 @@ public class Ad1DepartmentFunctionalTC extends BaseClass {
 	    // Clear or reset the state before each test
 		soft = new SoftAssert();
 	}
-	@Test(enabled = true, dataProvider = "DepartmentFunctionalDS", dataProviderClass = DataProviders.A1DSAddEmp.class)
+	@Test(enabled = true, dataProvider = "DepartmentFunctionalDS", dataProviderClass = DataProviders.A1DSAddDeptAndEmp.class)
 	public void AddDepartmentFunctional(String Scenario, String Error, String Department, String toastmsg)
 			throws IOException, InterruptedException {
 		sm.clickAdSideMenuDepartmentBtn();

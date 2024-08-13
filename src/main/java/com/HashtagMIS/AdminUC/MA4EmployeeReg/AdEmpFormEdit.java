@@ -26,7 +26,7 @@ public class AdEmpFormEdit {
 	private WebElement nameInp;
 	@FindBy(xpath = "//input[@name='email']")
 	private WebElement emailInp;
-	@FindBy(xpath = "//input[@type='password']")
+	@FindBy(xpath = "//input[@name='password']")
 	private WebElement pwdInp;
 	@FindBy(xpath = "//input[@name='role']")
 	private WebElement designationInp;
@@ -58,26 +58,7 @@ public class AdEmpFormEdit {
 		PageFactory.initElements(driver, this);
 		this.act = new Actions(driver);
 	}
-	public ArrayList<String> getAdEmpEditEmpData(WebDriver driver, String Name) {
-		ArrayList<String> ar = new ArrayList<String>();
-		List<WebElement> wb = driver.findElements(By.xpath("//div[text()='" + Name + "']/ancestor::div[2]/div"));
-		for (WebElement s : wb) {
-			if (!s.getText().trim().equals("")) {
-				ar.add(s.getText());
-			}
-		}
-		ar.remove(0);
-		ArrayList<String> al = new ArrayList<String>();
-		String st = ar.toString();
-		String str = st.substring(1, st.length() - 1);
-		String[] t = str.split(",");
-		for (int i = 0; i < t.length; i++) {
-			al.add(t[i].trim());
-		}
-		Collections.sort(al);
-		return al;
 
-	}
 	public void getAdEmpFormEditTitle(WebDriver driver) throws InterruptedException {
 		UtilityClass.DrawBorder(driver, seTitle);
 		Thread.sleep(500);
@@ -100,8 +81,9 @@ public class AdEmpFormEdit {
 
 	}
 
-	public List<String> getAdEmpFormEditData() {
+	public List<String> getAdEmpFormEditData() throws InterruptedException {
 		ArrayList<String> ar = new ArrayList<String>();
+		
 		ar.add(getAdEmpFormEditName());
 		ar.add(getAdEmpFormEditEmail());
 		ar.add(getAdEmpFormEditPwD());
@@ -113,6 +95,7 @@ public class AdEmpFormEdit {
 		ar.add(getAdEmpFormEditShiftEnd());
 		ar.add(getAdEmpFormEditDoJ());
 		ar.add(getAdEmpFormEditAccess());
+		Collections.sort(ar);
 		return ar;
 	}
 
@@ -178,7 +161,8 @@ public class AdEmpFormEdit {
 		}
 	}
 
-	public String getAdEmpFormEditName() {
+	public String getAdEmpFormEditName() throws InterruptedException {
+		Thread.sleep(1000);
 		return nameInp.getAttribute("value");
 	}
 

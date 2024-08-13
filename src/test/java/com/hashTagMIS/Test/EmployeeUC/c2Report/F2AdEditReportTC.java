@@ -3,10 +3,13 @@ package com.hashTagMIS.Test.EmployeeUC.c2Report;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -53,7 +56,7 @@ public class F2AdEditReportTC extends BaseClass {
 	SAEmTeamReport satr;
 	SAEmViewTeamReport savr;
 	SoftAssert soft;
-	String CnDtTime, cntDate, yestDate, tomDate, StaffName = "Krunal Employee";
+	String CnDtTime, cntDate, yestDate, tomDate, StaffName = "Krunal",admin="DEVELOPERS";
 	int cd, cm, cy;
 	Logger log = LogManager.getLogger(F2AdEditReportTC.class);
 	PrintWriter pw, pw1;
@@ -62,8 +65,7 @@ public class F2AdEditReportTC extends BaseClass {
 	ArrayList<String> ExpAdRpDLst2;
 	ArrayList<String> ExpSATRpDLst2;
 	ArrayList<String> ExpAdVRUI2;
-	
-    
+
 	@BeforeClass
 	public void openBrowser() throws IOException, InterruptedException {
 		initialiseBrowser();
@@ -100,15 +102,15 @@ public class F2AdEditReportTC extends BaseClass {
 
 	@Test(enabled = true, dataProvider = "ReportFlowDS1", dataProviderClass = DataProviders.C2DSEmReport.class)
 	public void AdEditReport(String Scenario, String textarea, String Department, String dd, String mm, String toastmsg)
-			throws IOException, InterruptedException {
+			throws IOException, InterruptedException, ParseException {
 
 		log.info("Report Form Opening by Selecting Department and Date...");
 		esm.clickEmSideMenuDailyReportBtn();
-		erp.selEmReportPageDepartmentName(driver,Department);
-		erp.inpEmReportPageDate(dd + mm);
+		erp.selEmReportPageDepartmentName(driver, Department);
+		erp.inpEmReportPageDate(dd, mm);
 
 		log.info("Filling Report and collecting entered task....");
-		erp.inpEmReportFormAllTask( Department);
+		erp.inpEmReportFormAllTask(Department);
 
 		log.info("Submitting Report....");
 		// Function to repeatedly check millisecond value and click if it's 1
@@ -127,14 +129,14 @@ public class F2AdEditReportTC extends BaseClass {
 			Thread.sleep(1); // Sleep for 10 milliseconds
 		}
 		CnDtTime = getTimeDate();
+
 		erp.clickEmReportPageSubmitBtn();
 		erp.clickEmReportPageAreYouSureOKBtn();
-		
-		
+
 //Admin Scenario		
 		log.info("Admin Signing in...");
 		adminSignIn();
-		
+
 //Edit Scenario		
 		log.info("Selecting current Report...");
 		asm.clickAdSideMenuReportsBtn();
@@ -143,83 +145,86 @@ public class F2AdEditReportTC extends BaseClass {
 		Thread.sleep(500);
 		ard.selAdReportDashboardDepartmentStaff(StaffName);
 		Thread.sleep(500);
-	
-		
+
 		log.info("Moving to admin Edit report....");
-		ard.clickAdReportDashboardEditBtnForDateTime(driver,CnDtTime);
-		soft.assertTrue(aer.getAdEditReportTitle(driver),"adEdTitle");
+		ard.clickAdReportDashboardEditBtnForDateTime(driver, CnDtTime);
+		soft.assertTrue(aer.getAdEditReportTitle(driver), "adEdTitle");
 		Thread.sleep(500);
 		log.info("Editing Report....");
 		aer.inpAdEditReportAllTask(driver, Department);
-		
-		int d=Integer.valueOf(dd)+2;
-		aer.inpAdEditReportDate(String.valueOf(d),"05","2024");
+
+		int d = Integer.valueOf(dd) + 2;
+		aer.inpAdEditReportDate(String.valueOf(d), "05", "2024");
+		String expRpedt = d + "-" + mm + "-2024";
+
 		String rpedt = aer.getAdEditReportDate();
+		System.out.println("rpedt" + rpedt);
+
 		LinkedHashMap<String, String> TVinAdErBeforeEditReport = aer.getAdEditReportTaskAndValue(driver);
 		aer.clickAdEditReportUpdateBtn();
 		soft.assertEquals(aer.getAdEditReportToastMsg(driver), "Report updated successfully");
-		
-		
+
 		log.info("collecting Edited Report....");
 		Thread.sleep(500);
-		soft.assertEquals(aer.getAdEditReportDate(), rpedt,"Admin Edit Date");	
+		soft.assertEquals(aer.getAdEditReportDate(), rpedt, "Admin Edit Date");
 		LinkedHashMap<String, String> TVinAdEditReport2 = aer.getAdEditReportTaskAndValue(driver);
 		Thread.sleep(1000);
 		aer.clickAdEditReportBackBtn();
-		
-		
-		
-		log.info("moving Ad view Report....");	
+
+		log.info("moving Ad view Report....");
 		ard.clickAdReportDashboardViewBtnForDateTime(driver, CnDtTime);
 		Thread.sleep(1000);
-		soft.assertEquals(avr.getAdViewReportDate(), rpedt,"Admin VR Date");			
+		soft.assertEquals(avr.getAdViewReportDate(), rpedt, "Admin VR Date");
 		LinkedHashMap<String, String> TVinAdViewReport2 = avr.getAdViewReportTaskAndValue(driver);
 		avr.checkAdViewReportChkBox();
 		Thread.sleep(500);
 		log.info("comparing Admin Dashboard....");
-		ExpAdRpDLst2.addAll(Arrays.asList(StaffName, CnDtTime, rpedt, Department, "Checked"));
+		ExpAdRpDLst2.addAll(Arrays.asList(StaffName, CnDtTime, expRpedt, Department, "Checked"));
 		List<String> ActAdDashRD2 = ard.getAdReportDashboardReportInfoList(driver, CnDtTime);
 		UtilsClass.compareTwoList(ActAdDashRD2, ExpAdRpDLst2, soft);
 		ard.clickAdReportDashboardViewBtnForDateTime(driver, CnDtTime);
 		soft.assertTrue(avr.getAdViewReportChkBoxIsSelected(driver));
-		
-		
+
 		log.info("SubAdmin Signing in...");
 		driver.get(UtilityClass.getPFData("URL"));
 		elp.inpEmLoginPageSignIn(UtilityClass.getPFData("SAEmail"), UtilityClass.getPFData("SAPassword"));
 		esm.clickEmSideMenuTeamReportBtn();
 		log.info("SubAdmin TR Dashboard...");
-		
-		ExpSATRpDLst2.addAll(Arrays.asList(StaffName, CnDtTime, rpedt, Department, "Checked"));
-		List<String> ActSATRpDLst2 = satr.getSAEmTeamReportInfoList(driver, CnDtTime);		
+
+		ExpSATRpDLst2.addAll(Arrays.asList(StaffName, CnDtTime, expRpedt, Department, "Checked"));
+		List<String> ActSATRpDLst2 = satr.getSAEmTeamReportInfoList(driver, CnDtTime);
 		UtilsClass.compareTwoList(ActSATRpDLst2, ExpSATRpDLst2, soft);
-		
+
 		log.info("Moving SubAdmin View Team Report...");
 		satr.clickSAEmTeamReportCurrentReportViewBtn(driver, CnDtTime);
 		Thread.sleep(1000);
-		soft.assertEquals(savr.getSAEmViewTeamReportDate(), rpedt,"SAEm VR Date");
-		soft.assertEquals(savr.getSAEmViewTeamReportChkUnChk(driver), "Checked by: Admin","EmVR status is not unchecked in EmVr");
-        soft.assertTrue(savr.getSAEmViewTeamReportCheckBoxIsPresent(), "SA Em View TeamReport Checkbox Displayed");
+		soft.assertEquals(savr.getSAEmViewTeamReportDate(), rpedt, "SAEm VR Date");
+		soft.assertEquals(savr.getSAEmViewTeamReportChkUnChk(driver), "Checked by: "+admin,
+				"EmVR status is not unchecked in EmVr");
+
+		Thread.sleep(5000);
+
+		soft.assertFalse(savr.getSAEmViewTeamReportCheckBoxIsPresent(), "SA Em View TeamReport Checkbox Displayed");
 		LinkedHashMap<String, String> TVinSAViewReport2 = savr.getSAEmViewTeamReportTaskAndValue(driver);
 
 		log.info("Moving Employee Sign In...");
 		driver.get(UtilityClass.getPFData("URL"));
 		elp.inpEmLoginPageSignIn(UtilityClass.getPFData("Email"), UtilityClass.getPFData("Password"));
-		
+
 		log.info("Collecting report data in EmHistory Page...");
 		soft.assertTrue(ehp.getEmHistoryPageTitle(driver));
 		Thread.sleep(1000);
-		ExpEmHPDLst2.addAll(Arrays.asList(rpedt, Department, getTimeDate()));
-		List<String> ActEmHistoryEleLst2 = ehp.getEmHistoryPageCurrentReportData(driver, CnDtTime);	
+		ExpEmHPDLst2.addAll(Arrays.asList(expRpedt, Department, getTimeDate(), "Checked"));
+		List<String> ActEmHistoryEleLst2 = ehp.getEmHistoryPageCurrentReportData(driver, CnDtTime);
 		UtilsClass.compareTwoList(ActEmHistoryEleLst2, ExpEmHPDLst2, soft);
-		
 
 		log.info("Moving to Employee view Report...");
 		ehp.clickEmHistoryPageCurrentReportViewBtn(driver, CnDtTime);
 		log.info("Collecting data From Staff View...");
 		String svt1 = evr.getEmViewReportPageTitle(driver);
-		soft.assertEquals(svt1, "Daily Report: " + rpedt);
-		soft.assertEquals(evr.getEmViewReportChkUnChk(driver), "Checked by: Admin","EmVR status is not unchecked in EmVr");
+		soft.assertEquals(svt1, "Daily Report: " + expRpedt);
+		soft.assertEquals(evr.getEmViewReportChkUnChk(driver), "Checked by: "+admin,
+				"EmVR status is not unchecked in EmVr");
 		LinkedHashMap<String, String> TVinEmViewReport2 = evr.getEmViewReportTaskAndValue(driver);
 
 		log.info("Verify all Report...");
@@ -282,10 +287,11 @@ public class F2AdEditReportTC extends BaseClass {
 
 	public String getTimeDate() {
 		LocalDateTime currentDate = LocalDateTime.now();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm a");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
 		cntDate = currentDate.format(formatter);
 		return cntDate.toUpperCase();
 	}
+
 	public void adminSignIn() throws IOException {
 		driver.get(UtilityClass.getPFData("AdminURL"));
 		alp1.inpAdLoginPage1Email(UtilityClass.getPFData("AdEmail"));

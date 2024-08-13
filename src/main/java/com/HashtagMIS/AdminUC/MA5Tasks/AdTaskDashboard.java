@@ -22,7 +22,7 @@ public class AdTaskDashboard {
 
 	@FindBy(xpath = "//select[@name='department']")
 	private WebElement selDepartment;
-	@FindBy(xpath = "//a[text()='Task Form']")
+	@FindBy(xpath = "//a[text()='Add Task']")
 	private WebElement taskFormBtn;
 	@FindBy(xpath = "//td[1]")
 	private List<WebElement> taskLst;
@@ -75,6 +75,17 @@ public class AdTaskDashboard {
 		act.release().perform();
 		Thread.sleep(2000);
 	//	}
+	}
+	public LinkedHashMap<String, String> getAdTaskDashboardAllTaskAndPlaceholder(WebDriver driver) throws InterruptedException {
+		LinkedHashMap<String, String> lmp = new LinkedHashMap<>();
+		Thread.sleep(500);
+		for (int i = 1; i <= taskLst.size(); i++) {
+			String task = driver.findElement(By.xpath("(//td[1])[" + i + "]")).getText().trim();
+			String plchldr = driver.findElement(By.xpath("(//td[2])[" + i + "]")).getText();
+			lmp.put(task, plchldr);
+		}
+		return lmp;
+
 	}
 	public LinkedHashMap<String, String> getAdTaskDashboardAllTaskAndTaskType(WebDriver driver) throws InterruptedException {
 		LinkedHashMap<String, String> lmp = new LinkedHashMap<>();

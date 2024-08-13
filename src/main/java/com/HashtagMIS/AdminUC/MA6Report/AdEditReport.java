@@ -1,7 +1,10 @@
 package com.HashtagMIS.AdminUC.MA6Report;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -62,9 +65,20 @@ public class AdEditReport {
 		return SVtitle.isDisplayed();
 	}
 
-	public String getAdEditReportDate() {
-		return reportDate.getAttribute("value");
+	public String getAdEditReportDate() throws ParseException {
+		
+		String dateValue = reportDate.getAttribute("value");
+		SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
 
+		// Parse the date string into a Date object
+		Date date = inputFormat.parse(dateValue);
+
+		// Define the output format (desired format: DD-MMM-YYYY)
+		SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MMM-yyyy");
+
+		// Format the Date object into the desired string format
+		String formattedDate = outputFormat.format(date);
+		return formattedDate;
 	}
 	public void inpAdEditReportDate(String dd,String mm,String yyyy) {
 		reportDate.sendKeys(dd+mm);
@@ -72,21 +86,23 @@ public class AdEditReport {
 		act.sendKeys(yyyy).perform();
 	}
 
+	
+	
 	public String getAdEditReportDept() {
 		return selDepartment.getAttribute("value");
 
 	}
 
-	public List<String> getAdEditReportUpperInfo() throws InterruptedException {
+	public List<String> getAdEditReportUpperInfo() throws InterruptedException, ParseException {
 		Thread.sleep(2000);
 		al = new ArrayList<String>();
 		al.add(SVtitle.getText());
 		al.add(getAdEditReportDept());
-		al.add(reportDate.getAttribute("value"));	
+		al.add(getAdEditReportDate());	
 		al.add("Unchecked");
 		return al;
 	}
-
+	
 	public LinkedHashMap<String, String> getAdEditReportTaskAndValue(WebDriver driver) {
 		lmp = new LinkedHashMap<String, String>();
 		for (int i = 1; i <= taskList.size(); i++) {

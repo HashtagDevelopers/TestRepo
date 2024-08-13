@@ -3,10 +3,13 @@ package com.hashTagMIS.Test.EmployeeUC.c2Report;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -36,8 +39,15 @@ import com.HashtagMIS.EmployeeUC.SubAdminUC.SAEmViewTeamReport;
 
 import LibraryFiles.BaseClass;
 import LibraryFiles.UtilityClass;
+import LibraryFiles.UtilsClass;
 
-public class FlowAddEditReport extends BaseClass {
+/*Submit Report=> Check Data in History Dashboard=>verify Report in Employee View=>
+ * verify Data in SA Team Report Dashboard=>verify Report in SA View Report=>
+ * verify Data in Admin Report Dashboard=>verify Report in Admin View and Edit Report=>
+ * Admin Edit Report=>verify Report in Admin  Edit and View Report=>
+ * verify Report in SubAdmin Dashboard =>verify Report in SubAdmin View Report=>
+ * verify Report in history Dashboard =>verify Report in employee View Report=>*/
+public class F1EmSubmitReportTC extends BaseClass {
 	AdLogin1 alp1;
 	AdLogin2 alp2;
 	AdSideMenu asm;
@@ -52,9 +62,9 @@ public class FlowAddEditReport extends BaseClass {
 	SAEmTeamReport satr;
 	SAEmViewTeamReport savr;
 	SoftAssert soft;
-	String CnDtTime, cntDate, yestDate, tomDate, StaffName = "Employee";
+	String CnDtTime, cntDate, yestDate, tomDate, StaffName = "Krunal";
 	int cd, cm, cy;
-	Logger log = LogManager.getLogger(FlowAddEditReport.class);
+	Logger log = LogManager.getLogger(F1EmSubmitReportTC.class);
 	PrintWriter pw, pw1;
 	StringBuilder sb;
 	ArrayList<String> ExpEmHPDLst;
@@ -92,27 +102,31 @@ public class FlowAddEditReport extends BaseClass {
 		ExpAdVRUI = new ArrayList<String>();
 		sb = new StringBuilder();
 
-		elp.inpEmLoginPageEmail(UtilityClass.getPFData("Email"));
-		elp.inpEmLoginPagePwd(UtilityClass.getPFData("Password"));
-		elp.clickStaffLoginPageLoginBtn();
+		elp.inpEmLoginPageSignIn(UtilityClass.getPFData("Email"), UtilityClass.getPFData("Password"));
 		log.info("Login success");
 	}
 
 	@Test(enabled = true, dataProvider = "ReportFlowDS1", dataProviderClass = DataProviders.C2DSEmReport.class)
 	public void FillReport(String Scenario, String textarea, String Department, String dd, String mm, String toastmsg)
-			throws IOException, InterruptedException {
-		String rpdt = 2024 + "-" + mm + "-" + dd;
+			throws IOException, InterruptedException, ParseException {
+		String rpdt = dd + "-" + mm + "-" + 2024;
 
-		pw = new PrintWriter(new File(".\\Task2307\\" + Department + " - EnteredTask.csv"));
-		pw1 = new PrintWriter(new File(".\\Task2307\\" + Department + " - TaskList.csv"));
+		SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yyyy");
+		// Parse the date string into a Date object
+		Date date = inputFormat.parse(rpdt);
+		// Define the output format (desired format: DD-MMM-YYYY)
+		SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MMM-yyyy");
+		// Format the Date object into the desired string format
+		String formattedDate = outputFormat.format(date);
+		ExpAdVRUI.addAll(Arrays.asList("Employee Name: " + StaffName, Department, formattedDate, "Unchecked"));
 
 		log.info("Report Form Opening by Selecting Department and Date...");
 		esm.clickEmSideMenuDailyReportBtn();
-		erp.selEmReportPageDepartmentName(driver,Department);
-		erp.inpEmReportPageDate(dd + mm);
+		erp.selEmReportPageDepartmentName(driver, Department);
+		erp.inpEmReportPageDate(dd, mm);
 
 		log.info("Filling Report and collecting entered task....");
-		erp.inpEmReportFormAllTask( Department);
+		erp.inpEmReportFormAllTask(Department);
 		log.info("Collecting task-value from Staff Report...");
 		LinkedHashMap<String, String> TVinEmReport = erp.getEmReportFormTaskAndValue(driver);
 
@@ -138,137 +152,101 @@ public class FlowAddEditReport extends BaseClass {
 		String tm = erp.getEmReportFormToastMsg(driver);
 		Reporter.log(tm + "<==>" + toastmsg, true);
 		soft.assertEquals(tm, toastmsg, "Toast dont match");
-		log.info("Report Submitted Successfully");
 
 		log.info("Collecting report data in EmHistory Page...");
-		ehp.getEmHistoryPageTitle(driver);
-		Thread.sleep(2000);
-		ExpEmHPDLst.addAll(Arrays.asList(rpdt, Department, getTimeDate()));
+		soft.assertTrue(ehp.getEmHistoryPageTitle(driver), "HP Title");
+		Thread.sleep(1000);
+		ExpEmHPDLst.addAll(Arrays.asList(rpdt, Department, getTimeDate(), "Unchecked"));
 		List<String> ActEmHistoryEleLst = ehp.getEmHistoryPageCurrentReportData(driver, CnDtTime);
-		Reporter.log(ExpEmHPDLst.toString(), true);
-		Reporter.log(ActEmHistoryEleLst.toString(), true);
 
-		log.warn("Comparing report data in History Page...");
-		for (int i = 0; i < ActEmHistoryEleLst.size(); i++) {
-			String ActEleInHP = ActEmHistoryEleLst.get(i);
-			String ExpEleInHPArray = ExpEmHPDLst.get(i);
-			soft.assertEquals(ActEleInHP, ExpEleInHPArray, "EmHP element at index" + i + "Dont Matched");
-		}
-		soft.assertEquals(ActEmHistoryEleLst, ExpEmHPDLst, "Em History data not matched");
-		log.info("Report is present in Dashboard");
+		log.info("comparing EmHistory dashboard...");
+		UtilsClass.compareTwoList(ActEmHistoryEleLst, ExpEmHPDLst, soft);
 
 		log.info("Moving to Employee view Report...");
 		ehp.clickEmHistoryPageCurrentReportViewBtn(driver, CnDtTime);
-		String svt = evr.getEmViewReportPageTitle(driver);
-		soft.assertEquals(svt, "Daily Report: " + rpdt);
-		soft.assertEquals(evr.getEmViewReportChkUnChk(driver), "Unchecked","employee report is not unchecked");
-		
-		log.info("Collecting task From Staff View...");
+		soft.assertEquals(evr.getEmViewReportPageTitle(driver), "Daily Report: " + rpdt, "EmVR title");
+		soft.assertEquals(evr.getEmViewReportChkUnChk(driver), "Unchecked", "EmVR status is not unchecked in EmVr");
+
+		log.info("Collecting task From Employee View...");
 		Thread.sleep(2000);
 		LinkedHashMap<String, String> TVinEmViewReport = evr.getEmViewReportTaskAndValue(driver);
 
+		Thread.sleep(2000);
 		log.info("SubAdmin Signing in...");
-		driver.get(UtilityClass.getPFData("URL"));
-		elp.inpEmLoginPageEmail(UtilityClass.getPFData("SAEmail"));
-		elp.inpEmLoginPagePwd(UtilityClass.getPFData("SAPassword"));
-		elp.clickStaffLoginPageLoginBtn();
-		esm.clickEmSideMenuTeamReportBtn();
-		log.info("SubAdmin TR Dashboard...");
+		SubadminSignIn();
 		ExpSATRpDLst.addAll(Arrays.asList(StaffName, CnDtTime, rpdt, Department, "Unchecked"));
-		List<String> ActSATRpDLst = satr.getSAEmTeamReportInfoList(driver, CnDtTime);
-		for (int i = 0; i < ActSATRpDLst.size(); i++) {
-			String ActEleInSARpDB = ActSATRpDLst.get(i);
-			String ExpEleInSARpD = ExpSATRpDLst.get(i);
-			soft.assertEquals(ActEleInSARpDB, ExpEleInSARpD, "SA element at index" + i + "Dont Matched");
-		}
-		soft.assertEquals(ActSATRpDLst, ExpSATRpDLst, "SA Admin dashboard data not matched");
-		log.info("SubAdmin View Team Report...");
+		esm.clickEmSideMenuTeamReportBtn();
+		soft.assertTrue(satr.getSAEmTeamReportTitle(driver), "SubAdmin TR title");
 
+		List<String> ActSATRpDLst = satr.getSAEmTeamReportInfoList(driver, CnDtTime);
+
+		log.info("comparing SubAdmin TR Dashboard...");
+		UtilsClass.compareTwoList(ActSATRpDLst, ExpSATRpDLst, soft);
+
+		log.info("Moving to SubAdmin View Team Report...");
 		satr.clickSAEmTeamReportCurrentReportViewBtn(driver, CnDtTime);
-		Thread.sleep(5000);
-		soft.assertEquals(savr.getSAEmViewTeamReportChkUnChk(driver), "Unchecked","employee report is not unchecked in SAVr");
-		soft.assertFalse(savr.getSAEmViewTeamReportCheckBoxIsSelected(driver), "SA Em View TeamReport Checkbox Displayed");
+		Thread.sleep(2000);
+		soft.assertFalse(savr.getSAEmViewTeamReportCheckBoxIsSelected(driver), "SAVr checkbox");
+		List<String> SAEmVTRUpperInfo = savr.getSAEmViewTeamReportUpperInfo();
 		LinkedHashMap<String, String> TVinSAViewReport = savr.getSAEmViewTeamReportTaskAndValue(driver);
 
 		log.info("Admin Signing in...");
-		driver.get(UtilityClass.getPFData("AdminURL"));
-		alp1.inpAdLoginPage1Email(UtilityClass.getPFData("AdEmail"));
-		alp1.clickAdLoginPage1LoginBtn();
-		String otpSent = alp1.getAdLoginPage1ToastMsg(driver);
-		Reporter.log(otpSent + "<===>OTP has been sent successfully", true);
-		soft.assertEquals(otpSent, "OTP has been sent successfully");
-		alp2.inpAdLoginPage2Otp(UtilityClass.getPFData("AdPassword"));
-		alp2.clickAdLoginPage2SubmitBtn();
-		log.info("Admin Sign in Success");
-
+		adminSignIn();
 		log.info("Selecting current Report...");
 		asm.clickAdSideMenuReportsBtn();
-		Thread.sleep(2000);
+		Thread.sleep(500);
 		ard.selAdReportDashboardDepartmentName(Department);
 		Thread.sleep(500);
 		ard.selAdReportDashboardDepartmentStaff(StaffName);
 		Thread.sleep(500);
-		log.info("current Report Selected");
 
 		log.info("collecting current Report Data in Admin dashboard....");
 		ExpAdRpDLst.addAll(Arrays.asList(StaffName, CnDtTime, rpdt, Department, "Unchecked"));
-
 		Thread.sleep(500);
 		List<String> ActAdRpDInfoLst = ard.getAdReportDashboardReportInfoList(driver, CnDtTime);
 		Thread.sleep(500);
-		Reporter.log(ActAdRpDInfoLst.toString(), true);
-		Reporter.log(ExpAdRpDLst.toString(), true);
-
-		log.warn("Comapring current Report Data in Admin dashboard....");
-		for (int i = 0; i < ActAdRpDInfoLst.size(); i++) {
-			String ActEleInAdRpDB = ActAdRpDInfoLst.get(i);
-			String ExpEleInAdRpD = ExpAdRpDLst.get(i);
-			soft.assertEquals(ActEleInAdRpDB, ExpEleInAdRpD, "element at index" + i + "Dont Matched");
-		}
-		soft.assertEquals(ActAdRpDInfoLst, ExpAdRpDLst, "Admin dashboard data not matched");
+		UtilsClass.compareTwoList(ActAdRpDInfoLst, ExpAdRpDLst, soft);
 
 		log.info("Moving to admin view Report....");
 		ard.clickAdReportDashboardViewBtnForDateTime(driver, CnDtTime);
-		
-		soft.assertTrue(avr.getAdViewReportTitle(driver));
-		Thread.sleep(5000);
-		soft.assertEquals(avr.getAdViewReportChkUnChk(driver), "Unchecked", "admin view Check status is not unchecked");
-		soft.assertFalse(avr.getAdViewReportChkBoxIsSelected(driver), "admin view Checkbox is not Displayed");
+		soft.assertTrue(avr.getAdViewReportTitle(driver), "AVR title");
 
 		log.info("collecting data in admin view report....");
-		Thread.sleep(2000);
+		Thread.sleep(1000);
+		soft.assertFalse(avr.getAdViewReportChkBoxIsSelected(driver), "AdViewReport checkbox");
 		List<String> AdVRUpperInfo = avr.getAdViewReportUpperInfo();
 		LinkedHashMap<String, String> TVinAdViewReport = avr.getAdViewReportTaskAndValue(driver);
-
-		log.info("data collected in admin view report");
 		avr.getAdViewReportBackBtn();
 		Thread.sleep(500);
 
 		log.info("Moving to admin Edit report....");
 		ard.clickAdReportDashboardEditBtnForDateTime(driver, CnDtTime);
-		
-		soft.assertTrue(aer.getAdEditReportTitle(driver));
+		soft.assertTrue(aer.getAdEditReportTitle(driver), "AdEpTitle");
 
 		log.info("collecting data in admin Edit report....");
 		List<String> AdERUpperInfo = aer.getAdEditReportUpperInfo();
 		LinkedHashMap<String, String> TVinAdEditReport = aer.getAdEditReportTaskAndValue(driver);
 
-		log.info("data collected in admin Edit report");
-
-		ExpAdVRUI.addAll(Arrays.asList(rpdt, Department));
+		log.info("comparing upper form info");
 		Reporter.log(ExpAdVRUI.toString(), true);
+		Reporter.log(SAEmVTRUpperInfo.toString(), true);
 		Reporter.log(AdVRUpperInfo.toString().toString(), true);
 		Reporter.log(AdERUpperInfo.toString(), true);
 
 		log.warn("Comparing header data in admin view and admin Edit report....");
 		for (int i = 0; i < ExpAdVRUI.size(); i++) {
+			String saEmViewReportHeader = SAEmVTRUpperInfo.get(i);
 			String adViewReportHeader = AdVRUpperInfo.get(i);
 			String adEditReportHeader = AdERUpperInfo.get(i);
 			Reporter.log(ExpAdVRUI.get(i) + "<==>" + adViewReportHeader + "<==>" + adEditReportHeader, true);
-			soft.assertEquals(ExpAdVRUI.get(i), adViewReportHeader, "HeaderData element at index" + i + "Dont Matched");
-			soft.assertEquals(adViewReportHeader, adEditReportHeader,
+			soft.assertEquals(ExpAdVRUI.get(i), saEmViewReportHeader,
+					"HeaderData element at index" + i + "Dont Matched");
+			soft.assertEquals(adViewReportHeader, saEmViewReportHeader,
+					"HeaderData element at index" + i + "Dont Matched");
+			soft.assertEquals(adEditReportHeader, saEmViewReportHeader,
 					"HeaderData element at index" + i + "Dont Matched");
 		}
+		soft.assertEquals(SAEmVTRUpperInfo, ExpAdVRUI, "Header element at admin view are not as expected");
 		soft.assertEquals(AdVRUpperInfo, ExpAdVRUI, "Header element at admin view are not as expected");
 		soft.assertEquals(AdERUpperInfo, ExpAdVRUI, "Header element at admin view and edit Dont Matched");
 		log.warn("Compared header data in admin view and admin Edit report");
@@ -330,11 +308,10 @@ public class FlowAddEditReport extends BaseClass {
 		// soft.assertAll();
 		Reporter.log("<=======================================>", true);
 
-		
-		
-//Edit Scenario		
-		
+//2 Edit Scenario		
 		aer.inpAdEditReportAllTask(driver, Department);
+		int d = Integer.valueOf(dd) + 2;
+		aer.inpAdEditReportDate(String.valueOf(d), "05", "2024");
 		Thread.sleep(500);
 		LinkedHashMap<String, String> AEDataAfterEdit = aer.getAdEditReportTaskAndValue(driver);
 		aer.clickAdEditReportUpdateBtn();
@@ -344,55 +321,34 @@ public class FlowAddEditReport extends BaseClass {
 		aer.clickAdEditReportBackBtn();
 		ard.clickAdReportDashboardViewBtnForDateTime(driver, CnDtTime);
 		Thread.sleep(500);
-		LinkedHashMap<String, String> TVinAdViewReport2 =avr.getAdViewReportTaskAndValue(driver);
+		LinkedHashMap<String, String> TVinAdViewReport2 = avr.getAdViewReportTaskAndValue(driver);
 		Thread.sleep(500);
 
-		
-		
 		log.info("SubAdmin Signing in...");
-		driver.get(UtilityClass.getPFData("URL"));
-		elp.inpEmLoginPageEmail(UtilityClass.getPFData("SAEmail"));
-		elp.inpEmLoginPagePwd(UtilityClass.getPFData("SAPassword"));
-		elp.clickStaffLoginPageLoginBtn();
+		SubadminSignIn();
 		esm.clickEmSideMenuTeamReportBtn();
 		log.info("SubAdmin TR Dashboard...");
-//		ExpSATRpDLst.addAll(Arrays.asList(StaffName, CnDtTime, rpdt, Department, "Unchecked"));
-		List<String> ActSATRpDLst2 = satr.getSAEmTeamReportInfoList(driver, CnDtTime);
-		for (int i = 0; i < ActSATRpDLst2.size(); i++) {
-			String ActEleInSARpDB = ActSATRpDLst2.get(i);
-			String ExpEleInSARpD = ExpSATRpDLst.get(i);
-			soft.assertEquals(ActEleInSARpDB, ExpEleInSARpD, "SA element at index" + i + "Dont Matched");
-		}
-		soft.assertEquals(ActSATRpDLst2, ExpSATRpDLst, "SA Admin dashboard data not matched");
-		log.info("SubAdmin View Team Report...");
 
+		List<String> ActSATRpDLst2 = satr.getSAEmTeamReportInfoList(driver, CnDtTime);
+		UtilsClass.compareTwoList(ActSATRpDLst2, ExpSATRpDLst, soft);
+
+		log.info("SubAdmin View Team Report...");
 		satr.clickSAEmTeamReportCurrentReportViewBtn(driver, CnDtTime);
 		Thread.sleep(5000);
-		soft.assertFalse(savr.getSAEmViewTeamReportCheckBoxIsSelected(driver), "SA Em View TeamReport Checkbox Displayed");
+		soft.assertFalse(savr.getSAEmViewTeamReportCheckBoxIsSelected(driver),
+				"SA Em View TeamReport Checkbox Displayed");
 		LinkedHashMap<String, String> TVinSAViewReport2 = savr.getSAEmViewTeamReportTaskAndValue(driver);
-		
-		
-		driver.get(UtilityClass.getPFData("URL"));
-		elp.inpEmLoginPageEmail(UtilityClass.getPFData("Email"));
-		elp.inpEmLoginPagePwd(UtilityClass.getPFData("Password"));
-		elp.clickStaffLoginPageLoginBtn();
-		log.info("Login success");
+
+		// Employee SignIn
+		employeeSignIn();
 		log.info("Collecting report data in EmHistory Page...");
 		ehp.getEmHistoryPageTitle(driver);
 		Thread.sleep(2000);
-//		ExpEmHPDLst.addAll(Arrays.asList(rpdt, Department, getTimeDate()));
+
 		List<String> ActEmHistoryEleLst2 = ehp.getEmHistoryPageCurrentReportData(driver, CnDtTime);
-		Reporter.log(ExpEmHPDLst.toString(), true);
-		Reporter.log(ActEmHistoryEleLst2.toString(), true);
 
 		log.warn("Comparing report data in History Page...");
-		for (int i = 0; i < ActEmHistoryEleLst2.size(); i++) {
-			String ActEleInHP = ActEmHistoryEleLst2.get(i);
-			String ExpEleInHPArray = ExpEmHPDLst.get(i);
-			soft.assertEquals(ActEleInHP, ExpEleInHPArray, "EmHP element at index" + i + "Dont Matched");
-		}
-		soft.assertEquals(ActEmHistoryEleLst2, ExpEmHPDLst, "Em History data not matched");
-		log.info("Report is present in Dashboard");
+		UtilsClass.compareTwoList(ActEmHistoryEleLst2, ExpEmHPDLst, soft);
 
 		log.info("Moving to Employee view Report...");
 		ehp.clickEmHistoryPageCurrentReportViewBtn(driver, CnDtTime);
@@ -405,20 +361,18 @@ public class FlowAddEditReport extends BaseClass {
 
 		log.info("Verify all Report...");
 		// Compare entry by entry
-		
-		
+
 		System.out.println(AEDataAfterEdit.toString());
 		System.out.println(TVinAdEditReport2.toString());
 		System.out.println(TVinAdViewReport2.toString());
-		System.out.println(TVinSAViewReport2.toString());	
+		System.out.println(TVinSAViewReport2.toString());
 		System.out.println(TVinEmViewReport2.toString());
 
 		Iterator<Map.Entry<String, String>> ite1 = AEDataAfterEdit.entrySet().iterator();
 		Iterator<Map.Entry<String, String>> ite2 = TVinAdEditReport2.entrySet().iterator();
-		Iterator<Map.Entry<String, String>> ite3 = TVinAdViewReport2.entrySet().iterator();	
+		Iterator<Map.Entry<String, String>> ite3 = TVinAdViewReport2.entrySet().iterator();
 		Iterator<Map.Entry<String, String>> ite4 = TVinSAViewReport2.entrySet().iterator();
 		Iterator<Map.Entry<String, String>> ite5 = TVinEmViewReport2.entrySet().iterator();
-		
 
 		int eSrNo1 = 1;
 		while (ite1.hasNext() && ite2.hasNext()) {
@@ -427,7 +381,7 @@ public class FlowAddEditReport extends BaseClass {
 			Map.Entry<String, String> entry3 = ite3.next();
 			Map.Entry<String, String> entry4 = ite4.next();
 			Map.Entry<String, String> entry5 = ite5.next();
-			String m1 = eSrNo1 + "] AdER " + entry1.getKey() + "<=>" + entry1.getValue();
+			String m1 = eSrNo1 + "] AdER  " + entry1.getKey() + "<=>" + entry1.getValue();
 			String m2 = eSrNo1 + "] AdER2 " + entry2.getKey() + "<=>" + entry2.getValue();
 			String m3 = eSrNo1 + "] AdVR2 " + entry3.getKey() + "<=>" + entry3.getValue();
 			String m4 = eSrNo1 + "] SAVR2 " + entry4.getKey() + "<=>" + entry4.getValue();
@@ -457,26 +411,38 @@ public class FlowAddEditReport extends BaseClass {
 					"Em View Report and AdEdit Entered Keys at SrNo. " + eSrNo1 + " are not equal!");
 			soft.assertEquals(entry5.getValue(), entry1.getValue(),
 					"Em View Report and AdEdit Entered Values at SrNo. " + eSrNo1 + " are not equal!");
-			eSrNo1 ++;
+			eSrNo1++;
 		}
-		/*
-		 * log.info("SubAdmin status Check..."); savr.checkSAEmViewTeamReportCheckBox();
-		 * savr.clickSAEmViewTeamReportSubmitBtn();
-		 * soft.assertEquals(satr.getSAEmTeamReportCurrentReportStatus(driver,CnDtTime),
-		 * "Checked","SA Team Report Dashboard status is not changed" );
-		 * satr.clickSAEmTeamReportCurrentReportViewBtn(driver, CnDtTime);
-		 * soft.assertTrue(savr.getSAEmViewTeamReportCheckBoxIsDisplayed()
-		 * ,"SA view Team Report status is not changed");
-		 */
 		soft.assertAll();
 		Reporter.log("<=======================================>", true);
 	}
 
 	public String getTimeDate() {
 		LocalDateTime currentDate = LocalDateTime.now();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm a");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
 		cntDate = currentDate.format(formatter);
 		return cntDate.toUpperCase();
 	}
 
+	public void adminSignIn() throws IOException {
+		driver.get(UtilityClass.getPFData("AdminURL"));
+		alp1.inpAdLoginPage1Email(UtilityClass.getPFData("AdEmail"));
+		alp1.clickAdLoginPage1LoginBtn();
+		String otpSent = alp1.getAdLoginPage1ToastMsg(driver);
+		Reporter.log(otpSent + "<===>OTP has been sent successfully", true);
+		soft.assertEquals(otpSent, "OTP has been sent successfully");
+		alp2.inpAdLoginPage2Otp(UtilityClass.getPFData("AdPassword"));
+		alp2.clickAdLoginPage2SubmitBtn();
+		log.info("Admin Sign in Success");
+	}
+
+	public void employeeSignIn() throws IOException {
+		driver.get(UtilityClass.getPFData("URL"));
+		elp.inpEmLoginPageSignIn(UtilityClass.getPFData("Email"), UtilityClass.getPFData("Password"));
+	}
+
+	public void SubadminSignIn() throws IOException {
+		driver.get(UtilityClass.getPFData("URL"));
+		elp.inpEmLoginPageSignIn(UtilityClass.getPFData("SAEmail"), UtilityClass.getPFData("SAPassword"));
+	}
 }

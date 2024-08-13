@@ -87,7 +87,7 @@ public class Ad3DepartmentEditTC extends BaseClass {
 		soft = new SoftAssert();
 	}
 
-	@Test(enabled = true, dataProvider = "DepartmentEditDS", dataProviderClass = DataProviders.A1DSAddEmp.class)
+	@Test(enabled = true, dataProvider = "DepartmentEditDS", dataProviderClass = DataProviders.A1DSAddDeptAndEmp.class)
 	public void EditDepartmentFunctional(String Scenario, String Error, String Department)
 			throws IOException, InterruptedException {
 		ad.clickAdAddDepartmentFormEditBtn();

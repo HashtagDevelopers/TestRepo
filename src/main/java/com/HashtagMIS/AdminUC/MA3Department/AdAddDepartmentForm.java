@@ -1,6 +1,5 @@
 package com.HashtagMIS.AdminUC.MA3Department;
 
-
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +21,7 @@ public class AdAddDepartmentForm {
 	private WebElement deptTitle;
 	@FindBy(xpath = "//label[text()='Enter Department']/following-sibling::input")
 	private WebElement departmentInp;
-	@FindBy(xpath = "//div[@id='cell-2-undefined']")
+	@FindBy(xpath = "//div[@id='cell-1-undefined']")
 	private List<WebElement> departmentList;
 	@FindBy(xpath = "//button[text()='Add']")
 	private WebElement addDeptBtn;
@@ -38,7 +37,9 @@ public class AdAddDepartmentForm {
 	private List<WebElement> errorMsgList;
 	@FindBy(xpath = "//div[@role='alert']/child::div[2]")
 	private WebElement toastMsg;
-	
+	@FindBy(xpath = "//button[@id='pagination-next-page']")
+	private WebElement nextBtn;
+
 	Actions act;
 
 	public AdAddDepartmentForm(WebDriver driver) {
@@ -52,10 +53,18 @@ public class AdAddDepartmentForm {
 		deptTitle.isDisplayed();
 	}
 
-	public List<String> getAdAddDepartmentFormDeptList() {
+	public List<String> getAdAddDepartmentFormDeptList() throws InterruptedException {
 		ArrayList<String> al = new ArrayList<String>();
 		for (WebElement d : departmentList) {
 			al.add(d.getText());
+		}
+		while (nextBtn.getAttribute("aria-disabled").equals("false")) {
+			nextBtn.click();
+			Thread.sleep(1500);
+			for (WebElement d : departmentList) {
+				al.add(d.getText());
+			}
+			Thread.sleep(1500);
 		}
 		return al;
 	}
@@ -81,11 +90,13 @@ public class AdAddDepartmentForm {
 	}
 
 	public void clickAdAddDepartmentFormAddBtn(WebDriver driver) {
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", addDeptBtn);	//addDeptBtn.click();
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", addDeptBtn); // addDeptBtn.click();
 	}
+
 	public void clickAdAddDepartmentFormOkBtn(WebDriver driver) {
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", okBtn);	//addDeptBtn.click();
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", okBtn); // addDeptBtn.click();
 	}
+
 	public WebElement rtnAdAddDepartmentFormAddBtn() {
 		return addDeptBtn;
 	}
@@ -112,6 +123,7 @@ public class AdAddDepartmentForm {
 			return "null";
 		}
 	}
+
 	public WebElement rtnAdAddDepartmentFormToastMsg() {
 
 		return toastMsg;

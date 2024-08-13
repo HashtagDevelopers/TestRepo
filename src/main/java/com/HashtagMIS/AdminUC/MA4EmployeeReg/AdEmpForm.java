@@ -130,7 +130,8 @@ public class AdEmpForm {
 	public String getAdEmpFormShiftEnd() {
 		return shiftEnd.getAttribute("value");
 	}
-	public String getAdEmpFormDate() {
+	public String getAdEmpFormDate() throws InterruptedException {
+		Thread.sleep(200);
 		return dojInp.getAttribute("value");
 	}
 	

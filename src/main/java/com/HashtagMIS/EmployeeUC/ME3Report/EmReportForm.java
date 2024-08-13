@@ -84,29 +84,21 @@ public class EmReportForm {
         if (selectElement.isEnabled()) {
         	UtilityClass.selectByVisibleTxt(selDepartment, depart);
         } else {
-            throw new UnsupportedOperationException("The select element is disabled");
+        //    throw new UnsupportedOperationException("The select element is disabled");
         }
 
 	}
 
-	public LinkedHashMap<String, String> getEmReportFormTaskAndTAskType(WebDriver driver) {
+	public LinkedHashMap<String, String> getEmReportFormTaskAndPlaceholder(WebDriver driver) {
 		lmp = new LinkedHashMap<String, String>();
 		for (int i = 1; i <= taskLst.size(); i++) {
 			String task = driver.findElement(By.xpath("(//td[2])[" + i + "]")).getText().trim();
 			WebElement parentEle = driver.findElement(By.xpath("(//td[2])[" + i + "]/ancestor::tr/td[3]"));
-			WebElement childEle = parentEle.findElement(By.xpath(".//*"));
+			WebElement childEle = parentEle.findElement(By.xpath(".//*"));	
+			lmp.put(task, childEle.getAttribute("placeholder"));
+			
+		}
 
-			if (childEle.getTagName().equals("input")
-					&& childEle.getAttribute("placeholder").equals("Specify Counts")) {
-				lmp.put(task, childEle.getAttribute("type"));
-			} else if (childEle.getAttribute("placeholder").equals("Specify Text")) {
-				lmp.put(task, childEle.getTagName());
-			}
-		}
-		for (Entry<String, String> entry : lmp.entrySet()) {
-			System.out.println("Task Dashboard === Key: " + entry.getKey() + " | Value: " + entry.getValue());
-		}
-		// lmp.put("task", "taskType");
 		return lmp;
 
 	}
@@ -128,11 +120,29 @@ public class EmReportForm {
 
 	}
 
-	public void inpEmReportPageDate(String dt) {
+	public void inpEmReportPageDate(String dd,String mm) throws InterruptedException {
+		act.sendKeys(Keys.TAB).perform();
+		Thread.sleep(300);
+		act.sendKeys(Keys.TAB).perform();
+		Thread.sleep(300);
+		act.sendKeys(mm).perform();
+		Thread.sleep(300);
+		act.sendKeys(Keys.ARROW_LEFT).perform();
+		Thread.sleep(300);
+		act.sendKeys(dd).perform();
+		Thread.sleep(300);
+	}
+	public void inpEmReportPageDateForMultipleForm(String dt) throws InterruptedException {
 		Date.sendKeys(dt);
+		Thread.sleep(300);
 		act.sendKeys(Keys.ARROW_RIGHT).perform();
-		act.sendKeys("2024").perform();
-
+		Thread.sleep(300);
+		act.sendKeys(Keys.ARROW_DOWN).perform();
+		Thread.sleep(300);
+		act.sendKeys(Keys.ARROW_LEFT).perform();
+		Thread.sleep(300);
+		Date.sendKeys(dt);
+		Thread.sleep(300);
 	}
 
 	public void inpEmReportFormAllTask(String Dept) {
@@ -151,10 +161,10 @@ public class EmReportForm {
 						+ "2. 32 m 56 s (Call to HI Wembley. Their main number was not working, Followed vonage troubleshooting");
 			}
 		}
+		
 	}
 
 	public void inpEmReportForm5Task() {
-		int row = tableNumberInp.size();
 		int num = 401;
 		for (int i = 0; i < 5; i++) {
 			tableNumberInp.get(i).sendKeys(String.valueOf(num));
@@ -167,6 +177,8 @@ public class EmReportForm {
 				s1.sendKeys(t1.getText());
 			}
 		}
+	
+		
 	}
 
 	public void clickEmReportPageAreYouSureOKBtn() {
@@ -176,6 +188,7 @@ public class EmReportForm {
 	public void clickEmReportPageSubmitBtn() {
 
 		submitBtn.click();
+		
 	}
 
 	public void clickEmReportFormPageCancelBtn() {

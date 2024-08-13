@@ -32,7 +32,7 @@ import LibraryFiles.BaseClass;
 import LibraryFiles.UtilityClass;
 import net.bytebuddy.utility.RandomString;
 
-public class AdTaskSequenceByDragNDropTC extends BaseClass {
+public class Ad3TaskSequenceByDragNDropTC extends BaseClass {
 	SoftAssert soft;
 	AdLogin1 lp1;
 	AdLogin2 lp2;
@@ -45,7 +45,7 @@ public class AdTaskSequenceByDragNDropTC extends BaseClass {
 	String msg;
 	EmLogin lp;
 	int i = 1;
-	Logger log = LogManager.getLogger(AdTaskSequenceByDragNDropTC.class);
+	Logger log = LogManager.getLogger(Ad3TaskSequenceByDragNDropTC.class);
 	String dept = "Incident";
 
 	@BeforeClass
@@ -112,7 +112,7 @@ public class AdTaskSequenceByDragNDropTC extends BaseClass {
 		esm.clickEmSideMenuDailyReportBtn();
 		erp.selEmReportPageDepartmentName(driver,dept);
 		Thread.sleep(2000);
-		LinkedHashMap<String, String> taskLmpInEmRF = erp.getEmReportFormTaskAndTAskType(driver);
+		LinkedHashMap<String, String> taskLmpInEmRF = erp.getEmReportFormTaskAndPlaceholder(driver);
 		
 		System.out.println(taskLmpInATDBeforeDND.toString());
 		System.out.println(taskLmpInATDAfterDND.toString());

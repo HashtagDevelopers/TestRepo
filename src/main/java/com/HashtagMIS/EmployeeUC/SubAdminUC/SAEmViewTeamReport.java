@@ -1,13 +1,15 @@
 package com.HashtagMIS.EmployeeUC.SubAdminUC;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -48,27 +50,39 @@ public class SAEmViewTeamReport {
 		PageFactory.initElements(driver, this);
 		this.act = new Actions(driver);
 	}
-	public ArrayList<String>  getSAEmViewTeamReportChkUnChkSce(WebDriver driver) throws InterruptedException {
-		al=new ArrayList<String>();
+
+	public ArrayList<String> getSAEmViewTeamReportChkUnChkSce(WebDriver driver) throws InterruptedException {
+		al = new ArrayList<String>();
 		al.addAll(Arrays.asList(ChkUnChk.getText(), String.valueOf(!chkLst.isEmpty())));
-		
+
 		UtilityClass.DrawBorder(driver, ChkUnChk);
 		UtilityClass.DrawBorderList(driver, chkLst);
 		Thread.sleep(1500);
 		return al;
 	}
-	public List<String> getSAEmViewTeamReportUpperInfo() throws InterruptedException {
+
+	public List<String> getSAEmViewTeamReportUpperInfo() throws InterruptedException, ParseException {
 		al = new ArrayList<String>();
-		al.addAll(Arrays.asList(vrtitle.getText(), dept.getAttribute("value"), date.getAttribute("value"),
+		al.addAll(Arrays.asList(vrtitle.getText(), dept.getAttribute("value"), getSAEmViewTeamReportDate(),
 				ChkUnChk.getText()));
 		return al;
 	}
 
-	public String getSAEmViewTeamReportDate() throws InterruptedException {
-		return date.getAttribute("value");
+	public String getSAEmViewTeamReportDate() throws InterruptedException, ParseException {
+		String dateValue = date.getAttribute("value");
+		SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
 
+		// Parse the date string into a Date object
+		Date date = inputFormat.parse(dateValue);
+
+		// Define the output format (desired format: DD-MMM-YYYY)
+		SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MMM-yyyy");
+
+		// Format the Date object into the desired string format
+		String formattedDate = outputFormat.format(date);
+		return formattedDate;
 	}
-	
+
 	public String getSAEmViewTeamReportChkUnChk(WebDriver driver) throws InterruptedException {
 		Thread.sleep(300);
 		UtilityClass.DrawBorder(driver, ChkUnChk);
@@ -106,7 +120,7 @@ public class SAEmViewTeamReport {
 	}
 
 	public boolean getSAEmViewTeamReportCheckBoxIsPresent() {
-		
+
 		return !chkLst.isEmpty();
 	}
 
@@ -121,6 +135,7 @@ public class SAEmViewTeamReport {
 	public void clickSAEmViewTeamReportBackBtn() {
 		backBtn.click();
 	}
+
 	public String getSAEmViewTeamReportToastMsg(WebDriver driver) {
 
 		try {
