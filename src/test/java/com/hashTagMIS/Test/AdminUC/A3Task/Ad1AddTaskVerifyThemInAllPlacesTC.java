@@ -36,6 +36,7 @@ import LibraryFiles.UtilityClass;
 import LibraryFiles.UtilsClass;
 import bsh.util.Util;
 import net.bytebuddy.utility.RandomString;
+
 /*Admin add task and verify it in 1]Admn Task Dashboard 2]Employee Report Form*/
 public class Ad1AddTaskVerifyThemInAllPlacesTC extends BaseClass {
 	SoftAssert soft;
@@ -52,7 +53,7 @@ public class Ad1AddTaskVerifyThemInAllPlacesTC extends BaseClass {
 	String msg;
 	EmLogin lp;
 	int i = 1;
-	LinkedHashMap<String,String> expTaskLMP;
+	LinkedHashMap<String, String> expTaskLMP;
 	Logger log = LogManager.getLogger(Ad1AddTaskVerifyThemInAllPlacesTC.class);
 	String dept = "Training";
 
@@ -68,25 +69,18 @@ public class Ad1AddTaskVerifyThemInAllPlacesTC extends BaseClass {
 		td = new AdTaskDashboard(driver);
 		at = new AdAddTask(driver);
 		aet = new AdEditTask(driver);
-		expTaskLMP = new 	LinkedHashMap<String,String>();
+		expTaskLMP = new LinkedHashMap<String, String>();
 		soft = new SoftAssert();
-		driver.get(UtilityClass.getPFData("AdminURL"));
+		
+		adminSignIn();
 		WebElement error = driver.findElement(By.xpath("//body"));
 		((JavascriptExecutor) driver).executeScript(
 				"arguments[0].setAttribute('style', 'border: 2px solid red; background-color: #0078d4; background-image: none;')",
 				error);
-		lp1.inpAdLoginPage1Email(UtilityClass.getPFData("AdEmail"));
-		lp1.clickAdLoginPage1LoginBtn();
-		String otpSent = lp1.getAdLoginPage1ToastMsg(driver);
-		Reporter.log(otpSent + "<===>OTP has been sent successfully", true);
-		soft.assertEquals(otpSent, "OTP has been sent successfully");
-		lp2.inpAdLoginPage2Otp(UtilityClass.getPFData("AdPassword"));
-		lp2.clickAdLoginPage2SubmitBtn();
 		asm.clickAdSideMenuTasksBtn();
 		td.clickAdTaskDashboardTaskFormBtn();
 		Thread.sleep(200);
 		at.selAdAddTaskDept(dept);
-		
 
 	}
 
@@ -100,41 +94,37 @@ public class Ad1AddTaskVerifyThemInAllPlacesTC extends BaseClass {
 	@Test(priority = 1, enabled = true, dataProvider = "AddTaskDS", dataProviderClass = DataProviders.A2DSAddTask.class)
 	public void addTaskFromSheet(String number, String task, String placeholder)
 			throws IOException, InterruptedException {
-		at.inpAdAddTaskFromSheet(driver, task.trim(), placeholder.trim(), i,soft);
+		at.inpAdAddTaskFromSheet(driver, task.trim(), placeholder.trim(), i, soft);
 		soft.assertAll();
 		expTaskLMP.put(task.trim(), placeholder.trim());
 		i++;
-		
+
 	}
 
 	@Test(priority = 2, enabled = true)
 	public void verifyTaskFromSheet() throws IOException, InterruptedException {
 		at.clickAdAddTaskLastRowDeleteBtn(driver);
 		Thread.sleep(1000);
-		LinkedHashMap<String, String> actTaskLmpInAdmnAddTaskForm = at.getAdAddTaskAllTaskAndPlaceholder(driver);	
+		LinkedHashMap<String, String> actTaskLmpInAdmnAddTaskForm = at.getAdAddTaskAllTaskAndPlaceholder(driver);
 		Thread.sleep(1000);
 		at.clickAdAddTaskSubmitBtn();
 
 		soft.assertEquals(at.getAdAddTaskToastMsg(driver), "Task added successfully");
 		Thread.sleep(3000);
-		
-		
+
 		td.selAdTaskDashboardDepartmentName(dept);
 		Thread.sleep(1000);
-		LinkedHashMap<String, String> actTaskLmpInAdmnTaskDashboard = td.getAdTaskDashboardAllTaskAndPlaceholder(driver);
+		LinkedHashMap<String, String> actTaskLmpInAdmnTaskDashboard = td
+				.getAdTaskDashboardAllTaskAndPlaceholder(driver);
 
 		Thread.sleep(1000);
-		driver.get(UtilityClass.getPFData("URL"));
-		lp.inpEmLoginPageEmail(UtilityClass.getPFData("Email"));
-		lp.inpEmLoginPagePwd(UtilityClass.getPFData("Password"));
-		lp.clickStaffLoginPageLoginBtn();
+		employeeSignIn();
 		log.info("Report Form Opening by Selecting Department and Date...");
 		esm.clickEmSideMenuDailyReportBtn();
 		erp.selEmReportPageDepartmentName(driver, dept);
 		Thread.sleep(2000);
 		LinkedHashMap<String, String> actTaskLmpInEmReportForm = erp.getEmReportFormTaskAndPlaceholder(driver);
 
-		
 		System.out.println(expTaskLMP.toString());
 		System.out.println(actTaskLmpInAdmnAddTaskForm.toString());
 		System.out.println(actTaskLmpInAdmnTaskDashboard.toString());
@@ -142,23 +132,24 @@ public class Ad1AddTaskVerifyThemInAllPlacesTC extends BaseClass {
 
 		// Check if the sizes are the same
 		soft.assertEquals(actTaskLmpInAdmnAddTaskForm.size(), actTaskLmpInAdmnTaskDashboard.size(),
-				actTaskLmpInAdmnAddTaskForm + "<=>" + actTaskLmpInAdmnTaskDashboard.size() + "The task maps sizes are not equal!");
-		soft.assertEquals(actTaskLmpInAdmnTaskDashboard.size(),actTaskLmpInEmReportForm.size(),
-				actTaskLmpInAdmnTaskDashboard + "<=>" +actTaskLmpInEmReportForm.size() + "The task maps sizes are not equal!");
+				actTaskLmpInAdmnAddTaskForm + "<=>" + actTaskLmpInAdmnTaskDashboard.size()
+						+ "The task maps sizes are not equal!");
+		soft.assertEquals(actTaskLmpInAdmnTaskDashboard.size(), actTaskLmpInEmReportForm.size(),
+				actTaskLmpInAdmnTaskDashboard + "<=>" + actTaskLmpInEmReportForm.size()
+						+ "The task maps sizes are not equal!");
 		// Compare entry by entry
 		Iterator<Map.Entry<String, String>> it1 = expTaskLMP.entrySet().iterator();
 		Iterator<Map.Entry<String, String>> it2 = actTaskLmpInAdmnAddTaskForm.entrySet().iterator();
 		Iterator<Map.Entry<String, String>> it3 = actTaskLmpInAdmnTaskDashboard.entrySet().iterator();
 		Iterator<Map.Entry<String, String>> it4 = actTaskLmpInEmReportForm.entrySet().iterator();
-		
-		
+
 		int SrNo = 1;
 		while (it1.hasNext() && it2.hasNext()) {
 			Map.Entry<String, String> entry1 = it1.next();
 			Map.Entry<String, String> entry2 = it2.next();
 			Map.Entry<String, String> entry3 = it3.next();
 			Map.Entry<String, String> entry4 = it4.next();
-			
+
 			String m1 = SrNo + "] Excel        " + entry1.getKey() + "<=>" + entry1.getValue();
 			String m2 = SrNo + "] TaskForm     " + entry2.getKey() + "<=>" + entry2.getValue();
 			String m3 = SrNo + "] TaskDashboard" + entry3.getKey() + "<=>" + entry3.getValue();
@@ -166,16 +157,15 @@ public class Ad1AddTaskVerifyThemInAllPlacesTC extends BaseClass {
 			Reporter.log(m1, true);
 			Reporter.log(m2, true);
 			Reporter.log(m3, true);
-			soft.assertEquals(entry1.getKey().toLowerCase().trim(), entry2.getKey().toLowerCase(), "Keys1 at SrNo. " + SrNo + " are not equal!");
+			soft.assertEquals(entry1.getKey().toLowerCase().trim(), entry2.getKey().toLowerCase(),
+					"Keys1 at SrNo. " + SrNo + " are not equal!");
 			soft.assertEquals(entry1.getValue(), entry2.getValue(), "Values1 at SrNo. " + SrNo + " are not equal!");
 
 			soft.assertEquals(entry2.getKey(), entry3.getKey(), "Keys2 at SrNo. " + SrNo + " are not equal!");
-			soft.assertEquals(entry2.getValue(), entry3.getValue(),
-					"Values2 at SrNo. " + SrNo + " are not equal!");
-			
+			soft.assertEquals(entry2.getValue(), entry3.getValue(), "Values2 at SrNo. " + SrNo + " are not equal!");
+
 			soft.assertEquals(entry2.getKey(), entry4.getKey(), "Keys2 at SrNo. " + SrNo + " are not equal!");
-			soft.assertEquals(entry2.getValue(), entry4.getValue(),
-					"Values2 at SrNo. " + SrNo + " are not equal!");
+			soft.assertEquals(entry2.getValue(), entry4.getValue(), "Values2 at SrNo. " + SrNo + " are not equal!");
 
 			SrNo++;
 		}
@@ -196,6 +186,22 @@ public class Ad1AddTaskVerifyThemInAllPlacesTC extends BaseClass {
 		// at.clickAdAddTaskSubmitBtn();
 		// driver.close();
 	}
-	
-	
+
+	public void employeeSignIn() throws IOException {
+		driver.get(UtilityClass.getPFData("URL"));
+		lp.inpEmLoginPageEmail(UtilityClass.getPFData("Email"));
+		lp.inpEmLoginPagePwd(UtilityClass.getPFData("Password"));
+		lp.clickStaffLoginPageLoginBtn();
+	}
+
+	public void adminSignIn() throws IOException {
+		driver.get(UtilityClass.getPFData("AdminURL"));
+		lp1.inpAdLoginPage1Email(UtilityClass.getPFData("AdEmail"));
+		lp1.clickAdLoginPage1LoginBtn();
+		String otpSent = lp1.getAdLoginPage1ToastMsg(driver);
+		Reporter.log(otpSent + "<===>OTP has been sent successfully", true);
+		soft.assertEquals(otpSent, "OTP has been sent successfully");
+		lp2.inpAdLoginPage2Otp(UtilityClass.getPFData("AdPassword"));
+		lp2.clickAdLoginPage2SubmitBtn();
+	}
 }

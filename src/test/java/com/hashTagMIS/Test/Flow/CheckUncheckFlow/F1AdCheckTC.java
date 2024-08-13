@@ -343,7 +343,7 @@ public class F1AdCheckTC extends BaseClass {
 		esm.clickEmSideMenuDailyReportBtn();
 		Thread.sleep(300);
 		erp.selEmReportPageDepartmentName(driver, Department);
-		erp.inpEmReportPageDate(dd , mm);
+		erp.inpEmReportPageDate(dd, mm);
 
 		erp.inpEmReportForm5Task();
 

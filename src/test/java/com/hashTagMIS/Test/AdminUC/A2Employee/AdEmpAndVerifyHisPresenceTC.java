@@ -62,20 +62,11 @@ public class AdEmpAndVerifyHisPresenceTC extends BaseClass {
 		lp = new EmLogin(driver);
 		hp = new EmHistory(driver);
 		soft = new SoftAssert();
-		driver.get(UtilityClass.getPFData("AdminURL"));
+		adminSignIn();
 		WebElement error = driver.findElement(By.xpath("//body"));
 		((JavascriptExecutor) driver).executeScript(
 				"arguments[0].setAttribute('style', 'border: 2px solid red; background-color: #0078d4; background-image: none;')",
 				error);
-		lp1.inpAdLoginPage1Email(UtilityClass.getPFData("AdEmail"));
-		lp1.clickAdLoginPage1LoginBtn();
-		String otpSent = lp1.getAdLoginPage1ToastMsg(driver);
-		Reporter.log(otpSent + "<===>OTP has been sent successfully", true);
-		soft.assertEquals(otpSent, "OTP has been sent successfully");
-		Thread.sleep(300);
-		lp2.inpAdLoginPage2Otp(UtilityClass.getPFData("AdPassword"));
-		Thread.sleep(300);
-		lp2.clickAdLoginPage2SubmitBtn();
 		Thread.sleep(300);
 		sm.clickAdSideMenuEmpBtn();
 		Thread.sleep(300);
@@ -172,5 +163,22 @@ public class AdEmpAndVerifyHisPresenceTC extends BaseClass {
 	@AfterClass
 	public void closeBrowser() {
 		// driver.close();
+	}
+	public void employeeSignIn() throws IOException {
+		driver.get(UtilityClass.getPFData("URL"));
+		lp.inpEmLoginPageEmail(UtilityClass.getPFData("Email"));
+		lp.inpEmLoginPagePwd(UtilityClass.getPFData("Password"));
+		lp.clickStaffLoginPageLoginBtn();
+	}
+
+	public void adminSignIn() throws IOException {
+		driver.get(UtilityClass.getPFData("AdminURL"));
+		lp1.inpAdLoginPage1Email(UtilityClass.getPFData("AdEmail"));
+		lp1.clickAdLoginPage1LoginBtn();
+		String otpSent = lp1.getAdLoginPage1ToastMsg(driver);
+		Reporter.log(otpSent + "<===>OTP has been sent successfully", true);
+		soft.assertEquals(otpSent, "OTP has been sent successfully");
+		lp2.inpAdLoginPage2Otp(UtilityClass.getPFData("AdPassword"));
+		lp2.clickAdLoginPage2SubmitBtn();
 	}
 }

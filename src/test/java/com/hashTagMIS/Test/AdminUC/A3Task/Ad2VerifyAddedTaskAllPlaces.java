@@ -71,18 +71,12 @@ public class Ad2VerifyAddedTaskAllPlaces extends BaseClass {
 		
 		soft = new SoftAssert();
 		taskLmpInExcel= new LinkedHashMap<String, String>();
-		driver.get(UtilityClass.getPFData("AdminURL"));
+		adminSignIn();		
 		WebElement error = driver.findElement(By.xpath("//body"));
 		((JavascriptExecutor) driver).executeScript(
 				"arguments[0].setAttribute('style', 'border: 2px solid red; background-color: #0078d4; background-image: none;')",
 				error);
-		lp1.inpAdLoginPage1Email(UtilityClass.getPFData("AdEmail"));
-		lp1.clickAdLoginPage1LoginBtn();
-		String otpSent = lp1.getAdLoginPage1ToastMsg(driver);
-		Reporter.log(otpSent + "<===>OTP has been sent successfully", true);
-		soft.assertEquals(otpSent, "OTP has been sent successfully");
-		lp2.inpAdLoginPage2Otp(UtilityClass.getPFData("AdPassword"));
-		lp2.clickAdLoginPage2SubmitBtn();
+
 		asm.clickAdSideMenuTasksBtn();
 		Thread.sleep(1000);
 		td.selAdTaskDashboardDepartmentName(dept);
@@ -105,19 +99,14 @@ public class Ad2VerifyAddedTaskAllPlaces extends BaseClass {
 
 	
 	@Test(priority = 2, enabled = true)
-	public void verifyTaskFromSheet() throws IOException, InterruptedException {
-		
-		
+	public void verifyTaskFromSheet() throws IOException, InterruptedException {		
 		System.out.println(taskLmpInExcel.toString());
 		soft.assertFalse(taskLmpInExcel.isEmpty());
 		soft.assertAll();
 		Thread.sleep(1000);
 		LinkedHashMap<String, String> actTaskLmpInAdmnTaskDashboard = td.getAdTaskDashboardAllTaskAndPlaceholder(driver);
 		Thread.sleep(1000);
-		driver.get(UtilityClass.getPFData("URL"));
-		lp.inpEmLoginPageEmail(UtilityClass.getPFData("Email"));
-		lp.inpEmLoginPagePwd(UtilityClass.getPFData("Password"));
-		lp.clickStaffLoginPageLoginBtn();
+		employeeSignIn();
 		log.info("Report Form Opening by Selecting Department and Date...");
 		esm.clickEmSideMenuDailyReportBtn();
 		erp.selEmReportPageDepartmentName(driver,dept);
@@ -175,5 +164,22 @@ public class Ad2VerifyAddedTaskAllPlaces extends BaseClass {
 	public void closeBrowser() throws InterruptedException {
 		//at.clickAdAddTaskSubmitBtn();
 		// driver.close();
+	}
+	public void employeeSignIn() throws IOException {
+		driver.get(UtilityClass.getPFData("URL"));
+		lp.inpEmLoginPageEmail(UtilityClass.getPFData("Email"));
+		lp.inpEmLoginPagePwd(UtilityClass.getPFData("Password"));
+		lp.clickStaffLoginPageLoginBtn();
+	}
+
+	public void adminSignIn() throws IOException {
+		driver.get(UtilityClass.getPFData("AdminURL"));
+		lp1.inpAdLoginPage1Email(UtilityClass.getPFData("AdEmail"));
+		lp1.clickAdLoginPage1LoginBtn();
+		String otpSent = lp1.getAdLoginPage1ToastMsg(driver);
+		Reporter.log(otpSent + "<===>OTP has been sent successfully", true);
+		soft.assertEquals(otpSent, "OTP has been sent successfully");
+		lp2.inpAdLoginPage2Otp(UtilityClass.getPFData("AdPassword"));
+		lp2.clickAdLoginPage2SubmitBtn();
 	}
 }
