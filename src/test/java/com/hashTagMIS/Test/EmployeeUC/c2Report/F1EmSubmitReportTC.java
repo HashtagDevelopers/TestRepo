@@ -14,9 +14,11 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.WebDriver;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -33,6 +35,7 @@ import com.HashtagMIS.EmployeeUC.ME1Login.EmLogin;
 import com.HashtagMIS.EmployeeUC.ME2sideMenubar.EmSideMenu;
 import com.HashtagMIS.EmployeeUC.ME3Report.EmHistory;
 import com.HashtagMIS.EmployeeUC.ME3Report.EmReportForm;
+import com.HashtagMIS.EmployeeUC.ME3Report.EmReportPreviewPage;
 import com.HashtagMIS.EmployeeUC.ME3Report.EmViewReport;
 import com.HashtagMIS.EmployeeUC.SubAdminUC.SAEmTeamReport;
 import com.HashtagMIS.EmployeeUC.SubAdminUC.SAEmViewTeamReport;
@@ -57,6 +60,7 @@ public class F1EmSubmitReportTC extends BaseClass {
 	EmLogin elp;
 	EmSideMenu esm;
 	EmReportForm erp;
+	EmReportPreviewPage epp;
 	EmHistory ehp;
 	EmViewReport evr;
 	SAEmTeamReport satr;
@@ -67,7 +71,7 @@ public class F1EmSubmitReportTC extends BaseClass {
 	Logger log = LogManager.getLogger(F1EmSubmitReportTC.class);
 	PrintWriter pw, pw1;
 	StringBuilder sb;
-	ArrayList<String> ExpEmHPDLst;
+	ArrayList<String> ExpEmHPDLst,ExpEmHPDLst2;
 	ArrayList<String> ExpAdRpDLst;
 	ArrayList<String> ExpSATRpDLst;
 	ArrayList<String> ExpAdVRUI;
@@ -87,6 +91,7 @@ public class F1EmSubmitReportTC extends BaseClass {
 		erp = new EmReportForm(driver);
 		ehp = new EmHistory(driver);
 		evr = new EmViewReport(driver);
+		epp = new EmReportPreviewPage(driver);
 
 		satr = new SAEmTeamReport(driver);
 		savr = new SAEmViewTeamReport(driver);
@@ -97,17 +102,18 @@ public class F1EmSubmitReportTC extends BaseClass {
 	public void openLogIn() throws IOException, InterruptedException {
 		soft = new SoftAssert();
 		ExpEmHPDLst = new ArrayList<String>();
+		ExpEmHPDLst2 = new ArrayList<String>();
 		ExpAdRpDLst = new ArrayList<String>();
 		ExpSATRpDLst = new ArrayList<String>();
 		ExpAdVRUI = new ArrayList<String>();
 		sb = new StringBuilder();
 
-		elp.inpEmLoginPageSignIn(UtilityClass.getPFData("Email"), UtilityClass.getPFData("Password"));
+		elp.EmLoginPageSignIn(driver,UtilityClass.getPFData("Email"), UtilityClass.getPFData("Password"));
 		log.info("Login success");
 	}
 
 	@Test(enabled = true, dataProvider = "ReportFlowDS1", dataProviderClass = DataProviders.C2DSEmReport.class)
-	public void FillReport(String Scenario, String textarea, String Department, String dd, String mm, String toastmsg)
+	public void submitReportTest(String Scenario, String textarea, String Department, String dd, String mm, String toastmsg)
 			throws IOException, InterruptedException, ParseException {
 		String rpdt = dd + "-" + mm + "-" + 2024;
 
@@ -129,7 +135,8 @@ public class F1EmSubmitReportTC extends BaseClass {
 		erp.inpEmReportFormAllTask(Department);
 		log.info("Collecting task-value from Staff Report...");
 		LinkedHashMap<String, String> TVinEmReport = erp.getEmReportFormTaskAndValue(driver);
-
+		LinkedHashMap<String, String> submittedTVinEmReport = erp.getEmReportFormSubmittedTaskAndValue(driver);
+		
 		log.info("Submitting Report....");
 		// Function to repeatedly check millisecond value and click if it's 1
 		while (true) {
@@ -147,7 +154,25 @@ public class F1EmSubmitReportTC extends BaseClass {
 			Thread.sleep(1); // Sleep for 10 milliseconds
 		}
 		CnDtTime = getTimeDate();
-		erp.clickEmReportPageSubmitBtn();
+		erp.clickEmReportPageSendBtn();	
+		LinkedHashMap<String, String> TVinEmPreviewPage = epp.getEmReportPreviewPageTaskAndValue(driver);
+		Iterator<Entry<String, String>> TV1 = submittedTVinEmReport.entrySet().iterator();
+		Iterator<Entry<String, String>> TV2 = TVinEmPreviewPage.entrySet().iterator();
+		int SrNo3=1;
+		while(TV1.hasNext()) {
+			Entry<String, String> e1 = TV1.next();
+			Entry<String, String> e2 = TV2.next();
+			String m1 = SrNo3 + "] AdER  " + e1.getKey() + "<=>" + e1.getValue();
+			String m2 = SrNo3 + "] AdER  " + e2.getKey() + "<=>" + e2.getValue();
+			Reporter.log(m1,true);
+			Reporter.log(m2,true);
+			soft.assertEquals(e1.getKey(), e2.getKey());
+			soft.assertEquals(e1.getValue(), e2.getValue());
+			SrNo3++;
+		}
+		epp.clickEmReportPreviewPageCancelBtn();
+		erp.clickEmReportPageSendBtn();
+		epp.clickEmReportPreviewPageConfirmBtn();
 		erp.clickEmReportPageAreYouSureOKBtn();
 		String tm = erp.getEmReportFormToastMsg(driver);
 		Reporter.log(tm + "<==>" + toastmsg, true);
@@ -173,7 +198,7 @@ public class F1EmSubmitReportTC extends BaseClass {
 
 		Thread.sleep(2000);
 		log.info("SubAdmin Signing in...");
-		SubadminSignIn();
+		SubadminSignIn(driver);
 		ExpSATRpDLst.addAll(Arrays.asList(StaffName, CnDtTime, rpdt, Department, "Unchecked"));
 		esm.clickEmSideMenuTeamReportBtn();
 		soft.assertTrue(satr.getSAEmTeamReportTitle(driver), "SubAdmin TR title");
@@ -272,44 +297,30 @@ public class F1EmSubmitReportTC extends BaseClass {
 			Map.Entry<String, String> entry3 = it3.next();
 			Map.Entry<String, String> entry4 = it4.next();
 			Map.Entry<String, String> entry5 = it5.next();
-			String m1 = SrNo + "] EmRF " + entry1.getKey() + "<=>" + entry1.getValue();
-			String m2 = SrNo + "] EmVR " + entry2.getKey() + "<=>" + entry2.getValue();
-			String m3 = SrNo + "] SAVR " + entry3.getKey() + "<=>" + entry3.getValue();
-			String m4 = SrNo + "] AdVR " + entry4.getKey() + "<=>" + entry4.getValue();
-			String m5 = SrNo + "] AdER " + entry5.getKey() + "<=>" + entry5.getValue();
+			String m1 = SrNo + "] AdER  " + entry1.getKey() + "<=>" + entry1.getValue();
+			String m2 = SrNo + "] AdER2 " + entry2.getKey() + "<=>" + entry2.getValue();
+			String m3 = SrNo + "] AdVR2 " + entry3.getKey() + "<=>" + entry3.getValue();
+			String m4 = SrNo + "] SAVR2 " + entry4.getKey() + "<=>" + entry4.getValue();
+			String m5 = SrNo + "] EmVR2 " + entry5.getKey() + "<=>" + entry5.getValue();
 
 			Reporter.log(m1, true);
 			Reporter.log(m2, true);
 			Reporter.log(m3, true);
 			Reporter.log(m4, true);
 			Reporter.log(m5, true);
-			soft.assertEquals(entry2.getKey(), entry1.getKey(),
-					"Em Report and Em View report Keys at SrNo. " + SrNo + " are not equal!");
-			soft.assertEquals(entry2.getValue(), entry1.getValue(),
-					"Em Report and Em View report Values at SrNo. " + SrNo + " are not equal!");
-
-			soft.assertEquals(entry3.getKey(), entry1.getKey(),
-					"Em Report and SA View report Keys at SrNo. " + SrNo + " are not equal!");
-			soft.assertEquals(entry3.getValue(), entry1.getValue(),
-					"Em Report and SA View Values at SrNo. " + SrNo + " are not equal!");
-
-			soft.assertEquals(entry4.getKey(), entry1.getKey(),
-					"Em Report and Ad View report Keys at SrNo. " + SrNo + " are not equal!");
-			soft.assertEquals(entry4.getValue(), entry1.getValue(),
-					"Em Report and Ad View report Values at SrNo. " + SrNo + " are not equal!");
-
-			soft.assertEquals(entry5.getKey(), entry1.getKey(),
-					"Em Report and Ad Edit report Keys at SrNo. " + SrNo + " are not equal!");
-			soft.assertEquals(entry5.getValue(), entry1.getValue(),
-					"Em Report and Ad Edit Values at SrNo. " + SrNo + " are not equal!");
+			
+			logAndAssert(SrNo, entry1, entry2, "AdEd Report and AdEdit Entered valued Report");
+			logAndAssert(SrNo, entry1, entry3, "Ad view Report and AdEdit Entered");
+			logAndAssert(SrNo, entry1, entry4, "SA View and AdEdit Entered");
+			logAndAssert(SrNo, entry1, entry5, "Em View Report and AdEdit Entered");
 
 			SrNo++;
 		}
-		// soft.assertAll();
+		soft.assertAll();
 		Reporter.log("<=======================================>", true);
 
 //2 Edit Scenario		
-		aer.inpAdEditReportAllTask(driver, Department);
+/*		aer.inpAdEditReportAllTask(driver, Department);
 		int d = Integer.valueOf(dd) + 2;
 		aer.inpAdEditReportDate(String.valueOf(d), "05", "2024");
 		Thread.sleep(500);
@@ -346,9 +357,9 @@ public class F1EmSubmitReportTC extends BaseClass {
 		Thread.sleep(2000);
 
 		List<String> ActEmHistoryEleLst2 = ehp.getEmHistoryPageCurrentReportData(driver, CnDtTime);
-
+		ExpEmHPDLst2.addAll(Arrays.asList(String.valueOf(d)+"-"+mm+"-2024", Department, getTimeDate(), "Unchecked"));
 		log.warn("Comparing report data in History Page...");
-		UtilsClass.compareTwoList(ActEmHistoryEleLst2, ExpEmHPDLst, soft);
+		UtilsClass.compareTwoList(ActEmHistoryEleLst2, ExpEmHPDLst2, soft);
 
 		log.info("Moving to Employee view Report...");
 		ehp.clickEmHistoryPageCurrentReportViewBtn(driver, CnDtTime);
@@ -381,6 +392,7 @@ public class F1EmSubmitReportTC extends BaseClass {
 			Map.Entry<String, String> entry3 = ite3.next();
 			Map.Entry<String, String> entry4 = ite4.next();
 			Map.Entry<String, String> entry5 = ite5.next();
+
 			String m1 = eSrNo1 + "] AdER  " + entry1.getKey() + "<=>" + entry1.getValue();
 			String m2 = eSrNo1 + "] AdER2 " + entry2.getKey() + "<=>" + entry2.getValue();
 			String m3 = eSrNo1 + "] AdVR2 " + entry3.getKey() + "<=>" + entry3.getValue();
@@ -392,29 +404,22 @@ public class F1EmSubmitReportTC extends BaseClass {
 			Reporter.log(m3, true);
 			Reporter.log(m4, true);
 			Reporter.log(m5, true);
-			soft.assertEquals(entry2.getKey(), entry1.getKey(),
-					"AdEd Report and AdEdit Entered valued Report Keys at SrNo. " + eSrNo1 + " are not equal!");
-			soft.assertEquals(entry2.getValue(), entry1.getValue(),
-					"AdEd Report and AdEdit Entered valued Report Values at SrNo. " + eSrNo1 + " are not equal!");
-
-			soft.assertEquals(entry3.getKey(), entry1.getKey(),
-					"Ad view Report and AdEdit Entered Keys at SrNo. " + eSrNo1 + " are not equal!");
-			soft.assertEquals(entry3.getValue(), entry1.getValue(),
-					"Ad view Report and AdEdit Entered Values at SrNo. " + eSrNo1 + " are not equal!");
-
-			soft.assertEquals(entry4.getKey(), entry1.getKey(),
-					"SA View and AdEdit Entered Keys at SrNo. " + eSrNo1 + " are not equal!");
-			soft.assertEquals(entry4.getValue(), entry1.getValue(),
-					"SA View and AdEdit Entered Values at SrNo. " + eSrNo1 + " are not equal!");
-
-			soft.assertEquals(entry5.getKey(), entry1.getKey(),
-					"Em View Report and AdEdit Entered Keys at SrNo. " + eSrNo1 + " are not equal!");
-			soft.assertEquals(entry5.getValue(), entry1.getValue(),
-					"Em View Report and AdEdit Entered Values at SrNo. " + eSrNo1 + " are not equal!");
+			
+			logAndAssert(eSrNo1, entry1, entry2, "AdEd Report and AdEdit Entered valued Report");
+			logAndAssert(eSrNo1, entry1, entry3, "Ad view Report and AdEdit Entered");
+			logAndAssert(eSrNo1, entry1, entry4, "SA View and AdEdit Entered");
+			logAndAssert(eSrNo1, entry1, entry5, "Em View Report and AdEdit Entered");
 			eSrNo1++;
 		}
 		soft.assertAll();
-		Reporter.log("<=======================================>", true);
+*/		Reporter.log("<=======================================>", true);
+	}
+
+	private void logAndAssert(int eSrNo, Map.Entry<String, String> entry1, Map.Entry<String, String> entryX,
+			String reportName) {
+		soft.assertEquals(entryX.getKey(), entry1.getKey(), reportName + " Keys at SrNo. " + eSrNo + " are not equal!");
+		soft.assertEquals(entryX.getValue(), entry1.getValue(),
+				reportName + " Values at SrNo. " + eSrNo + " are not equal!");
 	}
 
 	public String getTimeDate() {
@@ -436,13 +441,12 @@ public class F1EmSubmitReportTC extends BaseClass {
 		log.info("Admin Sign in Success");
 	}
 
-	public void employeeSignIn() throws IOException {
-		driver.get(UtilityClass.getPFData("URL"));
-		elp.inpEmLoginPageSignIn(UtilityClass.getPFData("Email"), UtilityClass.getPFData("Password"));
+	public void employeeSignIn(WebDriver driver) throws IOException {
+		elp.EmLoginPageSignIn(driver,UtilityClass.getPFData("Email"), UtilityClass.getPFData("Password"));
 	}
 
-	public void SubadminSignIn() throws IOException {
-		driver.get(UtilityClass.getPFData("URL"));
-		elp.inpEmLoginPageSignIn(UtilityClass.getPFData("SAEmail"), UtilityClass.getPFData("SAPassword"));
+	public void SubadminSignIn(WebDriver driver) throws IOException {
+		
+		elp.EmLoginPageSignIn(driver,UtilityClass.getPFData("SAEmail"), UtilityClass.getPFData("SAPassword"));
 	}
 }

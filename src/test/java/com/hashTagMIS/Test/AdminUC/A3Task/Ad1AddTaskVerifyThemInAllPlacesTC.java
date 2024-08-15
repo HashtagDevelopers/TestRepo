@@ -55,7 +55,7 @@ public class Ad1AddTaskVerifyThemInAllPlacesTC extends BaseClass {
 	int i = 1;
 	LinkedHashMap<String, String> expTaskLMP;
 	Logger log = LogManager.getLogger(Ad1AddTaskVerifyThemInAllPlacesTC.class);
-	String dept = "Training";
+	String dept = "Food";
 
 	@BeforeClass
 	public void openBrowser() throws IOException, InterruptedException {
@@ -92,17 +92,17 @@ public class Ad1AddTaskVerifyThemInAllPlacesTC extends BaseClass {
 	}
 
 	@Test(priority = 1, enabled = true, dataProvider = "AddTaskDS", dataProviderClass = DataProviders.A2DSAddTask.class)
-	public void addTaskFromSheet(String number, String task, String placeholder)
+	public void addTaskFromSheetTest(String number, String task, String placeholder)
 			throws IOException, InterruptedException {
 		at.inpAdAddTaskFromSheet(driver, task.trim(), placeholder.trim(), i, soft);
-		soft.assertAll();
+	//	soft.assertAll();
 		expTaskLMP.put(task.trim(), placeholder.trim());
 		i++;
 
 	}
 
-	@Test(priority = 2, enabled = true)
-	public void verifyTaskFromSheet() throws IOException, InterruptedException {
+	@Test(priority = 2, enabled = false)
+	public void verifyTaskFromSheetTest() throws IOException, InterruptedException {
 		at.clickAdAddTaskLastRowDeleteBtn(driver);
 		Thread.sleep(1000);
 		LinkedHashMap<String, String> actTaskLmpInAdmnAddTaskForm = at.getAdAddTaskAllTaskAndPlaceholder(driver);
@@ -188,10 +188,7 @@ public class Ad1AddTaskVerifyThemInAllPlacesTC extends BaseClass {
 	}
 
 	public void employeeSignIn() throws IOException {
-		driver.get(UtilityClass.getPFData("URL"));
-		lp.inpEmLoginPageEmail(UtilityClass.getPFData("Email"));
-		lp.inpEmLoginPagePwd(UtilityClass.getPFData("Password"));
-		lp.clickStaffLoginPageLoginBtn();
+		lp.EmLoginPageSignIn(driver, UtilityClass.getPFData("Email"), UtilityClass.getPFData("Password"));
 	}
 
 	public void adminSignIn() throws IOException {

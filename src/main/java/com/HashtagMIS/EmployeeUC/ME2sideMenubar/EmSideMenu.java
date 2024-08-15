@@ -1,5 +1,7 @@
 package com.HashtagMIS.EmployeeUC.ME2sideMenubar;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,6 +14,8 @@ public class EmSideMenu {
 	private WebElement historyBtn;
 	@FindBy(xpath = "//span[contains(text(),'Team')]")
 	private WebElement teamReportBtn;
+	@FindBy(xpath = "//span[contains(text(),'Team')]")
+	private List<WebElement> teamReportBtnLst;
 	@FindBy(xpath = "//span[contains(text(),'Profile')]")
 	private WebElement profileBtn;
 	public EmSideMenu(WebDriver driver) {
@@ -25,6 +29,9 @@ public class EmSideMenu {
 	}
 	public void clickEmSideMenuTeamReportBtn() {
 		teamReportBtn.click();
+	}
+	public boolean getEmSideMenuTeamReportBtnDisplayed() {
+		return !teamReportBtnLst.isEmpty();
 	}
 	public void clickEmSideMenuProfileBtn() {
 		profileBtn.click();

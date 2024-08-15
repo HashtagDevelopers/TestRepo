@@ -81,7 +81,7 @@ public class Ad4VerifyTaskSequenceAlreadyAddedTaskTC extends BaseClass {
 	}
 
 	@Test(priority = 1, enabled = false, dataProvider = "AddTaskDS", dataProviderClass = DataProviders.A2DSAddTask.class)
-	public void addTaskFromSheet(String number, String task,String placeholder, String taskType) throws IOException, InterruptedException {
+	public void addTaskFromSheetTest(String number, String task,String placeholder, String taskType) throws IOException, InterruptedException {
 		Thread.sleep(200);
 		at.inpAdAddTaskTaskRandomly(driver, dept);
 		//i++;
@@ -98,7 +98,7 @@ public class Ad4VerifyTaskSequenceAlreadyAddedTaskTC extends BaseClass {
 //	}
 
 	@Test(priority = 2, enabled = false)
-	public void ViewDragDropTask() throws IOException, InterruptedException {
+	public void viewDragDropTaskTest() throws IOException, InterruptedException {
 		
 		asm.clickAdSideMenuTasksBtn();
 		td.selAdTaskDashboardDepartmentName(dept);
@@ -158,10 +158,7 @@ public class Ad4VerifyTaskSequenceAlreadyAddedTaskTC extends BaseClass {
 		// driver.close();
 	}
 	public void employeeSignIn() throws IOException {
-		driver.get(UtilityClass.getPFData("URL"));
-		lp.inpEmLoginPageEmail(UtilityClass.getPFData("Email"));
-		lp.inpEmLoginPagePwd(UtilityClass.getPFData("Password"));
-		lp.clickStaffLoginPageLoginBtn();
+		lp.EmLoginPageSignIn(driver, UtilityClass.getPFData("Email"), UtilityClass.getPFData("Password"));
 	}
 
 	public void adminSignIn() throws IOException {

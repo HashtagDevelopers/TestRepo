@@ -1,5 +1,6 @@
 package com.HashtagMIS.EmployeeUC.ME1Login;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
@@ -35,7 +36,8 @@ public class EmLogin {
 	public EmLogin(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
-	public void inpEmLoginPageSignIn(String email,String pWD) {
+	public void EmLoginPageSignIn(WebDriver driver, String email,String pWD) throws IOException {
+		driver.get(UtilityClass.getPFData("URL"));
 		Email.sendKeys(email);
 		pwd.sendKeys(pWD);
 		SignInBtn.click();
@@ -49,7 +51,7 @@ public class EmLogin {
 	public void inpEmLoginPagePwd(String pWD) {
 		pwd.sendKeys(pWD);
 	}
-	public void clickStaffLoginPageLoginBtn() {
+	public void clickEmLoginPageLoginBtn() {
 		SignInBtn.click();
 	}
 	
@@ -71,7 +73,13 @@ public class EmLogin {
 	        // Handle timeout exception gracefully (e.g., log, retry, throw custom exception)
 	     //   System.out.println("Warning: Toast message element not found within "+"____"  + " seconds.");
 	        UtilityClass.DrawBorderList(driver, errMsgList);
-	        return errMsg.getText(); // Or throw a custom exception if desired
+	       // Or throw a custom exception if desired
+	        if(!errMsg.getText().isEmpty()) {
+	        	 return errMsg.getText(); 
+	        }
+	        else{
+	        	 return "Null"; 
+	        }
 	    }
 	}
 	public void getEmLoginPageForgotPwdBtn(WebDriver driver) {

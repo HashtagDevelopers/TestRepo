@@ -26,6 +26,7 @@ public class AdEmpForm {
 	private WebElement emailInp;
 	@FindBy(xpath = "(//input[@type='text'])[2]")
 	private WebElement pwdInp;
+	
 	@FindBy(xpath = "//input[@name='role']")
 	private WebElement designationInp;
 	@FindBy(xpath = "//input[@class='Select__input']")
@@ -88,6 +89,29 @@ public class AdEmpForm {
 
 	}
 
+	public void helperAdEmpForm(String nam, String emaill, String pwd, String acc,String dept1, String dept2, String dept3,
+			String dept4, String dsign,String start, String end,String ddmm) {
+		nameInp.sendKeys(nam);
+		emailInp.sendKeys(emaill);
+		pwdInp.sendKeys(pwd);
+		selAdEmpFormAccess(acc);
+		departmentInp.sendKeys(dept1);
+		act.sendKeys(Keys.ENTER).perform();
+		departmentInp.sendKeys(dept2);
+		act.sendKeys(Keys.ENTER).perform();
+		departmentInp.sendKeys(dept3);
+		act.sendKeys(Keys.ENTER).perform();
+		departmentInp.sendKeys(dept4);
+		act.sendKeys(Keys.ENTER).perform();
+		designationInp.sendKeys(dsign);
+		shiftStart.sendKeys(start);
+		shiftEnd.sendKeys(end);
+		dojInp.sendKeys(ddmm);
+		act.sendKeys(Keys.ARROW_RIGHT).perform();
+		act.sendKeys("2024").perform();
+		createBtn.click();
+	}
+
 	public void inpAdEmpFormName(String nam) {
 		nameInp.sendKeys(nam);
 	}
@@ -130,11 +154,11 @@ public class AdEmpForm {
 	public String getAdEmpFormShiftEnd() {
 		return shiftEnd.getAttribute("value");
 	}
+
 	public String getAdEmpFormDate() throws InterruptedException {
 		Thread.sleep(200);
 		return dojInp.getAttribute("value");
 	}
-	
 
 	public void inpAdEmpFormDtOJ(String ddmm) throws InterruptedException {
 		dojInp.sendKeys(ddmm);

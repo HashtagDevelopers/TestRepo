@@ -10,12 +10,32 @@ import org.testng.annotations.DataProvider;
 
 
 public class C1DSLoginPage {   
-	 String filePath =".\\TestData\\excelDataProviderLoginPage.xlsx";
+	 String filePath =".\\Test Data\\excelDataProviderLoginPage.xlsx";
 	@DataProvider(name = "LoginPageDS")
-	public String[][] DataContainerLogin() throws IOException { // int row, int col
+	public String[][] dataContainerLoginPage() throws IOException {
+		//return getAllExcelData("LoginCombination");
+		return getSelectiveExcelData("LoginCombination");
+				
+	}
+	@DataProvider(name = "ForgotPwdPageDS")
+	public String[][] dataContainerForgotPwdPage() throws IOException {
+		return getAllExcelData("ForgotPassword");
+	//	return getSelectiveExcelData("ForgotPassword");
+				
+	}
+	@DataProvider(name = "AdminLoginDS")
+	public String[][] dataContainerAdminLoginPage() throws IOException {
+		return getAllExcelData("AdminLogin");
+				
+	}
+		
+	
+	
+	
+	public String[][] getAllExcelData(String sheetName) throws IOException { // int row, int col
 		FileInputStream file = new FileInputStream(filePath);
 		XSSFWorkbook workbook = new XSSFWorkbook(file);
-		XSSFSheet sheet = workbook.getSheet("LoginCombination");
+		XSSFSheet sheet = workbook.getSheet(sheetName);
 		 int row = sheet.getPhysicalNumberOfRows()-2;
 		 int col = sheet.getRow(0).getLastCellNum();
 		 System.out.println(row+"  "+col);
@@ -33,13 +53,12 @@ public class C1DSLoginPage {
 		file.close();
         return data;
 	}
-	int startRow = 4;  //1 to 5 verify Toast
-	int endRow = 8;    //6 to 8 verify Error
-	@DataProvider(name = "LoginPageDS1")
-	public String[][] DataContainerLogin1() throws IOException { // int row, int col
+	int startRow = 1;  //1 to 5 verify Toast
+	int endRow = 2;    //6 to 8 verify Error
+	public String[][] getSelectiveExcelData(String sheetName) throws IOException { // int row, int col
 		FileInputStream file = new FileInputStream(filePath);
 		XSSFWorkbook workbook = new XSSFWorkbook(file);
-		XSSFSheet sheet = workbook.getSheet("LoginCombination");
+		XSSFSheet sheet = workbook.getSheet(sheetName);
 		 int row = endRow-startRow+1;//sheet.getPhysicalNumberOfRows();
 		 int col = sheet.getRow(0).getLastCellNum();
 		 System.out.println(row+"  "+col);
@@ -56,26 +75,5 @@ public class C1DSLoginPage {
 		file.close();
         return data;
 	}
-	@DataProvider(name = "ForgotPwdEEPageDS")
-	public String[][] DataContainerEnterEmail() throws IOException { // int row, int col
-		FileInputStream file = new FileInputStream(filePath);
-		XSSFWorkbook workbook = new XSSFWorkbook(file);
-		XSSFSheet sheet = workbook.getSheet("ForgotPassword");
-		 int row = sheet.getPhysicalNumberOfRows()-2;
-		 int col = sheet.getRow(0).getLastCellNum();
-		 System.out.println(row+"  "+col);
-		String[][] data = new String[row][col];
-		for (int i = 0; i < row; i++) {
-			for (int j = 0; j < col; j++) {
-				DataFormatter df = new DataFormatter();
-				data[i][j] = df.formatCellValue(sheet.getRow(i+2).getCell(j));
-				//System.out.print(data[i][j]+" ");
-			}
-			System.out.println();
-		}
-	
-		workbook.close();
-		file.close();
-        return data;
-	}
+
 }

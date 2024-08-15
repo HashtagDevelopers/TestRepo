@@ -23,9 +23,9 @@ public class AdEmpDashboard {
 	@FindBy(xpath = "//div[@id='cell-1-undefined']")
 	private List<WebElement> totalEmp;
 
-	@FindBy(xpath = "(//button[@type='button'])[3]")
+	@FindBy(xpath = "(//button[@type='button'])[2]")
 	private WebElement edit;
-	@FindBy(xpath = "(//button[@type='button'])[4]")
+	@FindBy(xpath = "(//button[@type='button'])[3]")
 	private WebElement delete;
 	@FindBy(xpath = "//button[text()='Yes, delete it!']")
 	private WebElement AYSOK;

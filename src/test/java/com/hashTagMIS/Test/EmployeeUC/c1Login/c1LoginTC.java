@@ -15,8 +15,14 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import com.HashtagMIS.AdminUC.MA1Login.AdLogin1;
+import com.HashtagMIS.AdminUC.MA1Login.AdLogin2;
+import com.HashtagMIS.EmployeeUC.ME1Login.EmForgotPassword;
 import com.HashtagMIS.EmployeeUC.ME1Login.EmLogin;
+import com.HashtagMIS.EmployeeUC.ME2sideMenubar.EmSideMenu;
+import com.HashtagMIS.EmployeeUC.ME3Report.EmHistory;
 
+import DataProviders.C1DSLoginPage;
 import LibraryFiles.BaseClass;
 import LibraryFiles.UtilityClass;
 import net.bytebuddy.utility.RandomString;
@@ -24,42 +30,70 @@ import net.bytebuddy.utility.RandomString;
 public class c1LoginTC extends BaseClass {
 	SoftAssert soft;
 	EmLogin lp;
-//	SideMenu sm;
+	EmSideMenu esm;
 	String msg;
-	Logger log= LogManager.getLogger(c1LoginTC.class);
+	EmForgotPassword efp;
+	EmHistory ehp;
+	AdLogin1 alp1;
+	AdLogin2 alp2;
+	Logger log = LogManager.getLogger(c1LoginTC.class);
+
 	@BeforeMethod
 	public void openBrowser() throws IOException, InterruptedException {
 		initialiseBrowser();
 		lp = new EmLogin(driver);
-	//	sm = new SideMenu(driver);
-	
+		ehp = new EmHistory(driver);
+		efp = new EmForgotPassword(driver);
+		esm = new EmSideMenu(driver);
+		alp1 = new AdLogin1(driver);
+		alp2 = new AdLogin2(driver);
 		soft = new SoftAssert();
-		driver.get(UtilityClass.getPFData("URL"));
 		WebElement error = driver.findElement(By.xpath("//body"));
 		((JavascriptExecutor) driver).executeScript(
 				"arguments[0].setAttribute('style', 'border: 2px solid red; background-color: #0078d4; background-image: none;')",
 				error);
 	}
 
-	@Test(enabled = true, dataProvider = "LoginPageDS1", dataProviderClass = DataProviders.C1DSLoginPage.class)
-	public void adminLogin(String Scenario, String email, String pwd, String toastmsg, String msg1) throws IOException {
+	@Test(enabled = false, dataProvider = "LoginPageDS", dataProviderClass = DataProviders.C1DSLoginPage.class)
+	public void employeeLoginTest(String Scenario, String email, String pwd, String toastmsg, String msg1)
+			throws IOException, InterruptedException {
 		lp.inpEmLoginPageEmail(email);
 		lp.inpEmLoginPagePwd(pwd);
-		lp.clickStaffLoginPageLoginBtn();
-		String tm = lp.getEmLoginPageToastMsg(driver);
-		Reporter.log(Scenario + " ==> " +tm  + " = " + toastmsg, true);
-		soft.assertEquals(tm, toastmsg, "Toast msg is not matched");
+		lp.clickEmLoginPageLoginBtn();
+		
+		if (Scenario.equals("BothTrue")) {
+			soft.assertTrue(ehp.getEmHistoryPageTitle(driver), "title not Displayed");
+			soft.assertFalse(esm.getEmSideMenuTeamReportBtnDisplayed(), "Team Report is Displayed");
+		} 
+		else if(Scenario.equals("SubAdmin")) {
+			soft.assertTrue(esm.getEmSideMenuTeamReportBtnDisplayed(), "Team Report is not Displayed");
+		}
+		else {
+			String tm = lp.getEmLoginPageToastMsg(driver);
+			Reporter.log(Scenario + " ==> " + tm + " = " + toastmsg, true);
+			soft.assertEquals(tm, toastmsg, "Toast msg is not matched");
+		}
 		soft.assertAll();
 	}
 
-/*	@Test(enabled = false)
-	public void forgotPwdLink() throws IOException, InterruptedException {
-		lp.clickAdLoginPageForgotPwdLink();
-		Reporter.log(ee.getAdForgotPwdEnterEmailPageTitle(driver) + " = " + "Enter Email Id", true);
-		soft.assertEquals(ee.getAdForgotPwdEnterEmailPageTitle(driver), "Enter Email Id",
-				"Enter Email Page Not Working");
+	@Test(enabled = false,dataProvider = "ForgotPwdPageDS",dataProviderClass = C1DSLoginPage.class )
+	public void employeeForgotPwdTest(String Scenario, String email, String toastmsg) throws IOException, InterruptedException {
+		lp.clickEmLoginPageForgotPwdLink();
+		Thread.sleep(1000);
+		efp.inpEmForgotPasswordPageEmail(email);
+		efp.clickEmForgotPasswordPageTitleSendPwdBtn();
+		soft.assertEquals(efp.getEmForgotPasswordPageToastMsg(driver), toastmsg);
 		soft.assertAll();
-	}*/
+	}
+	@Test(enabled = true,dataProvider = "AdminLoginDS",dataProviderClass = C1DSLoginPage.class )
+	public void adminForgotPwdTest(String Scenario, String email, String toastmsg) throws IOException, InterruptedException {
+		driver.get(UtilityClass.getPFData("AdminURL"));
+		alp1.inpAdLoginPage1Email(email);
+		alp1.clickAdLoginPage1LoginBtn();
+		Thread.sleep(1000);
+		soft.assertEquals(efp.getEmForgotPasswordPageToastMsg(driver), toastmsg);
+		soft.assertAll();
+	}
 
 	@AfterMethod
 	public void FailedTCSS(ITestResult s1) throws IOException {
@@ -71,7 +105,6 @@ public class c1LoginTC extends BaseClass {
 
 	@AfterClass
 	public void closeBrowser() {
-	// driver.close();
+		// driver.close();
 	}
 }
-

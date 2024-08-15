@@ -96,12 +96,12 @@ public class SubmitMultipleReportTC extends BaseClass {
 		ExpAdVRUI = new ArrayList<String>();
 		sb = new StringBuilder();
 
-		elp.inpEmLoginPageSignIn(UtilityClass.getPFData("Email"), UtilityClass.getPFData("Password"));
+		elp.EmLoginPageSignIn(driver,UtilityClass.getPFData("Email"), UtilityClass.getPFData("Password"));
 		log.info("Login success");
 	}
 
 	@Test()
-	public void FillReport() throws IOException, InterruptedException {
+	public void FillReportTest() throws IOException, InterruptedException {
 		int d = 30;
 		for (int i = 1; i < 30; i++) {
 			log.info("Report Form Opening by Selecting Department and Date...");

@@ -81,7 +81,7 @@ public class Ad3TaskSequenceByDragNDropTC extends BaseClass {
 	}
 
 	@Test(priority = 2, enabled = true)
-	public void verifyTaskSequenceDragNDrop() throws IOException, InterruptedException {
+	public void verifyTaskSequenceDragNDropTest() throws IOException, InterruptedException {
 		LinkedHashMap<String, String> taskLmpInATDBeforeDND = td.getAdTaskDashboardAllTaskAndTaskType(driver);
 		
 		td.dragNDropAdTaskDashboardTask(driver);
@@ -166,10 +166,7 @@ public class Ad3TaskSequenceByDragNDropTC extends BaseClass {
 		// driver.close();
 	}
 	public void employeeSignIn() throws IOException {
-		driver.get(UtilityClass.getPFData("URL"));
-		lp.inpEmLoginPageEmail(UtilityClass.getPFData("Email"));
-		lp.inpEmLoginPagePwd(UtilityClass.getPFData("Password"));
-		lp.clickStaffLoginPageLoginBtn();
+		lp.EmLoginPageSignIn(driver, UtilityClass.getPFData("Email"), UtilityClass.getPFData("Password"));
 	}
 
 	public void adminSignIn() throws IOException {

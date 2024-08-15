@@ -91,7 +91,7 @@ public class Ad2VerifyAddedTaskAllPlaces extends BaseClass {
 	}
 
 	@Test(priority = 1, enabled = true, dataProvider = "AddTaskDS", dataProviderClass = DataProviders.A2DSAddTask.class)
-	public void addTaskFromSheetInLinkedMP(String number, String task, String placeholder) throws IOException, InterruptedException {
+	public void addTaskFromSheetInLinkedMPTest(String number, String task, String placeholder) throws IOException, InterruptedException {
 	
 		taskLmpInExcel.put(task.trim(),placeholder.trim());
 	
@@ -99,7 +99,7 @@ public class Ad2VerifyAddedTaskAllPlaces extends BaseClass {
 
 	
 	@Test(priority = 2, enabled = true)
-	public void verifyTaskFromSheet() throws IOException, InterruptedException {		
+	public void verifyTaskFromSheetTest() throws IOException, InterruptedException {		
 		System.out.println(taskLmpInExcel.toString());
 		soft.assertFalse(taskLmpInExcel.isEmpty());
 		soft.assertAll();
@@ -166,10 +166,7 @@ public class Ad2VerifyAddedTaskAllPlaces extends BaseClass {
 		// driver.close();
 	}
 	public void employeeSignIn() throws IOException {
-		driver.get(UtilityClass.getPFData("URL"));
-		lp.inpEmLoginPageEmail(UtilityClass.getPFData("Email"));
-		lp.inpEmLoginPagePwd(UtilityClass.getPFData("Password"));
-		lp.clickStaffLoginPageLoginBtn();
+		lp.EmLoginPageSignIn(driver, UtilityClass.getPFData("Email"), UtilityClass.getPFData("Password"));
 	}
 
 	public void adminSignIn() throws IOException {

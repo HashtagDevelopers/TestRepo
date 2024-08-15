@@ -60,6 +60,7 @@ public class EmHistory {
 	}
 
 	public boolean getEmHistoryPageTitle(WebDriver driver) throws InterruptedException {
+		Thread.sleep(500);
 		UtilityClass.DrawBorder(driver, HPtitle);
 		Thread.sleep(500);
 		return HPtitle.isDisplayed();

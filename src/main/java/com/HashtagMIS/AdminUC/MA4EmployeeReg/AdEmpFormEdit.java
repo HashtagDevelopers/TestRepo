@@ -30,6 +30,8 @@ public class AdEmpFormEdit {
 	private WebElement pwdInp;
 	@FindBy(xpath = "//input[@name='role']")
 	private WebElement designationInp;
+	@FindBy(xpath = "//input[@class='select__input']")
+	private WebElement deptInp;
 	@FindBy(xpath = "//div[@class='select__multi-value__label css-1y7rh0y-MultiValueGeneric2']")
 	private List<WebElement>  departmentLst;
 	@FindBy(xpath = "//input[@name='shiftStartTime']")
@@ -82,11 +84,11 @@ public class AdEmpFormEdit {
 	}
 
 	public List<String> getAdEmpFormEditData() throws InterruptedException {
-		ArrayList<String> ar = new ArrayList<String>();
-		
+		ArrayList<String> ar = new ArrayList<String>();	
 		ar.add(getAdEmpFormEditName());
 		ar.add(getAdEmpFormEditEmail());
 		ar.add(getAdEmpFormEditPwD());
+		ar.add(getAdEmpFormEditAccess());
 		for(WebElement d:departmentLst) {
 			ar.add(d.getText());
 		}
@@ -94,7 +96,7 @@ public class AdEmpFormEdit {
 		ar.add(getAdEmpFormEditShiftStart());
 		ar.add(getAdEmpFormEditShiftEnd());
 		ar.add(getAdEmpFormEditDoJ());
-		ar.add(getAdEmpFormEditAccess());
+		
 		Collections.sort(ar);
 		return ar;
 	}
@@ -119,10 +121,17 @@ public class AdEmpFormEdit {
 		designationInp.clear();
 		designationInp.sendKeys(dsign);
 	}
+   public  void selAdEmpFormEditAccess(String access) {
+		
+		 UtilityClass.selectByVisibleTxt(accessSel, access);
+	}
 
-	//public void seleEmpFormEditDept(String dept) {
-	//	UtilityClass.selectByName(department, dept);
-	//}
+	public void inpSelEmpFormEditDept(String dept1,String dept2, String dept3,String dept4) {
+		UtilityClass.selectByVisibleTxt(deptInp, dept1);
+		UtilityClass.selectByVisibleTxt(deptInp, dept2);
+		UtilityClass.selectByVisibleTxt(deptInp, dept3);
+		UtilityClass.selectByVisibleTxt(deptInp, dept4);
+	}
 
 	public void inpAdEmpFormEditShiftStart(String start) {
 		shiftStart.sendKeys(start);
@@ -181,15 +190,11 @@ public class AdEmpFormEdit {
 	public  String getAdEmpFormEditAccess() {
 		
 		return UtilityClass.getSelectedOption(accessSel);
-		
-	
 	}
 
 	public String getAdEmpFormEditShiftStart() {
-		return shiftStart.getAttribute("value");
-		
+		return shiftStart.getAttribute("value");		
 	}
-
 	public String getAdEmpFormEditShiftEnd() {
 		return shiftEnd.getAttribute("value");
 	}

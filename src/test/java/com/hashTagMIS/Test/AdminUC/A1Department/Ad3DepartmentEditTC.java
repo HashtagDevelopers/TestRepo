@@ -59,18 +59,12 @@ public class Ad3DepartmentEditTC extends BaseClass {
 
 		log.info("for info only");
 
-		driver.get(UtilityClass.getPFData("AdminURL"));
+		adminSignIn();
 		WebElement error = driver.findElement(By.xpath("//body"));
 		((JavascriptExecutor) driver).executeScript(
 				"arguments[0].setAttribute('style', 'border: 2px solid red; background-color: #0078d4; background-image: none;')",
 				error);
-		lp1.inpAdLoginPage1Email(UtilityClass.getPFData("AdEmail"));
-		lp1.clickAdLoginPage1LoginBtn();
-		String otpSent = lp1.getAdLoginPage1ToastMsg(driver);
-		Reporter.log(otpSent + "<===>OTP has been sent successfully", true);
-		// soft.assertEquals(otpSent, "OTP has been sent successfully");
-		lp2.inpAdLoginPage2Otp(UtilityClass.getPFData("AdPassword"));
-		lp2.clickAdLoginPage2SubmitBtn();
+		
 		sm.clickAdSideMenuDepartmentBtn();
 		log.info("add Prerequisite Department");
 		ad.inpAdAddDepartmentFormDept("Hospitality");
@@ -88,7 +82,7 @@ public class Ad3DepartmentEditTC extends BaseClass {
 	}
 
 	@Test(enabled = true, dataProvider = "DepartmentEditDS", dataProviderClass = DataProviders.A1DSAddDeptAndEmp.class)
-	public void EditDepartmentFunctional(String Scenario, String Error, String Department)
+	public void editDepartmentFunctionalTest(String Scenario, String Error, String Department)
 			throws IOException, InterruptedException {
 		ad.clickAdAddDepartmentFormEditBtn();
 		de.inpAdEditDepartmentFormDept(Department);
@@ -134,5 +128,15 @@ public class Ad3DepartmentEditTC extends BaseClass {
 	public void closeBrowser() {
 
 		// driver.close();
+	}
+	public void adminSignIn() throws IOException {
+		driver.get(UtilityClass.getPFData("AdminURL"));
+		lp1.inpAdLoginPage1Email(UtilityClass.getPFData("AdEmail"));
+		lp1.clickAdLoginPage1LoginBtn();
+		String otpSent = lp1.getAdLoginPage1ToastMsg(driver);
+		Reporter.log(otpSent + "<===>OTP has been sent successfully", true);
+		soft.assertEquals(otpSent, "OTP has been sent successfully");
+		lp2.inpAdLoginPage2Otp(UtilityClass.getPFData("AdPassword"));
+		lp2.clickAdLoginPage2SubmitBtn();
 	}
 }

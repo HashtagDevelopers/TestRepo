@@ -65,22 +65,14 @@ public class Ad2AddMultiDeptandVerifytheirPresenceTC extends BaseClass {
 		lp = new EmLogin(driver);
 		hp = new EmHistory(driver);
 		de = new AdEditDepartmentForm(driver);
-
+		soft = new SoftAssert();
 		log.info("for info only");
 
-		driver.get(UtilityClass.getPFData("AdminURL"));
+		adminSignIn();
 		WebElement error = driver.findElement(By.xpath("//body"));
 		((JavascriptExecutor) driver).executeScript(
 				"arguments[0].setAttribute('style', 'border: 2px solid red; background-color: #0078d4; background-image: none;')",
 				error);
-		lp1.inpAdLoginPage1Email(UtilityClass.getPFData("AdEmail"));
-		lp1.clickAdLoginPage1LoginBtn();
-		String otpSent = lp1.getAdLoginPage1ToastMsg(driver);
-		Reporter.log(otpSent + "<===>OTP has been sent successfully", true);
-		// soft.assertEquals(otpSent, "OTP has been sent successfully");
-		lp2.inpAdLoginPage2Otp(UtilityClass.getPFData("AdPassword"));
-		lp2.clickAdLoginPage2SubmitBtn();
-
 	}
 
 	@BeforeMethod
@@ -90,7 +82,7 @@ public class Ad2AddMultiDeptandVerifytheirPresenceTC extends BaseClass {
 	}
 
 	@Test(enabled = true, dataProvider = "DepartmentMultiDS",priority = 1, dataProviderClass = DataProviders.A1DSAddDeptAndEmp.class)
-	public void testAddDepartmentMulti(String Scenario, String Error, String Department, String toastmsg)
+	public void addDepartmentMultiTest(String Scenario, String Error, String Department, String toastmsg)
 			throws IOException, InterruptedException {
 
 		sm.clickAdSideMenuDepartmentBtn();
@@ -109,7 +101,7 @@ public class Ad2AddMultiDeptandVerifytheirPresenceTC extends BaseClass {
 	}
 
 	@Test(enabled=false,priority = 2)
-	public void testVerifyAllDepInAllDropdown() throws IOException, InterruptedException {
+	public void verifyAllDepInAllDropdownTest() throws IOException, InterruptedException {
 		sm.clickAdSideMenuDepartmentBtn();
 		List<String> deptList = ad.getAdAddDepartmentFormDeptList();
 		Thread.sleep(4000);
@@ -154,5 +146,15 @@ public class Ad2AddMultiDeptandVerifytheirPresenceTC extends BaseClass {
 	public void closeBrowser() {
 
 		// driver.close();
+	}
+	public void adminSignIn() throws IOException {
+		driver.get(UtilityClass.getPFData("AdminURL"));
+		lp1.inpAdLoginPage1Email(UtilityClass.getPFData("AdEmail"));
+		lp1.clickAdLoginPage1LoginBtn();
+		String otpSent = lp1.getAdLoginPage1ToastMsg(driver);
+		Reporter.log(otpSent + "<===>OTP has been sent successfully", true);
+		soft.assertEquals(otpSent, "OTP has been sent successfully");
+		lp2.inpAdLoginPage2Otp(UtilityClass.getPFData("AdPassword"));
+		lp2.clickAdLoginPage2SubmitBtn();
 	}
 }

@@ -90,7 +90,7 @@ public class AdEmpAndVerifyHisPresenceTC extends BaseClass {
 	}
 
 	@Test(enabled = true, dataProvider = "EmpMultipleDS", dataProviderClass = DataProviders.A1DSAddDeptAndEmp.class)
-	public void testAddEmpAndVerifyHisPresence(String Scenario, String Error, String Name, String Email, String pwd,
+	public void addEmpAndVerifyHisPresenceTest(String Scenario, String Error, String Name, String Email, String pwd,
 			String acc, String Dept1, String Dept2, String Dept3, String Dept4, String Designation, String shiftStart,
 			String shiftEnd, String doj, String toastmsg) throws IOException, InterruptedException {
 
@@ -134,24 +134,23 @@ public class AdEmpAndVerifyHisPresenceTC extends BaseClass {
 
 		Reporter.log("<== Verify data in Emp edit Page ==>", true);
 
-		expEmpDataInEdit.addAll(Arrays.asList(Name, Email.toLowerCase() + "@hashtaginfosystem.com", pwd, Dept1, Dept2,
-				Dept3, Dept4, Designation, start, end, doj1, acc));
+		expEmpDataInEdit.addAll(Arrays.asList(Name, Email.toLowerCase() + "@hashtaginfosystem.com", pwd,acc ,Dept1, Dept2,
+				Dept3, Dept4, Designation, start, end, doj1));
 		Collections.sort(expEmpDataInEdit);
 		sd.clickAdEmpDashboardEditBtnForName(driver, Name);
 		List<String> actEmpDataInEdit = ee.getAdEmpFormEditData();
 		UtilsClass.compareTwoList(actEmpDataInEdit, expEmpDataInEdit, soft);
 
 		Reporter.log("<== Verify data in Emp Credentials ==>", true);
-
 		driver.get(UtilityClass.getPFData("URL"));
 		lp.inpEmLoginPageEmail(Email.toLowerCase() + "@hashtaginfosystem.com");
 		lp.inpEmLoginPagePwd(pwd);
-		lp.clickStaffLoginPageLoginBtn();
+		lp.clickEmLoginPageLoginBtn();
 		soft.assertTrue(hp.getEmHistoryPageTitle(driver));
 
 		soft.assertAll();
 	}
-
+	
 	@AfterMethod
 	public void FailedTCSS(ITestResult s1) throws IOException {
 		String rs = RandomString.make(2);
@@ -165,10 +164,7 @@ public class AdEmpAndVerifyHisPresenceTC extends BaseClass {
 		// driver.close();
 	}
 	public void employeeSignIn() throws IOException {
-		driver.get(UtilityClass.getPFData("URL"));
-		lp.inpEmLoginPageEmail(UtilityClass.getPFData("Email"));
-		lp.inpEmLoginPagePwd(UtilityClass.getPFData("Password"));
-		lp.clickStaffLoginPageLoginBtn();
+		lp.EmLoginPageSignIn(driver, UtilityClass.getPFData("Email"), UtilityClass.getPFData("Password"));	
 	}
 
 	public void adminSignIn() throws IOException {

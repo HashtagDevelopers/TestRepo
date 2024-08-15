@@ -9,7 +9,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.DataProvider;
 
 public class A1DSAddDeptAndEmp {
-	String filePath = ".\\Test Data\\excelAdmnDeptandAndStaff.xlsx";
+	String filePath = ".\\Test Data\\excelAdmnDeptAndStaff.xlsx";
 	int startRowS1 = 1;
 	int endRowS1 = 1;
 
@@ -68,11 +68,21 @@ public class A1DSAddDeptAndEmp {
 	public String[][] DataContainerDepartmentEdit() throws IOException {
 		return getAllDataFromSheet("DeptEdit");
 	}
+	@DataProvider(name = "EmpFuctionalDS")
+	public String[][] DataContainerEmployeeFuctional() throws IOException {
+		return getAllDataFromSheet("StaffFunctional");
+	//	return getSelectiveDataFromSheet("StaffFunctional");
+	}
 
 	@DataProvider(name = "EmpMultipleDS")
-	public String[][] DataContainerStaffMultiple() throws IOException {
+	public String[][] DataContainerEmployeeMultiple() throws IOException {
 		return getSelectiveDataFromSheet("ActStaff");
 		//return getAllDataFromSheet("ActStaff");
 	}
-
+	@DataProvider(name = "EmpEditDS")
+	public String[][] DataContainerEmployeeEdit() throws IOException {
+		return getSelectiveDataFromSheet("StaffEdit");
+		//return getAllDataFromSheet("StaffEdit");
+	}
+	
 }

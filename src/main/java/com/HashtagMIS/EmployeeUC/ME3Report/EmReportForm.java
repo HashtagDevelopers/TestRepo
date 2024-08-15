@@ -112,10 +112,20 @@ public class EmReportForm {
 			lmp.put(task, childEle.getAttribute("value"));
 
 		}
-//			for (Entry<String, String> entry : lmp.entrySet()) {
-//	            System.out.println("Task Dashboard === Key: " + entry.getKey() + " | Value: " + entry.getValue());
-//	        }
-		// lmp.put("task", "taskType");
+
+		return lmp;
+
+	}
+	public LinkedHashMap<String, String> getEmReportFormSubmittedTaskAndValue(WebDriver driver) {
+		lmp = new LinkedHashMap<String, String>();
+		for (int i = 1; i <= taskLst.size(); i++) {
+			String task = driver.findElement(By.xpath("(//td[2])[" + i + "]")).getText().trim();
+			WebElement parentEle = driver.findElement(By.xpath("(//td[2])[" + i + "]/ancestor::tr/td[3]"));
+			WebElement childEle = parentEle.findElement(By.xpath(".//*"));
+			if(!childEle.getAttribute("value").equals("")) {
+			lmp.put(task, childEle.getAttribute("value"));
+			}
+		}
 		return lmp;
 
 	}
@@ -160,8 +170,7 @@ public class EmReportForm {
 						+ "1. 32 m 56 s (Call to HI Wembley. Their main number was not working, Followed vonage troubleshooting"
 						+ "2. 32 m 56 s (Call to HI Wembley. Their main number was not working, Followed vonage troubleshooting");
 			}
-		}
-		
+		}	
 	}
 
 	public void inpEmReportForm5Task() {
@@ -176,17 +185,14 @@ public class EmReportForm {
 				WebElement s1 = tableTextInp.get(i);
 				s1.sendKeys(t1.getText());
 			}
-		}
-	
-		
+		}	
 	}
 
 	public void clickEmReportPageAreYouSureOKBtn() {
 		yesBtnInASPU.click();
 	}
 
-	public void clickEmReportPageSubmitBtn() {
-
+	public void clickEmReportPageSendBtn() {
 		submitBtn.click();
 		
 	}
