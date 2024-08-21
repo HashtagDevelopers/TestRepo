@@ -65,16 +65,9 @@ public class AdTaskDashboard {
 		
 		//for(int i=1;i<rowLst.size()-10;i=i+3) {
 		WebElement src = driver.findElement(By.xpath("//tbody//tr[1]"));
-		WebElement dest = driver.findElement(By.xpath("//tbody//tr[5]"));
-		Thread.sleep(1000);
-	///	act.dragAndDrop(src,dest).perform();
-		act.clickAndHold(src).perform();
-		Thread.sleep(2000);
-		act.moveToLocation(0,100).perform();
-		Thread.sleep(2000);
-		act.release().perform();
-		Thread.sleep(2000);
-	//	}
+		WebElement dest = driver.findElement(By.xpath("(//td[contains(text(),'Dry Stock Or Perishable Orde')])[2]"));
+		act.dragAndDrop(src,dest)  // Click and hold the source row
+	       .perform();
 	}
 	public LinkedHashMap<String, String> getAdTaskDashboardAllTaskAndPlaceholder(WebDriver driver) throws InterruptedException {
 		LinkedHashMap<String, String> lmp = new LinkedHashMap<>();

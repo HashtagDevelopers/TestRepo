@@ -24,12 +24,15 @@ import com.HashtagMIS.AdminUC.MA1Login.AdLogin2;
 import com.HashtagMIS.AdminUC.MA2SideMenu.AdSideMenu;
 
 import com.HashtagMIS.AdminUC.MA4EmployeeReg.AdEmpDashboard;
+import com.HashtagMIS.AdminUC.MA4EmployeeReg.AdEmpEditForm;
 import com.HashtagMIS.AdminUC.MA4EmployeeReg.AdEmpForm;
-import com.HashtagMIS.AdminUC.MA4EmployeeReg.AdEmpFormEdit;
+
 
 import com.HashtagMIS.EmployeeUC.ME1Login.EmLogin;
 import com.HashtagMIS.EmployeeUC.ME3Report.EmHistory;
 
+import DataProviders.A1DSAddDeptAndEmp;
+import DataProviders.C1DSLoginPage;
 import LibraryFiles.BaseClass;
 import LibraryFiles.UtilityClass;
 import LibraryFiles.UtilsClass;
@@ -43,22 +46,27 @@ public class AdEmpAndVerifyHisPresenceTC extends BaseClass {
 	AdSideMenu sm;
 	AdEmpDashboard sd;
 	AdEmpForm ef;
-	AdEmpFormEdit ee;
+	AdEmpEditForm ee;
 	EmHistory hp;
 	String msg;
 	EmLogin lp;
+	public String sheetName; 
 	Logger log = LogManager.getLogger(AdEmpAndVerifyHisPresenceTC.class);
 	ArrayList<String> expEmpDataInDashboard, expEmpDataInEdit;
 
 	@BeforeClass
 	public void openBrowser() throws IOException, InterruptedException {
+		
 		initialiseBrowser();
+		sheetName="StaffFunctional";
+		A1DSAddDeptAndEmp.setSheetName(sheetName,2,2);
+		
 		lp1 = new AdLogin1(driver);
 		lp2 = new AdLogin2(driver);
 		sm = new AdSideMenu(driver);
 		sd = new AdEmpDashboard(driver);
 		ef = new AdEmpForm(driver);
-		ee = new AdEmpFormEdit(driver);
+		ee = new AdEmpEditForm(driver);
 		lp = new EmLogin(driver);
 		hp = new EmHistory(driver);
 		soft = new SoftAssert();
@@ -89,21 +97,21 @@ public class AdEmpAndVerifyHisPresenceTC extends BaseClass {
 		}
 	}
 
-	@Test(enabled = true, dataProvider = "EmpMultipleDS", dataProviderClass = DataProviders.A1DSAddDeptAndEmp.class)
+	@Test(enabled = true, dataProvider = "EmpFuctionalDS", dataProviderClass = DataProviders.A1DSAddDeptAndEmp.class)
 	public void addEmpAndVerifyHisPresenceTest(String Scenario, String Error, String Name, String Email, String pwd,
 			String acc, String Dept1, String Dept2, String Dept3, String Dept4, String Designation, String shiftStart,
 			String shiftEnd, String doj, String toastmsg) throws IOException, InterruptedException {
 
 		expEmpDataInDashboard.addAll(Arrays.asList(Name, Dept1, Dept2, Dept3, Dept4,
-				Email.toLowerCase() + "@hashtaginfosystem.com", Designation));
+				Email, Designation));
 		Collections.sort(expEmpDataInDashboard);
 		sd.clickAdEmpDashboardAddEmpBtn();
 		Thread.sleep(300);
 		ef.inpAdEmpFormName(Name);
 		Thread.sleep(300);
-		ef.inpAdEmpFormEmail(Name.toLowerCase().trim() + "@hashtaginfosystem.com");
+		ef.inpAdEmpFormEmail(Email);
 		Thread.sleep(300);
-		ef.inpAdEmpFormPwd(Name + "@123");
+		ef.inpAdEmpFormPwd(pwd);
 		Thread.sleep(300);
 		ef.selAdEmpFormAccess(acc);
 		Thread.sleep(300);
@@ -134,16 +142,16 @@ public class AdEmpAndVerifyHisPresenceTC extends BaseClass {
 
 		Reporter.log("<== Verify data in Emp edit Page ==>", true);
 
-		expEmpDataInEdit.addAll(Arrays.asList(Name, Email.toLowerCase() + "@hashtaginfosystem.com", pwd,acc ,Dept1, Dept2,
+		expEmpDataInEdit.addAll(Arrays.asList(Name, Email, pwd,acc ,Dept1, Dept2,
 				Dept3, Dept4, Designation, start, end, doj1));
 		Collections.sort(expEmpDataInEdit);
 		sd.clickAdEmpDashboardEditBtnForName(driver, Name);
-		List<String> actEmpDataInEdit = ee.getAdEmpFormEditData();
+		List<String> actEmpDataInEdit = ee.getAdEmpEditFormData();
 		UtilsClass.compareTwoList(actEmpDataInEdit, expEmpDataInEdit, soft);
 
 		Reporter.log("<== Verify data in Emp Credentials ==>", true);
 		driver.get(UtilityClass.getPFData("URL"));
-		lp.inpEmLoginPageEmail(Email.toLowerCase() + "@hashtaginfosystem.com");
+		lp.inpEmLoginPageEmail(Email);
 		lp.inpEmLoginPagePwd(pwd);
 		lp.clickEmLoginPageLoginBtn();
 		soft.assertTrue(hp.getEmHistoryPageTitle(driver));

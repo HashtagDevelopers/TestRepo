@@ -1,190 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="1" total="2" passed="0" failed="1" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
     <line>
-      <![CDATA[OTP has been sent successfully<===>OTP has been sent successfully]]>
+      <![CDATA[<=======================================>]]>
     </line>
   </reporter-output>
-  <suite started-at="2024-08-15T12:22:35 IST" name="Default suite" finished-at="2024-08-15T12:22:50 IST" duration-ms="15197">
+  <suite started-at="2024-08-21T15:35:43 IST" name="Default suite" finished-at="2024-08-21T16:11:47 IST" duration-ms="2163719">
     <groups>
     </groups>
-    <test started-at="2024-08-15T12:22:35 IST" name="Default test" finished-at="2024-08-15T12:22:50 IST" duration-ms="15197">
-      <class name="com.hashTagMIS.Test.AdminUC.A2Employee.AdEditEmpAndVerifyHisPresenceTC">
-        <test-method is-config="true" signature="openBrowser()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A2Employee.AdEditEmpAndVerifyHisPresenceTC@3e30646a]" started-at="2024-08-15T12:22:35 IST" name="openBrowser" finished-at="2024-08-15T12:22:43 IST" duration-ms="8739" status="PASS">
+    <test started-at="2024-08-21T15:35:43 IST" name="Default test" finished-at="2024-08-21T16:11:47 IST" duration-ms="2163719">
+      <class name="com.hashTagMIS.Test.EmployeeUC.c2Report.SubmitMultipleReportTC">
+        <test-method is-config="true" signature="openBrowser()[pri:0, instance:com.hashTagMIS.Test.EmployeeUC.c2Report.SubmitMultipleReportTC@1c32386d]" started-at="2024-08-21T15:35:43 IST" name="openBrowser" finished-at="2024-08-21T15:35:49 IST" duration-ms="6497" status="PASS">
           <reporter-output>
-            <line>
-              <![CDATA[OTP has been sent successfully<===>OTP has been sent successfully]]>
-            </line>
           </reporter-output>
         </test-method> <!-- openBrowser -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A2Employee.AdEditEmpAndVerifyHisPresenceTC@3e30646a]" started-at="2024-08-15T12:22:44 IST" name="setUp" finished-at="2024-08-15T12:22:44 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="openLogIn()[pri:0, instance:com.hashTagMIS.Test.EmployeeUC.c2Report.SubmitMultipleReportTC@1c32386d]" started-at="2024-08-21T15:35:50 IST" name="openLogIn" finished-at="2024-08-21T15:35:52 IST" duration-ms="1996" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method signature="editEmpAndVerifyHisPresenceTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A2Employee.AdEditEmpAndVerifyHisPresenceTC@3e30646a]" started-at="2024-08-15T12:22:44 IST" name="editEmpAndVerifyHisPresenceTest" data-provider="EmpEditDS" finished-at="2024-08-15T12:22:49 IST" duration-ms="5072" status="FAIL">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[AlreadyRegisteredStaff]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[Adam23]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[adam23@gmail.com]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[Adam@123]]>
-              </value>
-            </param>
-            <param index="5">
-              <value>
-                <![CDATA[Staff]]>
-              </value>
-            </param>
-            <param index="6">
-              <value>
-                <![CDATA[Laundry]]>
-              </value>
-            </param>
-            <param index="7">
-              <value>
-                <![CDATA[3D Design]]>
-              </value>
-            </param>
-            <param index="8">
-              <value>
-                <![CDATA[Food]]>
-              </value>
-            </param>
-            <param index="9">
-              <value>
-                <![CDATA[Security]]>
-              </value>
-            </param>
-            <param index="10">
-              <value>
-                <![CDATA[General Manager]]>
-              </value>
-            </param>
-            <param index="11">
-              <value>
-                <![CDATA[0545AM]]>
-              </value>
-            </param>
-            <param index="12">
-              <value>
-                <![CDATA[0545PM]]>
-              </value>
-            </param>
-            <param index="13">
-              <value>
-                <![CDATA[2505]]>
-              </value>
-            </param>
-            <param index="14">
-              <value>
-                <![CDATA[Email Already Exists]]>
-              </value>
-            </param>
-          </params>
-          <exception class="org.openqa.selenium.NoSuchElementException">
-            <message>
-              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"(//div[text()='Adam']/ancestor::div[2]/div)[5]/div/button[1]"}
-  (Session info: chrome=127.0.6533.101)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: '4.20.0', revision: '866c76ca80'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.3'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [eaf9e5d43f3ddc7b376cf00a5f1d7dec, findElement {value=(//div[text()='Adam']/ancestor::div[2]/div)[5]/div/button[1], using=xpath}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 127.0.6533.101, chrome: {chromedriverVersion: 127.0.6533.119 (bdef6783a05..., userDataDir: C:\Users\ADAMBR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50907}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50907/devtoo..., se:cdpVersion: 127.0.6533.101, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: eaf9e5d43f3ddc7b376cf00a5f1d7dec]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"(//div[text()='Adam']/ancestor::div[2]/div)[5]/div/button[1]"}
-  (Session info: chrome=127.0.6533.101)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: '4.20.0', revision: '866c76ca80'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.3'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [eaf9e5d43f3ddc7b376cf00a5f1d7dec, findElement {value=(//div[text()='Adam']/ancestor::div[2]/div)[5]/div/button[1], using=xpath}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 127.0.6533.101, chrome: {chromedriverVersion: 127.0.6533.119 (bdef6783a05..., userDataDir: C:\Users\ADAMBR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50907}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50907/devtoo..., se:cdpVersion: 127.0.6533.101, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: eaf9e5d43f3ddc7b376cf00a5f1d7dec
-at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
-at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
-at com.HashtagMIS.AdminUC.MA4EmployeeReg.AdEmpDashboard.clickAdEmpDashboardEditBtnForName(AdEmpDashboard.java:81)
-at com.hashTagMIS.Test.AdminUC.A2Employee.AdEditEmpAndVerifyHisPresenceTC.editEmpAndVerifyHisPresenceTest(AdEditEmpAndVerifyHisPresenceTC.java:107)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-at org.testng.TestRunner.privateRun(TestRunner.java:794)
-at org.testng.TestRunner.run(TestRunner.java:596)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-at org.testng.TestNG.runSuites(TestNG.java:1063)
-at org.testng.TestNG.run(TestNG.java:1031)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+        </test-method> <!-- openLogIn -->
+        <test-method signature="FillReportTest()[pri:0, instance:com.hashTagMIS.Test.EmployeeUC.c2Report.SubmitMultipleReportTC@1c32386d]" started-at="2024-08-21T15:35:52 IST" name="FillReportTest" finished-at="2024-08-21T16:11:47 IST" duration-ms="2154978" status="PASS">
           <reporter-output>
+            <line>
+              <![CDATA[<=======================================>]]>
+            </line>
           </reporter-output>
-        </test-method> <!-- editEmpAndVerifyHisPresenceTest -->
-        <test-method is-config="true" signature="FailedTCSS(org.testng.ITestResult)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A2Employee.AdEditEmpAndVerifyHisPresenceTC@3e30646a]" started-at="2024-08-15T12:22:49 IST" name="FailedTCSS" finished-at="2024-08-15T12:22:50 IST" duration-ms="241" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=editEmpAndVerifyHisPresenceTest status=FAILURE method=AdEditEmpAndVerifyHisPresenceTC.editEmpAndVerifyHisPresenceTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:com.hashTagMIS.Test.AdminUC.A2Employee.AdEditEmpAndVerifyHisPresenceTC@3e30646a] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- FailedTCSS -->
-        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:com.hashTagMIS.Test.AdminUC.A2Employee.AdEditEmpAndVerifyHisPresenceTC@3e30646a]" started-at="2024-08-15T12:22:50 IST" name="closeBrowser" finished-at="2024-08-15T12:22:50 IST" duration-ms="1" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- closeBrowser -->
-      </class> <!-- com.hashTagMIS.Test.AdminUC.A2Employee.AdEditEmpAndVerifyHisPresenceTC -->
+        </test-method> <!-- FillReportTest -->
+      </class> <!-- com.hashTagMIS.Test.EmployeeUC.c2Report.SubmitMultipleReportTC -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

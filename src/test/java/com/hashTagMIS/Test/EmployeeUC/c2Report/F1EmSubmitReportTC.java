@@ -40,6 +40,8 @@ import com.HashtagMIS.EmployeeUC.ME3Report.EmViewReport;
 import com.HashtagMIS.EmployeeUC.SubAdminUC.SAEmTeamReport;
 import com.HashtagMIS.EmployeeUC.SubAdminUC.SAEmViewTeamReport;
 
+import DataProviders.C1DSLoginPage;
+import DataProviders.C2DSEmReport;
 import LibraryFiles.BaseClass;
 import LibraryFiles.UtilityClass;
 import LibraryFiles.UtilsClass;
@@ -66,18 +68,18 @@ public class F1EmSubmitReportTC extends BaseClass {
 	SAEmTeamReport satr;
 	SAEmViewTeamReport savr;
 	SoftAssert soft;
-	String CnDtTime, cntDate, yestDate, tomDate, StaffName = "Krunal";
-	int cd, cm, cy;
+	String CnDtTime, cntDate,   StaffName = "Krunal";
+	
 	Logger log = LogManager.getLogger(F1EmSubmitReportTC.class);
 	PrintWriter pw, pw1;
 	StringBuilder sb;
-	ArrayList<String> ExpEmHPDLst,ExpEmHPDLst2;
-	ArrayList<String> ExpAdRpDLst;
-	ArrayList<String> ExpSATRpDLst;
-	ArrayList<String> ExpAdVRUI;
-
+	ArrayList<String> ExpEmHPDLst,ExpEmHPDLst2, ExpAdRpDLst,ExpSATRpDLst,ExpAdVRUI ;
+	public String sheetName; 
 	@BeforeClass
 	public void openBrowser() throws IOException, InterruptedException {
+		sheetName="ReportMulti";
+		C2DSEmReport.setSheetName(sheetName,2,2);
+
 		initialiseBrowser();
 		elp = new EmLogin(driver);
 		alp1 = new AdLogin1(driver);
@@ -112,7 +114,7 @@ public class F1EmSubmitReportTC extends BaseClass {
 		log.info("Login success");
 	}
 
-	@Test(enabled = true, dataProvider = "ReportFlowDS1", dataProviderClass = DataProviders.C2DSEmReport.class)
+	@Test(enabled = true,groups = "Regression", dataProvider = "ReportFlowDS", dataProviderClass = DataProviders.C2DSEmReport.class)
 	public void submitReportTest(String Scenario, String textarea, String Department, String dd, String mm, String toastmsg)
 			throws IOException, InterruptedException, ParseException {
 		String rpdt = dd + "-" + mm + "-" + 2024;
@@ -124,7 +126,7 @@ public class F1EmSubmitReportTC extends BaseClass {
 		SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MMM-yyyy");
 		// Format the Date object into the desired string format
 		String formattedDate = outputFormat.format(date);
-		ExpAdVRUI.addAll(Arrays.asList("Employee Name: " + StaffName, Department, formattedDate, "Unchecked"));
+		ExpAdVRUI.addAll(Arrays.asList(StaffName, Department, formattedDate, "Unchecked"));
 
 		log.info("Report Form Opening by Selecting Department and Date...");
 		esm.clickEmSideMenuDailyReportBtn();
@@ -162,8 +164,8 @@ public class F1EmSubmitReportTC extends BaseClass {
 		while(TV1.hasNext()) {
 			Entry<String, String> e1 = TV1.next();
 			Entry<String, String> e2 = TV2.next();
-			String m1 = SrNo3 + "] AdER  " + e1.getKey() + "<=>" + e1.getValue();
-			String m2 = SrNo3 + "] AdER  " + e2.getKey() + "<=>" + e2.getValue();
+			String m1 = SrNo3 + "] AdEmRp  " + e1.getKey() + "<=>" + e1.getValue();
+			String m2 = SrNo3 + "] AdEmPP  " + e2.getKey() + "<=>" + e2.getValue();
 			Reporter.log(m1,true);
 			Reporter.log(m2,true);
 			soft.assertEquals(e1.getKey(), e2.getKey());
@@ -234,7 +236,7 @@ public class F1EmSubmitReportTC extends BaseClass {
 
 		log.info("Moving to admin view Report....");
 		ard.clickAdReportDashboardViewBtnForDateTime(driver, CnDtTime);
-		soft.assertTrue(avr.getAdViewReportTitle(driver), "AVR title");
+		
 
 		log.info("collecting data in admin view report....");
 		Thread.sleep(1000);
@@ -246,7 +248,7 @@ public class F1EmSubmitReportTC extends BaseClass {
 
 		log.info("Moving to admin Edit report....");
 		ard.clickAdReportDashboardEditBtnForDateTime(driver, CnDtTime);
-		soft.assertTrue(aer.getAdEditReportTitle(driver), "AdEpTitle");
+		
 
 		log.info("collecting data in admin Edit report....");
 		List<String> AdERUpperInfo = aer.getAdEditReportUpperInfo();

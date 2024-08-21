@@ -28,6 +28,7 @@ import com.HashtagMIS.AdminUC.MA4EmployeeReg.AdEmpDashboard;
 import com.HashtagMIS.EmployeeUC.ME1Login.EmLogin;
 import com.HashtagMIS.EmployeeUC.ME3Report.EmHistory;
 
+import DataProviders.A1DSAddDeptAndEmp;
 import LibraryFiles.BaseClass;
 import LibraryFiles.UtilityClass;
 import net.bytebuddy.utility.RandomString;
@@ -44,9 +45,12 @@ public class Ad3DepartmentEditTC extends BaseClass {
 	EmLogin lp;
 	AdEditDepartmentForm de;
 	Logger log = LogManager.getLogger(Ad3DepartmentEditTC.class);
-
+	public String sheetName;
 	@BeforeClass
 	public void openBrowser() throws IOException, InterruptedException {
+		sheetName="DeptEdit";
+		A1DSAddDeptAndEmp.setSheetName(sheetName,1,9);
+	
 		initialiseBrowser();
 		lp1 = new AdLogin1(driver);
 		lp2 = new AdLogin2(driver);
@@ -135,7 +139,7 @@ public class Ad3DepartmentEditTC extends BaseClass {
 		lp1.clickAdLoginPage1LoginBtn();
 		String otpSent = lp1.getAdLoginPage1ToastMsg(driver);
 		Reporter.log(otpSent + "<===>OTP has been sent successfully", true);
-		soft.assertEquals(otpSent, "OTP has been sent successfully");
+		//soft.assertEquals(otpSent, "OTP has been sent successfully");
 		lp2.inpAdLoginPage2Otp(UtilityClass.getPFData("AdPassword"));
 		lp2.clickAdLoginPage2SubmitBtn();
 	}

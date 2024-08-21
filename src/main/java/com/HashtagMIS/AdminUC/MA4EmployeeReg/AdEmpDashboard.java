@@ -28,10 +28,12 @@ public class AdEmpDashboard {
 	@FindBy(xpath = "(//button[@type='button'])[3]")
 	private WebElement delete;
 	@FindBy(xpath = "//button[text()='Yes, delete it!']")
-	private WebElement AYSOK;
+	private WebElement AYSOKBtn;
+	@FindBy(xpath = "//button[text()='No, cancel!']")
+	private WebElement AYScancelBtn;
 	@FindBy(xpath = "//button[text()='OK']")
-	private WebElement OKPOP;
-
+	private WebElement okBtn;
+	
 	public AdEmpDashboard(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
@@ -80,10 +82,19 @@ public class AdEmpDashboard {
 	public void clickAdEmpDashboardEditBtnForName(WebDriver driver, String name) {
 		driver.findElement(By.xpath("(//div[text()='" + name + "']/ancestor::div[2]/div)[5]/div/button[1]")).click();
 	}
+	public void clickAdEmpDashboardDeleteBtnForName(WebDriver driver, String name) {
+		driver.findElement(By.xpath("(//div[text()='" + name + "']/ancestor::div[2]/div)[5]/div/button[2]")).click();
+		AYScancelBtn.click();
+		driver.findElement(By.xpath("(//div[text()='" + name + "']/ancestor::div[2]/div)[5]/div/button[2]")).click();
+		
+		AYSOKBtn.click();
+		okBtn.click();
+		
+	}
 
 	public void clickAdEmpDashboardDeleteBtn() {
 		delete.click();
-		AYSOK.click();
-		OKPOP.click();
+		AYSOKBtn.click();
+		
 	}
 }

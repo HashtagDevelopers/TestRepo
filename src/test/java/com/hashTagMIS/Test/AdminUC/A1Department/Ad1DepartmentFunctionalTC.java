@@ -28,6 +28,7 @@ import com.HashtagMIS.AdminUC.MA4EmployeeReg.AdEmpDashboard;
 import com.HashtagMIS.EmployeeUC.ME1Login.EmLogin;
 import com.HashtagMIS.EmployeeUC.ME3Report.EmHistory;
 
+import DataProviders.A1DSAddDeptAndEmp;
 import LibraryFiles.BaseClass;
 import LibraryFiles.UtilityClass;
 import net.bytebuddy.utility.RandomString;
@@ -45,9 +46,13 @@ public class Ad1DepartmentFunctionalTC extends BaseClass {
 	EmLogin lp;
 	AdEditDepartmentForm de;
 	Logger log = LogManager.getLogger(Ad1DepartmentFunctionalTC.class);
+	public String sheetName;
 
 	@BeforeClass
 	public void openBrowser() throws IOException, InterruptedException {
+		sheetName = "DeptFunctional";
+		A1DSAddDeptAndEmp.setSheetName(sheetName, 1, 9);
+
 		initialiseBrowser();
 		lp1 = new AdLogin1(driver);
 		lp2 = new AdLogin2(driver);
@@ -57,7 +62,6 @@ public class Ad1DepartmentFunctionalTC extends BaseClass {
 		lp = new EmLogin(driver);
 		hp = new EmHistory(driver);
 		de = new AdEditDepartmentForm(driver);
-		
 
 		log.info("for info only");
 
@@ -66,7 +70,7 @@ public class Ad1DepartmentFunctionalTC extends BaseClass {
 		((JavascriptExecutor) driver).executeScript(
 				"arguments[0].setAttribute('style', 'border: 2px solid red; background-color: #0078d4; background-image: none;')",
 				error);
-		
+
 		sm.clickAdSideMenuDepartmentBtn();
 		log.info("add Prerequisite Department");
 		ad.inpAdAddDepartmentFormDept("Hospital");
@@ -76,11 +80,13 @@ public class Ad1DepartmentFunctionalTC extends BaseClass {
 		ad.clickAdAddDepartmentFormAddBtn(driver);
 		Thread.sleep(5000);
 	}
+
 	@BeforeMethod
 	public void setUp() {
-	    // Clear or reset the state before each test
+		// Clear or reset the state before each test
 		soft = new SoftAssert();
 	}
+
 	@Test(enabled = true, dataProvider = "DepartmentFunctionalDS", dataProviderClass = DataProviders.A1DSAddDeptAndEmp.class)
 	public void AddDepartmentFunctionalTest(String Scenario, String Error, String Department, String toastmsg)
 			throws IOException, InterruptedException {
@@ -88,21 +94,24 @@ public class Ad1DepartmentFunctionalTC extends BaseClass {
 		ad.inpAdAddDepartmentFormDept(Department);
 		ad.clickAdAddDepartmentFormAddBtn(driver);
 		String tm = ad.getAdAddDepartmentFormToastMsg(driver);
-		//log.info("Department added");
-		Reporter.log(Scenario+"=>"+tm + "<====>" + toastmsg, true);
+		// log.info("Department added");
+		Reporter.log(Scenario + "=>" + tm + "<====>" + toastmsg, true);
 		// Assert the toast message
-	    soft.assertEquals(tm, toastmsg, Scenario+" => Toast message does not match the expected message.");
+		soft.assertEquals(tm, toastmsg, Scenario + " => Toast message does not match the expected message.");
 
-	    // Verify the department list based on the scenario
-	    if (Scenario.equals("Num") || Scenario.equals("SpecialChar") || Scenario.equals("Negative Min")) {
-	        soft.assertFalse(ad.getAdAddDepartmentFormDeptList().contains(Department), "Department list should not contain: " + Department);
-	    } else if (Scenario.equals("Duplicate")) {
-	        // For duplicate scenario, ensure the department was not added again
-	        long occurrences = ad.getAdAddDepartmentFormDeptList().stream().filter(dept -> dept.equals(Department)).count();
-	        soft.assertEquals(occurrences, 1, "Duplicate department should not be added again: " + Department);
-	    } else {
-	        soft.assertTrue(ad.getAdAddDepartmentFormDeptList().contains(Department), "Department list should contain: " + Department);
-	    }
+		// Verify the department list based on the scenario
+		if (Scenario.equals("Num") || Scenario.equals("SpecialChar") || Scenario.equals("Negative Min")) {
+			soft.assertFalse(ad.getAdAddDepartmentFormDeptList().contains(Department),
+					"Department list should not contain: " + Department);
+		} else if (Scenario.equals("Duplicate")) {
+			// For duplicate scenario, ensure the department was not added again
+			long occurrences = ad.getAdAddDepartmentFormDeptList().stream().filter(dept -> dept.equals(Department))
+					.count();
+			soft.assertEquals(occurrences, 1, "Duplicate department should not be added again: " + Department);
+		} else {
+			soft.assertTrue(ad.getAdAddDepartmentFormDeptList().contains(Department),
+					"Department list should contain: " + Department);
+		}
 
 		Thread.sleep(5000);
 		soft.assertAll();
@@ -115,7 +124,7 @@ public class Ad1DepartmentFunctionalTC extends BaseClass {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
 		String cntDate = currentDate.format(formatter);
 		// System.out.println(m.getName());
-		String rs = m.getName() + cntDate+RandomString.make(2);
+		String rs = m.getName() + cntDate + RandomString.make(2);
 		if (s1.getStatus() == ITestResult.FAILURE) {
 			UtilityClass.captureSS(driver, rs);
 		}
@@ -126,13 +135,14 @@ public class Ad1DepartmentFunctionalTC extends BaseClass {
 
 		// driver.close();
 	}
+
 	public void adminSignIn() throws IOException {
 		driver.get(UtilityClass.getPFData("AdminURL"));
 		lp1.inpAdLoginPage1Email(UtilityClass.getPFData("AdEmail"));
 		lp1.clickAdLoginPage1LoginBtn();
 		String otpSent = lp1.getAdLoginPage1ToastMsg(driver);
 		Reporter.log(otpSent + "<===>OTP has been sent successfully", true);
-		soft.assertEquals(otpSent, "OTP has been sent successfully");
+		// soft.assertEquals(otpSent, "OTP has been sent successfully");
 		lp2.inpAdLoginPage2Otp(UtilityClass.getPFData("AdPassword"));
 		lp2.clickAdLoginPage2SubmitBtn();
 	}

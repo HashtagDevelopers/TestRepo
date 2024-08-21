@@ -24,12 +24,14 @@ import com.HashtagMIS.AdminUC.MA1Login.AdLogin2;
 import com.HashtagMIS.AdminUC.MA2SideMenu.AdSideMenu;
 
 import com.HashtagMIS.AdminUC.MA4EmployeeReg.AdEmpDashboard;
+import com.HashtagMIS.AdminUC.MA4EmployeeReg.AdEmpEditForm;
 import com.HashtagMIS.AdminUC.MA4EmployeeReg.AdEmpForm;
-import com.HashtagMIS.AdminUC.MA4EmployeeReg.AdEmpFormEdit;
+
 
 import com.HashtagMIS.EmployeeUC.ME1Login.EmLogin;
 import com.HashtagMIS.EmployeeUC.ME3Report.EmHistory;
 
+import DataProviders.A1DSAddDeptAndEmp;
 import LibraryFiles.BaseClass;
 import LibraryFiles.UtilityClass;
 import net.bytebuddy.utility.RandomString;
@@ -41,21 +43,23 @@ public class AdMultipleEmpTC extends BaseClass {
 	AdSideMenu sm;
 	AdEmpDashboard sd;
 	AdEmpForm ef;
-	AdEmpFormEdit ee;
+	AdEmpEditForm ee;
 	EmHistory hp;
 	String msg;
 	EmLogin lp;
 	Logger log = LogManager.getLogger(AdMultipleEmpTC.class);
-
+	public String sheetName;
 	@BeforeClass
 	public void openBrowser() throws IOException, InterruptedException {
+		sheetName="ActStaff";
+		A1DSAddDeptAndEmp.setSheetName(sheetName,3,6);
 		initialiseBrowser();
 		lp1 = new AdLogin1(driver);
 		lp2 = new AdLogin2(driver);
 		sm = new AdSideMenu(driver);
 		sd = new AdEmpDashboard(driver);
 		ef = new AdEmpForm(driver);
-		ee = new AdEmpFormEdit(driver);
+		ee = new AdEmpEditForm(driver);
 		lp = new EmLogin(driver);
 		hp = new EmHistory(driver);
 		soft = new SoftAssert();

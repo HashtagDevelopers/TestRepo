@@ -97,9 +97,7 @@ public class AdAddDepartmentForm {
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", okBtn); // addDeptBtn.click();
 	}
 
-	public WebElement rtnAdAddDepartmentFormAddBtn() {
-		return addDeptBtn;
-	}
+
 
 	public void clickAdAddDepartmentFormEditBtn() {
 		editBtn.click();

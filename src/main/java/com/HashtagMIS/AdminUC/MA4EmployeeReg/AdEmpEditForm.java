@@ -16,8 +16,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import LibraryFiles.UtilityClass;
+import LibraryFiles.WaitUtils;
 
-public class AdEmpFormEdit {
+public class AdEmpEditForm {
 	@FindBy(xpath = "//p[text()='Update Staff Info']")
 	private WebElement seTitle;
 	@FindBy(xpath = "//h2[text()='Add Staff Form']")
@@ -31,9 +32,14 @@ public class AdEmpFormEdit {
 	@FindBy(xpath = "//input[@name='role']")
 	private WebElement designationInp;
 	@FindBy(xpath = "//input[@class='select__input']")
-	private WebElement deptInp;
+	private WebElement departmentInp;
 	@FindBy(xpath = "//div[@class='select__multi-value__label css-1y7rh0y-MultiValueGeneric2']")
 	private List<WebElement>  departmentLst;
+	@FindBy(xpath = "//div[contains(@class,'select__value-container')]")
+	private WebElement departmentContainerInp;
+	@FindBy(xpath = "//div[contains(@class,'select__multi-value')]")
+	private List<WebElement> departmentMultiValue;
+	
 	@FindBy(xpath = "//input[@name='shiftStartTime']")
 	private WebElement shiftStart;
 	@FindBy(xpath = "//input[@name='shiftEndTime']")
@@ -55,13 +61,14 @@ public class AdEmpFormEdit {
 	private WebElement toastMsg;
 
 	Actions act;
+	private WaitUtils waitUtils;
 
-	public AdEmpFormEdit(WebDriver driver) {
+	public AdEmpEditForm(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 		this.act = new Actions(driver);
 	}
 
-	public void getAdEmpFormEditTitle(WebDriver driver) throws InterruptedException {
+	public void getAdEmpEditFormTitle(WebDriver driver) throws InterruptedException {
 		UtilityClass.DrawBorder(driver, seTitle);
 		Thread.sleep(500);
 		seTitle.isDisplayed();
@@ -83,80 +90,92 @@ public class AdEmpFormEdit {
 
 	}
 
-	public List<String> getAdEmpFormEditData() throws InterruptedException {
+	public List<String> getAdEmpEditFormData() throws InterruptedException {
 		ArrayList<String> ar = new ArrayList<String>();	
-		ar.add(getAdEmpFormEditName());
-		ar.add(getAdEmpFormEditEmail());
-		ar.add(getAdEmpFormEditPwD());
-		ar.add(getAdEmpFormEditAccess());
+		ar.add(getAdEmpEditFormName());
+		ar.add(getAdEmpEditFormEmail());
+		ar.add(getAdEmpEditFormPwD());
+		ar.add(getAdEmpEditFormAccess());
 		for(WebElement d:departmentLst) {
 			ar.add(d.getText());
 		}
-		ar.add(getAdEmpFormEditDesgni());
-		ar.add(getAdEmpFormEditShiftStart());
-		ar.add(getAdEmpFormEditShiftEnd());
-		ar.add(getAdEmpFormEditDoJ());
+		ar.add(getAdEmpEditFormDesgni());
+		ar.add(getAdEmpEditFormShiftStart());
+		ar.add(getAdEmpEditFormShiftEnd());
+		ar.add(getAdEmpEditFormDoJ());
 		
 		Collections.sort(ar);
 		return ar;
 	}
 
-	public void inpAdEmpFormEditName(String nam) throws InterruptedException {
+	public void inpAdEmpEditFormName(String nam) throws InterruptedException {
 		nameInp.clear();
 		nameInp.sendKeys(nam);
 	}
 
-	public void inpAdEmpFormEditEmail(String emaill) throws InterruptedException {
+	public void inpAdEmpEditFormEmail(String emaill) throws InterruptedException {
 
 		emailInp.clear();
 		emailInp.sendKeys(emaill);
 	}
 
-	public void inpAdEmpFormEditPwd(String pwd) {
+	public void inpAdEmpEditFormPwd(String pwd) {
 		pwdInp.clear();
 		pwdInp.sendKeys(pwd);
 	}
 
-	public void inpAdEmpFormEditDesgni(String dsign) {
+	public void inpAdEmpEditFormDesgni(String dsign) {
 		designationInp.clear();
 		designationInp.sendKeys(dsign);
 	}
-   public  void selAdEmpFormEditAccess(String access) {
+   public  void selAdEmpEditFormAccess(String access) {
 		
 		 UtilityClass.selectByVisibleTxt(accessSel, access);
 	}
 
-	public void inpSelEmpFormEditDept(String dept1,String dept2, String dept3,String dept4) {
-		UtilityClass.selectByVisibleTxt(deptInp, dept1);
-		UtilityClass.selectByVisibleTxt(deptInp, dept2);
-		UtilityClass.selectByVisibleTxt(deptInp, dept3);
-		UtilityClass.selectByVisibleTxt(deptInp, dept4);
+	public void inpEmpEditFormDept(String dept1,String dept2, String dept3,String dept4) throws InterruptedException {
+		System.out.println("sixsfsf "+departmentMultiValue.size());
+		System.out.println("sixsfsf "+departmentMultiValue.isEmpty());
+		while (!departmentMultiValue.isEmpty()) {
+			departmentInp.click();
+			act.sendKeys(Keys.BACK_SPACE).perform();
+			Thread.sleep(500);
+		}	
+		Thread.sleep(500);
+		departmentInp.sendKeys(dept1);
+		act.sendKeys(Keys.ENTER).perform();
+		departmentInp.sendKeys(dept2);
+		act.sendKeys(Keys.ENTER).perform();
+		departmentInp.sendKeys(dept3);
+		act.sendKeys(Keys.ENTER).perform();
+		departmentInp.sendKeys(dept4);
+		act.sendKeys(Keys.ENTER).perform();
 	}
 
-	public void inpAdEmpFormEditShiftStart(String start) {
+	public void inpAdEmpEditFormShiftStart(String start) {
 		shiftStart.sendKeys(start);
 	}
 
-	public void inpAdEmpFormEditShiftEnd(String end) {
+	public void inpAdEmpEditFormShiftEnd(String end) {
 		shiftEnd.sendKeys(end);
 	}
 
-	public void inpAdEmpFormEditDoJ(String ddmm) {		
+	public void inpAdEmpEditFormDoJ(String ddmm) {		
 		dojInp.sendKeys(ddmm);
 		act.sendKeys(Keys.ARROW_RIGHT).perform();
 		act.sendKeys("2024").perform();
 	}
 
-	public void clickAdEmpFormEditUpdateBtn() {
+	public void clickAdEmpEditFormUpdateBtn() {
 
 		updateBtn.click();
 	}
 
-	public void clickAdEmpFormEditCancelBtn() {
+	public void clickAdEmpEditFormCancelBtn() {
 		cancelBtn.click();
 	}
 
-	public String getAdEmpFormEditToastMsg(WebDriver driver) {
+	public String getAdEmpEditFormToastMsg(WebDriver driver) {
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 			wait.until(expectedConditions -> toastMsg.isDisplayed()); // Lambda for expected condition
@@ -170,36 +189,36 @@ public class AdEmpFormEdit {
 		}
 	}
 
-	public String getAdEmpFormEditName() throws InterruptedException {
+	public String getAdEmpEditFormName() throws InterruptedException {
 		Thread.sleep(1000);
 		return nameInp.getAttribute("value");
 	}
 
-	public String getAdEmpFormEditEmail() {
+	public String getAdEmpEditFormEmail() {
 		return emailInp.getAttribute("value");
 	}
 
-	public String getAdEmpFormEditPwD() {
+	public String getAdEmpEditFormPwD() {
 		return pwdInp.getAttribute("value");
 	}
 
-	public String getAdEmpFormEditDesgni() {
+	public String getAdEmpEditFormDesgni() {
 		return designationInp.getAttribute("value");
 	}
 
-	public  String getAdEmpFormEditAccess() {
+	public  String getAdEmpEditFormAccess() {
 		
 		return UtilityClass.getSelectedOption(accessSel);
 	}
 
-	public String getAdEmpFormEditShiftStart() {
+	public String getAdEmpEditFormShiftStart() {
 		return shiftStart.getAttribute("value");		
 	}
-	public String getAdEmpFormEditShiftEnd() {
+	public String getAdEmpEditFormShiftEnd() {
 		return shiftEnd.getAttribute("value");
 	}
 
-	public String getAdEmpFormEditDoJ() {
+	public String getAdEmpEditFormDoJ() {
 		return dojInp.getAttribute("value");
 	}
 }

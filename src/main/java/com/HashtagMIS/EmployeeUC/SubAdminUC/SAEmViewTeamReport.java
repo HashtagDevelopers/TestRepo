@@ -22,13 +22,14 @@ import LibraryFiles.UtilityClass;
 
 public class SAEmViewTeamReport {
 
-	@FindBy(xpath = "//h3[contains(text(),'Employee Name:')]")
-	private WebElement vrtitle;
+
 	@FindBy(xpath = "//div[@id='cell-2-undefined']")
 	private List<WebElement> taskList;
+	@FindBy(xpath = "(//input[@type='text'])[1]")
+	private WebElement name;
 	@FindBy(xpath = "//input[@type='date']")
 	private WebElement date;
-	@FindBy(xpath = "//input[@type='text']")
+	@FindBy(xpath = "(//input[@type='text'])[2]")
 	private WebElement dept;
 	@FindBy(xpath = "//a[text()='Go Back']")
 	private WebElement backBtn;
@@ -63,7 +64,7 @@ public class SAEmViewTeamReport {
 
 	public List<String> getSAEmViewTeamReportUpperInfo() throws InterruptedException, ParseException {
 		al = new ArrayList<String>();
-		al.addAll(Arrays.asList(vrtitle.getText(), dept.getAttribute("value"), getSAEmViewTeamReportDate(),
+		al.addAll(Arrays.asList(name.getAttribute("value"), dept.getAttribute("value"), getSAEmViewTeamReportDate(),
 				ChkUnChk.getText()));
 		return al;
 	}
@@ -88,12 +89,6 @@ public class SAEmViewTeamReport {
 		UtilityClass.DrawBorder(driver, ChkUnChk);
 		Thread.sleep(1500);
 		return ChkUnChk.getText();
-	}
-
-	public String getSAEmViewTeamReportTitle(WebDriver driver) throws InterruptedException {
-		UtilityClass.DrawBorder(driver, vrtitle);
-		Thread.sleep(3000);
-		return vrtitle.getText();
 	}
 
 	public LinkedHashMap<String, String> getSAEmViewTeamReportTaskAndValue(WebDriver driver) {

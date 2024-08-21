@@ -32,6 +32,7 @@ import com.HashtagMIS.AdminUC.MA6Report.AdReportDashboard;
 import com.HashtagMIS.EmployeeUC.ME1Login.EmLogin;
 import com.HashtagMIS.EmployeeUC.ME3Report.EmHistory;
 
+import DataProviders.A1DSAddDeptAndEmp;
 import LibraryFiles.BaseClass;
 import LibraryFiles.UtilityClass;
 import net.bytebuddy.utility.RandomString;
@@ -50,9 +51,13 @@ public class Ad2AddMultiDeptandVerifytheirPresenceTC extends BaseClass {
 	String msg;
 	EmLogin lp;
 	AdEditDepartmentForm de;
+	public String sheetName;
 	Logger log = LogManager.getLogger(Ad2AddMultiDeptandVerifytheirPresenceTC.class);
 	@BeforeClass
 	public void openBrowser() throws IOException, InterruptedException {
+		sheetName="DeptMulti";
+		A1DSAddDeptAndEmp.setSheetName(sheetName,1,1);
+	
 		initialiseBrowser();
 		lp1 = new AdLogin1(driver);
 		lp2 = new AdLogin2(driver);
@@ -81,7 +86,7 @@ public class Ad2AddMultiDeptandVerifytheirPresenceTC extends BaseClass {
 		soft = new SoftAssert();
 	}
 
-	@Test(enabled = true, dataProvider = "DepartmentMultiDS",priority = 1, dataProviderClass = DataProviders.A1DSAddDeptAndEmp.class)
+	@Test(enabled = false, groups = "Regression",dataProvider = "DepartmentMultiDS",priority = 1, dataProviderClass = DataProviders.A1DSAddDeptAndEmp.class)
 	public void addDepartmentMultiTest(String Scenario, String Error, String Department, String toastmsg)
 			throws IOException, InterruptedException {
 
@@ -100,7 +105,7 @@ public class Ad2AddMultiDeptandVerifytheirPresenceTC extends BaseClass {
 		soft.assertAll();
 	}
 
-	@Test(enabled=false,priority = 2)
+	@Test(enabled=true,groups = "Regression",priority = 2)
 	public void verifyAllDepInAllDropdownTest() throws IOException, InterruptedException {
 		sm.clickAdSideMenuDepartmentBtn();
 		List<String> deptList = ad.getAdAddDepartmentFormDeptList();

@@ -3,15 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.hashTagMIS.Test.AdminUC.A2Employee.AdEditEmpAndVerifyHisPresenceTC">
+      <class name="com.hashTagMIS.Test.EmployeeUC.c2Report.SubmitMultipleReportTC">
         <methods>
-          <include name="closeBrowser"/>
-          <include name="FailedTCSS"/>
+          <include name="openLogIn"/>
+          <include name="FillReportTest"/>
           <include name="openBrowser"/>
-          <include name="editEmpAndVerifyHisPresenceTest" invocation-numbers="0"/>
-          <include name="setUp"/>
         </methods>
-      </class> <!-- com.hashTagMIS.Test.AdminUC.A2Employee.AdEditEmpAndVerifyHisPresenceTC -->
+      </class> <!-- com.hashTagMIS.Test.EmployeeUC.c2Report.SubmitMultipleReportTC -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -38,6 +38,7 @@ import com.HashtagMIS.EmployeeUC.ME3Report.EmViewReport;
 import com.HashtagMIS.EmployeeUC.SubAdminUC.SAEmTeamReport;
 import com.HashtagMIS.EmployeeUC.SubAdminUC.SAEmViewTeamReport;
 
+import DataProviders.C2DSEmReport;
 import LibraryFiles.BaseClass;
 import LibraryFiles.UtilityClass;
 import LibraryFiles.UtilsClass;
@@ -58,18 +59,17 @@ public class F2AdEditReportTC extends BaseClass {
 	SAEmTeamReport satr;
 	SAEmViewTeamReport savr;
 	SoftAssert soft;
-	String CnDtTime, cntDate, yestDate, tomDate, StaffName = "Krunal", admin = "DEVELOPERS";
-	int cd, cm, cy;
+	String CnDtTime, cntDate,  StaffName = "Krunal", admin = "DEVELOPERS";
 	Logger log = LogManager.getLogger(F2AdEditReportTC.class);
 	PrintWriter pw, pw1;
 	StringBuilder sb;
-	ArrayList<String> ExpEmHPDLst2;
-	ArrayList<String> ExpAdRpDLst2;
-	ArrayList<String> ExpSATRpDLst2;
-	ArrayList<String> ExpAdVRUI2;
-
+	ArrayList<String> ExpEmHPDLst2,ExpAdRpDLst2,ExpSATRpDLst2,ExpAdVRUI2;
+	public String sheetName; 
 	@BeforeClass
 	public void openBrowser() throws IOException, InterruptedException {
+		sheetName="ReportMulti";
+		C2DSEmReport.setSheetName(sheetName,2,2);
+
 		initialiseBrowser();
 		elp = new EmLogin(driver);
 		alp1 = new AdLogin1(driver);
@@ -102,7 +102,7 @@ public class F2AdEditReportTC extends BaseClass {
 		log.info("Login success");
 	}
 
-	@Test(enabled = true, dataProvider = "ReportFlowDS1", dataProviderClass = DataProviders.C2DSEmReport.class)
+	@Test(enabled = true,groups = "Regression", dataProvider = "ReportFlowDS", dataProviderClass = DataProviders.C2DSEmReport.class)
 	public void AdEditReportTest(String Scenario, String textarea, String Department, String dd, String mm, String toastmsg)
 			throws IOException, InterruptedException, ParseException {
 
@@ -152,7 +152,6 @@ public class F2AdEditReportTC extends BaseClass {
 
 		log.info("Moving to admin Edit report....");
 		ard.clickAdReportDashboardEditBtnForDateTime(driver, CnDtTime);
-		soft.assertTrue(aer.getAdEditReportTitle(driver), "adEdTitle");
 		Thread.sleep(500);
 		log.info("Editing Report....");
 		aer.inpAdEditReportAllTask(driver, Department);

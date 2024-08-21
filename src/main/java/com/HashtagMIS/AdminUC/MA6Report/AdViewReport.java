@@ -22,13 +22,14 @@ import LibraryFiles.UtilityClass;
 
 public class AdViewReport {
 
-	@FindBy(xpath = "//h2[contains(text(),'Employee Name')]")
-	private WebElement SVtitle;
-	@FindBy(xpath = "//input[@type='text']")
+
+	@FindBy(xpath = "(//input[@type='text'])[1]")
+	private WebElement name;
+	@FindBy(xpath = "(//input[@type='text'])[2]")
 	private WebElement dept;
 	@FindBy(xpath = "//input[@type='date']")
 	private WebElement reportDate;
-	@FindBy(xpath = "(//h2)[3]")
+	@FindBy(xpath = "(//h2)[2]")
 	private WebElement ChkUnChk;
 	@FindBy(xpath = "//input[@type='checkbox']")
 	private WebElement chkBox;
@@ -81,12 +82,6 @@ public class AdViewReport {
 		 submitBtn.click();
 	}
 
-	public boolean getAdViewReportTitle(WebDriver driver) throws InterruptedException {
-		UtilityClass.DrawBorder(driver, SVtitle);
-		Thread.sleep(2000);
-		return SVtitle.isDisplayed();
-	}
-
 	public String getAdViewReportDate() throws ParseException {
 		String dateValue = reportDate.getAttribute("value");
 		SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -104,9 +99,10 @@ public class AdViewReport {
 
 	
 
-	public List<String> getAdViewReportUpperInfo() throws ParseException {
+	public List<String> getAdViewReportUpperInfo() throws ParseException, InterruptedException {
 		al = new ArrayList<String>();
-		al.add(SVtitle.getText());		
+		Thread.sleep(300);
+		al.add(name.getAttribute("value"));		
 		al.add(dept.getAttribute("value"));
 		al.add(getAdViewReportDate());
 		al.add(ChkUnChk.getText());

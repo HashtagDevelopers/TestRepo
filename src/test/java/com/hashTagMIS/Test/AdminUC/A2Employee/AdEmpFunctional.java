@@ -24,12 +24,14 @@ import com.HashtagMIS.AdminUC.MA1Login.AdLogin2;
 import com.HashtagMIS.AdminUC.MA2SideMenu.AdSideMenu;
 
 import com.HashtagMIS.AdminUC.MA4EmployeeReg.AdEmpDashboard;
+import com.HashtagMIS.AdminUC.MA4EmployeeReg.AdEmpEditForm;
 import com.HashtagMIS.AdminUC.MA4EmployeeReg.AdEmpForm;
-import com.HashtagMIS.AdminUC.MA4EmployeeReg.AdEmpFormEdit;
+
 
 import com.HashtagMIS.EmployeeUC.ME1Login.EmLogin;
 import com.HashtagMIS.EmployeeUC.ME3Report.EmHistory;
 
+import DataProviders.A1DSAddDeptAndEmp;
 import LibraryFiles.BaseClass;
 import LibraryFiles.UtilityClass;
 import LibraryFiles.UtilsClass;
@@ -37,28 +39,32 @@ import net.bytebuddy.utility.RandomString;
 
 /*Employee Functional*/
 public class AdEmpFunctional extends BaseClass {
+	
 	SoftAssert soft;
 	AdLogin1 lp1;
 	AdLogin2 lp2;
 	AdSideMenu sm;
-	AdEmpDashboard sd;
+	AdEmpDashboard ed;
 	AdEmpForm ef;
-	AdEmpFormEdit ee;
+	AdEmpEditForm ee;
 	EmHistory hp;
 	String msg;
 	EmLogin lp;
 	Logger log = LogManager.getLogger(AdEmpFunctional.class);
 	ArrayList<String> expEmpDataInDashboard, expEmpDataInEdit;
-
+	public String sheetName;
 	@BeforeClass
 	public void openBrowser() throws IOException, InterruptedException {
+		sheetName="StaffFunctional";
+		A1DSAddDeptAndEmp.setSheetName(sheetName,1,9);
 		initialiseBrowser();
+		
 		lp1 = new AdLogin1(driver);
 		lp2 = new AdLogin2(driver);
 		sm = new AdSideMenu(driver);
-		sd = new AdEmpDashboard(driver);
+		ed = new AdEmpDashboard(driver);
 		ef = new AdEmpForm(driver);
-		ee = new AdEmpFormEdit(driver);
+		ee = new AdEmpEditForm(driver);
 		lp = new EmLogin(driver);
 		hp = new EmHistory(driver);
 		soft = new SoftAssert();
@@ -67,7 +73,14 @@ public class AdEmpFunctional extends BaseClass {
 		((JavascriptExecutor) driver).executeScript(
 				"arguments[0].setAttribute('style', 'border: 2px solid red; background-color: #0078d4; background-image: none;')",
 				error);
-	
+		sm.clickAdSideMenuEmpBtn();
+		ed.clickAdEmpDashboardAddEmpBtn();
+		ef.helperInpAdEmpForm("deleteduser", "deleteduser@gmail.com", "Adam@123", "Sub-Admin", "3D Design",
+				"Software Development", "Game Development", "Incident", "QA", "1245AM", "8302PM", "0505");
+		ef.clickAdEmpFormCreateBtn();
+		ed.clickAdEmpDashboardDeleteBtnForName(driver, "deleteduser");
+		
+
 	}
 
 	@BeforeMethod
@@ -76,48 +89,29 @@ public class AdEmpFunctional extends BaseClass {
 		soft = new SoftAssert();
 		expEmpDataInDashboard = new ArrayList<String>();
 		expEmpDataInEdit = new ArrayList<String>();
-		Thread.sleep(300);
+		Thread.sleep(500);
 		sm.clickAdSideMenuEmpBtn();
 		Thread.sleep(300);
-		sd.clickAdEmpDashboardAddEmpBtn();
+		ed.clickAdEmpDashboardAddEmpBtn();
 		Thread.sleep(300);
 	}
 
 	@Test(enabled = true, dataProvider = "EmpFuctionalDS", dataProviderClass = DataProviders.A1DSAddDeptAndEmp.class)
-	public void addEmpFuctionalTest(String Scenario, String Error, String Name, String Email, String pwd,
-			String acc, String Dept1, String Dept2, String Dept3, String Dept4, String Designation, String shiftStart,
+	public void addEmpFuctionalTest(String Scenario, String Error, String Name, String Email, String pwd, String acc,
+			String Dept1, String Dept2, String Dept3, String Dept4, String Designation, String shiftStart,
 			String shiftEnd, String doj, String toastmsg) throws IOException, InterruptedException {
 
-		expEmpDataInDashboard.addAll(Arrays.asList(Name, Dept1, Dept2, Dept3, Dept4,
-				Email, Designation));
-		Collections.sort(expEmpDataInDashboard);
 	
-		ef.inpAdEmpFormName(Name);
-		Thread.sleep(300);
-		ef.inpAdEmpFormEmail(Email);
-		Thread.sleep(300);
-		ef.inpAdEmpFormPwd(pwd);
-		Thread.sleep(300);
-		ef.selAdEmpFormAccess(acc);
-		Thread.sleep(300);
-		ef.seleAdEmpFormDept(Dept1, Dept2, Dept3, Dept4);
-		Thread.sleep(300);
-		ef.inpAddEmpFormDesgni(Designation);
-		Thread.sleep(300);
-		ef.inpAdEmpFormShiftStart(shiftStart);
-		Thread.sleep(300);
-		ef.inpAdEmpFormShiftEnd(shiftEnd);
-		Thread.sleep(300);
-		ef.inpAdEmpFormDtOJ(doj);
-		
+		ef.helperInpAdEmpForm(Name, Email, pwd, acc, Dept1, Dept2, Dept3, Dept4, Designation, shiftStart, shiftEnd,
+				doj);
 		ef.clickAdEmpFormCreateBtn();
 		String tm = ef.getAdEmpFormToastMsg(driver);
 		Reporter.log(tm + "<====>" + toastmsg, true);
 		soft.assertEquals(tm, toastmsg);
 		soft.assertAll();
-		
-		
+
 	}
+
 	@AfterMethod
 	public void FailedTCSS(ITestResult s1) throws IOException {
 		String rs = RandomString.make(2);
@@ -130,8 +124,9 @@ public class AdEmpFunctional extends BaseClass {
 	public void closeBrowser() {
 		// driver.close();
 	}
+
 	public void employeeSignIn() throws IOException {
-		lp.EmLoginPageSignIn(driver, UtilityClass.getPFData("Email"), UtilityClass.getPFData("Password"));	
+		lp.EmLoginPageSignIn(driver, UtilityClass.getPFData("Email"), UtilityClass.getPFData("Password"));
 	}
 
 	public void adminSignIn() throws IOException {

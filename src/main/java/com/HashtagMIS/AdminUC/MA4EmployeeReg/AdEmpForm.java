@@ -89,27 +89,45 @@ public class AdEmpForm {
 
 	}
 
-	public void helperAdEmpForm(String nam, String emaill, String pwd, String acc,String dept1, String dept2, String dept3,
-			String dept4, String dsign,String start, String end,String ddmm) {
+	public void helperInpAdEmpForm(String nam, String emaill, String pwd, String acc,String dept1, String dept2, String dept3,
+			String dept4, String dsign,String start, String end,String ddmm) throws InterruptedException {
 		nameInp.sendKeys(nam);
+		Thread.sleep(200);
 		emailInp.sendKeys(emaill);
+		Thread.sleep(200);
 		pwdInp.sendKeys(pwd);
+		Thread.sleep(200);
 		selAdEmpFormAccess(acc);
+		Thread.sleep(200);
 		departmentInp.sendKeys(dept1);
+		Thread.sleep(200);
 		act.sendKeys(Keys.ENTER).perform();
+		Thread.sleep(200);
 		departmentInp.sendKeys(dept2);
+		Thread.sleep(200);
 		act.sendKeys(Keys.ENTER).perform();
+		Thread.sleep(200);
 		departmentInp.sendKeys(dept3);
+		Thread.sleep(200);
 		act.sendKeys(Keys.ENTER).perform();
+		Thread.sleep(200);
 		departmentInp.sendKeys(dept4);
+		Thread.sleep(200);
 		act.sendKeys(Keys.ENTER).perform();
+		Thread.sleep(200);
 		designationInp.sendKeys(dsign);
+		Thread.sleep(200);
 		shiftStart.sendKeys(start);
+		Thread.sleep(200);
 		shiftEnd.sendKeys(end);
+		Thread.sleep(200);
 		dojInp.sendKeys(ddmm);
+		Thread.sleep(200);
 		act.sendKeys(Keys.ARROW_RIGHT).perform();
+		Thread.sleep(200);
 		act.sendKeys("2024").perform();
-		createBtn.click();
+		Thread.sleep(200);
+		
 	}
 
 	public void inpAdEmpFormName(String nam) {

@@ -11,6 +11,7 @@ import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -38,6 +39,12 @@ public class c1LoginTC extends BaseClass {
 	AdLogin2 alp2;
 	Logger log = LogManager.getLogger(c1LoginTC.class);
 
+	public String sheetName; 
+	@BeforeClass
+	public void openBrowser12() {
+		sheetName="ForgotPassword";  //LoginCombination ForgotPassword AdminLogin
+		C1DSLoginPage.setSheetName(sheetName,1,1);
+	}
 	@BeforeMethod
 	public void openBrowser() throws IOException, InterruptedException {
 		initialiseBrowser();
@@ -54,7 +61,7 @@ public class c1LoginTC extends BaseClass {
 				error);
 	}
 
-	@Test(enabled = false, dataProvider = "LoginPageDS", dataProviderClass = DataProviders.C1DSLoginPage.class)
+	@Test(enabled = true,groups = "Regression", dataProvider = "LoginPageDS", dataProviderClass = DataProviders.C1DSLoginPage.class)
 	public void employeeLoginTest(String Scenario, String email, String pwd, String toastmsg, String msg1)
 			throws IOException, InterruptedException {
 		lp.inpEmLoginPageEmail(email);
@@ -85,7 +92,7 @@ public class c1LoginTC extends BaseClass {
 		soft.assertEquals(efp.getEmForgotPasswordPageToastMsg(driver), toastmsg);
 		soft.assertAll();
 	}
-	@Test(enabled = true,dataProvider = "AdminLoginDS",dataProviderClass = C1DSLoginPage.class )
+	@Test(enabled = false,dataProvider = "AdminLoginDS",dataProviderClass = C1DSLoginPage.class )
 	public void adminForgotPwdTest(String Scenario, String email, String toastmsg) throws IOException, InterruptedException {
 		driver.get(UtilityClass.getPFData("AdminURL"));
 		alp1.inpAdLoginPage1Email(email);

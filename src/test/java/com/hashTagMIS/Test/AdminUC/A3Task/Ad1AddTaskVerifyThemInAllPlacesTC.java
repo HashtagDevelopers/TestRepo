@@ -31,6 +31,8 @@ import com.HashtagMIS.EmployeeUC.ME1Login.EmLogin;
 import com.HashtagMIS.EmployeeUC.ME2sideMenubar.EmSideMenu;
 import com.HashtagMIS.EmployeeUC.ME3Report.EmReportForm;
 
+import DataProviders.A1DSAddDeptAndEmp;
+import DataProviders.A2DSAddTask;
 import LibraryFiles.BaseClass;
 import LibraryFiles.UtilityClass;
 import LibraryFiles.UtilsClass;
@@ -43,22 +45,23 @@ public class Ad1AddTaskVerifyThemInAllPlacesTC extends BaseClass {
 	AdLogin1 lp1;
 	AdLogin2 lp2;
 	AdSideMenu asm;
-
 	AdTaskDashboard td;
 	AdAddTask at;
 	AdEditTask aet;
-
+	EmLogin lp;
 	EmSideMenu esm;
 	EmReportForm erp;
-	String msg;
-	EmLogin lp;
 	int i = 1;
 	LinkedHashMap<String, String> expTaskLMP;
 	Logger log = LogManager.getLogger(Ad1AddTaskVerifyThemInAllPlacesTC.class);
-	String dept = "Food";
-
+	String dept = "System Admin";
+	public String filePath, sheetName;
 	@BeforeClass
 	public void openBrowser() throws IOException, InterruptedException {
+		filePath= ".\\Test Data\\System Admin.xlsx";
+		sheetName="Sheet1";
+		A2DSAddTask.setSheetName(filePath,sheetName,1,1);
+		
 		initialiseBrowser();
 		lp1 = new AdLogin1(driver);
 		lp2 = new AdLogin2(driver);
@@ -101,7 +104,7 @@ public class Ad1AddTaskVerifyThemInAllPlacesTC extends BaseClass {
 
 	}
 
-	@Test(priority = 2, enabled = false)
+	@Test(priority = 2, enabled = true)
 	public void verifyTaskFromSheetTest() throws IOException, InterruptedException {
 		at.clickAdAddTaskLastRowDeleteBtn(driver);
 		Thread.sleep(1000);

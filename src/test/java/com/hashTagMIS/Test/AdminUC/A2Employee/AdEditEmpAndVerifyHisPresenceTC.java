@@ -24,12 +24,14 @@ import com.HashtagMIS.AdminUC.MA1Login.AdLogin2;
 import com.HashtagMIS.AdminUC.MA2SideMenu.AdSideMenu;
 
 import com.HashtagMIS.AdminUC.MA4EmployeeReg.AdEmpDashboard;
+import com.HashtagMIS.AdminUC.MA4EmployeeReg.AdEmpEditForm;
 import com.HashtagMIS.AdminUC.MA4EmployeeReg.AdEmpForm;
-import com.HashtagMIS.AdminUC.MA4EmployeeReg.AdEmpFormEdit;
+
 
 import com.HashtagMIS.EmployeeUC.ME1Login.EmLogin;
 import com.HashtagMIS.EmployeeUC.ME3Report.EmHistory;
 
+import DataProviders.A1DSAddDeptAndEmp;
 import LibraryFiles.BaseClass;
 import LibraryFiles.UtilityClass;
 import LibraryFiles.UtilsClass;
@@ -43,22 +45,25 @@ public class AdEditEmpAndVerifyHisPresenceTC extends BaseClass {
 	AdSideMenu sm;
 	AdEmpDashboard sd;
 	AdEmpForm ef;
-	AdEmpFormEdit ee;
+	AdEmpEditForm ee;
 	EmHistory hp;
 	String msg;
 	EmLogin lp;
 	Logger log = LogManager.getLogger(AdEditEmpAndVerifyHisPresenceTC.class);
 	ArrayList<String> expEmpDataInDashboard, expEmpDataInEdit;
-
+	public String sheetName;
 	@BeforeClass
 	public void openBrowser() throws IOException, InterruptedException {
+		sheetName="StaffEdit";
+		A1DSAddDeptAndEmp.setSheetName(sheetName,1,1);
+	
 		initialiseBrowser();
 		lp1 = new AdLogin1(driver);
 		lp2 = new AdLogin2(driver);
 		sm = new AdSideMenu(driver);
 		sd = new AdEmpDashboard(driver);
 		ef = new AdEmpForm(driver);
-		ee = new AdEmpFormEdit(driver);
+		ee = new AdEmpEditForm(driver);
 		lp = new EmLogin(driver);
 		hp = new EmHistory(driver);
 		soft = new SoftAssert();
@@ -70,19 +75,21 @@ public class AdEditEmpAndVerifyHisPresenceTC extends BaseClass {
 		Thread.sleep(300);
 		sm.clickAdSideMenuEmpBtn();
 		Thread.sleep(300);
+		sd.clickAdEmpDashboardAddEmpBtn();
+		ef.helperInpAdEmpForm("Adam", "adam@gmail.com", "Adam@123","Sub-Admin", "3D Design", "Software Development", "Game Development", "Incident", "QA", "1245AM", "8302PM","0505");
+		ef.clickAdEmpFormCreateBtn();
+		sd.clickAdEmpDashboardAddEmpBtn();
+		ef.helperInpAdEmpForm("Adam23", "adam23@gmail.com", "Adam@123", "Staff","3D Design", "Software Development", "Game Development", "Incident", "QA", "1245AM", "8302PM","0306");
+		
 	}
 
 	@BeforeMethod
-	public void setUp() {
+	public void setUp() throws InterruptedException {
 		// Clear or reset the state before each test
 		soft = new SoftAssert();
 		expEmpDataInDashboard = new ArrayList<String>();
 		expEmpDataInEdit = new ArrayList<String>();
-/*		sd.clickAdEmpDashboardAddEmpBtn();
-		ef.helperAdEmpForm("Adam", "adam@gmail.com", "Adam@123","Sub-Admin", "3D Design", "Software Development", "Game Development", "Incident", "QA", "1245AM", "8302PM","0505");
-		sd.clickAdEmpDashboardAddEmpBtn();
-		ef.helperAdEmpForm("Adam23", "adam23@gmail.com", "Adam@123", "Staff","3D Design", "Software Development", "Game Development", "Incident", "QA", "1245AM", "8302PM","0306");
-*/
+		ef.clickAdEmpFormCreateBtn();
 	}
 
 	
@@ -95,42 +102,42 @@ public class AdEditEmpAndVerifyHisPresenceTC extends BaseClass {
 		}
 	}
 
-	@Test(enabled = true, dataProvider = "EmpEditDS", dataProviderClass = DataProviders.A1DSAddDeptAndEmp.class)
+	@Test(enabled = true,groups = "Regression", dataProvider = "EmpEditDS", dataProviderClass = DataProviders.A1DSAddDeptAndEmp.class)
 	public void editEmpAndVerifyHisPresenceTest(String Scenario, String Error, String Name, String Email, String pwd,
 			String acc, String Dept1, String Dept2, String Dept3, String Dept4, String Designation, String shiftStart,
 			String shiftEnd, String doj, String toastmsg) throws IOException, InterruptedException {
 
 		expEmpDataInDashboard.addAll(Arrays.asList(Name, Dept1, Dept2, Dept3, Dept4,
-				Email.toLowerCase() + "@hashtaginfosystem.com", Designation));
+				Email, Designation));
 		Collections.sort(expEmpDataInDashboard);
 
 		sd.clickAdEmpDashboardEditBtnForName(driver,"Adam");
 		Thread.sleep(300);
-		ee.inpAdEmpFormEditName(Name);
+		ee.inpAdEmpEditFormName(Name);
 		Thread.sleep(300);
-		ee.inpAdEmpFormEditEmail(Name.toLowerCase().trim() + "@hashtaginfosystem.com");
+		ee.inpAdEmpEditFormEmail(Email);
 		Thread.sleep(300);
-		ee.inpAdEmpFormEditPwd(Name + "@123");
+		ee.inpAdEmpEditFormPwd(pwd);
 		Thread.sleep(300);
-		ee.selAdEmpFormEditAccess(acc);
+		ee.selAdEmpEditFormAccess(acc);
 		Thread.sleep(300);
-		ee.inpSelEmpFormEditDept(Dept1, Dept2, Dept3, Dept4);
+		ee.inpEmpEditFormDept(Dept1, Dept2, Dept3, Dept4);
 		Thread.sleep(300);
-		ee.inpAdEmpFormEditDesgni(Designation);
+		ee.inpAdEmpEditFormDesgni(Designation);
 		Thread.sleep(300);
-		ee.inpAdEmpFormEditShiftStart(shiftStart);
+		ee.inpAdEmpEditFormShiftStart(shiftStart);
 		Thread.sleep(300);
-		ee.inpAdEmpFormEditShiftEnd(shiftEnd);
+		ee.inpAdEmpEditFormShiftEnd(shiftEnd);
 		Thread.sleep(300);
-		ee.inpAdEmpFormEditDoJ(doj);
+		ee.inpAdEmpEditFormDoJ(doj);
 
 		Thread.sleep(2000);
 		String doj1 = ef.getAdEmpFormDate();
 		String start = ef.getAdEmpFormShiftStart();
 		String end = ef.getAdEmpFormShiftEnd();
 
-		ee.clickAdEmpFormEditUpdateBtn();
-		String tm = ee.getAdEmpFormEditToastMsg(driver);
+		ee.clickAdEmpEditFormUpdateBtn();
+		String tm = ee.getAdEmpEditFormToastMsg(driver);
 		Reporter.log(tm + "<====>" + toastmsg, true);
 		soft.assertEquals(tm, toastmsg);
 
@@ -141,16 +148,16 @@ public class AdEditEmpAndVerifyHisPresenceTC extends BaseClass {
 
 		Reporter.log("<== Verify data in Emp edit Page ==>", true);
 
-		expEmpDataInEdit.addAll(Arrays.asList(Name, Email.toLowerCase() + "@hashtaginfosystem.com", pwd, Dept1, Dept2,
+		expEmpDataInEdit.addAll(Arrays.asList(Name, Email, pwd, Dept1, Dept2,
 				Dept3, Dept4, Designation, start, end, doj1, acc));
 		Collections.sort(expEmpDataInEdit);
 		sd.clickAdEmpDashboardEditBtnForName(driver, Name);
-		List<String> actEmpDataInEdit = ee.getAdEmpFormEditData();
+		List<String> actEmpDataInEdit = ee.getAdEmpEditFormData();
 		UtilsClass.compareTwoList(actEmpDataInEdit, expEmpDataInEdit, soft);
 
 		Reporter.log("<== Verify data in Emp Credentials ==>", true);
 		driver.get(UtilityClass.getPFData("URL"));
-		lp.inpEmLoginPageEmail(Email.toLowerCase() + "@hashtaginfosystem.com");
+		lp.inpEmLoginPageEmail(Email);
 		lp.inpEmLoginPagePwd(pwd);
 		lp.clickEmLoginPageLoginBtn();
 		soft.assertTrue(hp.getEmHistoryPageTitle(driver));

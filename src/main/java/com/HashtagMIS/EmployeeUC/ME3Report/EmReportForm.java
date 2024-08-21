@@ -143,21 +143,22 @@ public class EmReportForm {
 		Thread.sleep(300);
 	}
 	public void inpEmReportPageDateForMultipleForm(String dt) throws InterruptedException {
-		Date.sendKeys(dt);
-		Thread.sleep(300);
+		Date.sendKeys(Keys.ARROW_RIGHT);
+	//	Thread.sleep(25);
+	//	act.sendKeys(Keys.ARROW_RIGHT).perform();
+	//	Thread.sleep(25);
 		act.sendKeys(Keys.ARROW_RIGHT).perform();
-		Thread.sleep(300);
-		act.sendKeys(Keys.ARROW_DOWN).perform();
-		Thread.sleep(300);
-		act.sendKeys(Keys.ARROW_LEFT).perform();
-		Thread.sleep(300);
-		Date.sendKeys(dt);
-		Thread.sleep(300);
+	//	Thread.sleep(25);
+		act.sendKeys(dt).perform();
+		
+		
+		
+		
 	}
 
 	public void inpEmReportFormAllTask(String Dept) {
 		int row = tableNumberInp.size();
-		int num = 501;
+		int num = 500;
 		for (WebElement s1 : tableNumberInp) {
 			s1.sendKeys(String.valueOf(num));
 			num = num + 1;
@@ -187,7 +188,9 @@ public class EmReportForm {
 			}
 		}	
 	}
-
+	public String getEmReportPageDate() {
+		return Date.getAttribute("value");
+	}
 	public void clickEmReportPageAreYouSureOKBtn() {
 		yesBtnInASPU.click();
 	}

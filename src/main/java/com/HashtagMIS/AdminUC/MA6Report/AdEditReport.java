@@ -25,16 +25,16 @@ import LibraryFiles.UtilityClass;
 
 public class AdEditReport {
 
-	@FindBy(xpath = "//h2[contains(text(),'Employee Name: ')]")
-	private WebElement SVtitle;
-
+	
 	@FindBy(xpath = "//div[@id='cell-2-undefined']")
 	private List<WebElement> taskList;
 	@FindBy(xpath = "//textarea/ancestor::div[2]/child::div[2]")
 	private List<WebElement> StringTask;
 	@FindBy(xpath = "//textarea")
 	private List<WebElement> tableTextInp;
-	@FindBy(xpath = "//input[@type='text']")
+	@FindBy(xpath = "(//input[@type='text'])[1]")
+	private WebElement name;
+	@FindBy(xpath = "(//input[@type='text'])[2]")
 	private WebElement selDepartment;
 	@FindBy(xpath = "//input[@type='date']")
 	private WebElement reportDate;
@@ -59,11 +59,7 @@ public class AdEditReport {
 		this.act = new Actions(driver);
 	}
 
-	public boolean getAdEditReportTitle(WebDriver driver) throws InterruptedException {
-		UtilityClass.DrawBorder(driver, SVtitle);
-		Thread.sleep(2000);
-		return SVtitle.isDisplayed();
-	}
+	
 
 	public String getAdEditReportDate() throws ParseException {
 		
@@ -96,7 +92,7 @@ public class AdEditReport {
 	public List<String> getAdEditReportUpperInfo() throws InterruptedException, ParseException {
 		Thread.sleep(2000);
 		al = new ArrayList<String>();
-		al.add(SVtitle.getText());
+		al.add(name.getAttribute("value"));
 		al.add(getAdEditReportDept());
 		al.add(getAdEditReportDate());	
 		al.add("Unchecked");
