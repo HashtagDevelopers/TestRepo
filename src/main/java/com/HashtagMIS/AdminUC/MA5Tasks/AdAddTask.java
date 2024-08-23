@@ -88,37 +88,19 @@ public class AdAddTask {
 		AddBtn.click();
 	}
 
-	public void inpAdAddTaskTaskRandomly(WebDriver driver, String Dept) throws InterruptedException {
-		selTask.click();
-
-		int ph = placeList.size();
-
-		for (int i = 1; i < ph; i++) {
-
-			driver.findElement(By.xpath("(//input[@type='text'])[" + i + "]")).sendKeys(Dept + " Task " + i);
-
-			WebElement sel = driver.findElement(By.xpath("(//select[@aria-label='Select Task type'])[" + i + "]"));
-
-			UtilityClass.selectByVisibleTxt(sel, placeList.get(i).getText());
-
-			driver.findElement(By.xpath("(//input[@type='text'])[" + i + "]/following-sibling::button[2]")).click();
-			act.click().perform();
-
-		}
-	}
+	
 
 	public void inpAdAddTaskFromSheet(WebDriver driver, String task, String placeholder, int i, SoftAssert soft)
 			throws InterruptedException {
 		act.click().perform();
 		Thread.sleep(100);
-		WebElement taskEle = driver.findElement(By.xpath("(//input[@type='text'])[" + i + "]"));
-		taskEle.sendKeys(task);
+		driver.findElement(By.xpath("(//input[@type='text'])[" + i + "]")).sendKeys(task);
 		Thread.sleep(200);
 		WebElement sel = driver.findElement(By.xpath("(//select[@aria-label='Select Task type'])[" + i + "]"));
 		Thread.sleep(200);
-		String ele = findStringContaining(placeholder);
-		UtilityClass.selectByVisibleTxt(sel, ele);
-		soft.assertEquals(UtilityClass.getSelectedOption(sel), ele, "placeholder not selected at index " + i);
+		//String ele = findStringContaining(placeholder);
+		UtilityClass.selectByVisibleTxt(sel, placeholder);
+		soft.assertEquals(UtilityClass.getSelectedOption(sel), placeholder, "placeholder not selected at index " + i);
 		Thread.sleep(200);
 
 		driver.findElement(By.xpath("(//input[@type='text'])[" + i + "]/following-sibling::button[2]")).click();

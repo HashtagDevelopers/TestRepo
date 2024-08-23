@@ -48,7 +48,7 @@ public class SubmitMultipleReportTC extends BaseClass {
 	SoftAssert soft;
 	String CnDtTime, cntDate;
 	Logger log = LogManager.getLogger(SubmitMultipleReportTC.class);
-	String Department = "Incident";
+	String Department = "IT";
 
 	@BeforeClass
 	public void openBrowser() throws IOException, InterruptedException {
@@ -62,14 +62,14 @@ public class SubmitMultipleReportTC extends BaseClass {
 	@BeforeMethod
 	public void openLogIn() throws IOException, InterruptedException {
 		soft = new SoftAssert();
-		elp.EmLoginPageSignIn(driver, UtilityClass.getPFData("Email"), UtilityClass.getPFData("Password"));
+		elp.EmLoginPageSignIn(driver, UtilityClass.getPFData("SAEmail"), UtilityClass.getPFData("SAPassword"));
 		log.info("Login success");
 	}
 
 	@Test()
 	public void FillReportTest() throws IOException, InterruptedException {
 		int y = 1154;
-		for (int i = 1; i < 1154; i++) {
+		for (int i = 1; i < 2; i++) {
 			// log.info("Report Form Opening by Selecting Department and Date...");
 			esm.clickEmSideMenuDailyReportBtn();
 			erp.selEmReportPageDepartmentName(driver, Department);

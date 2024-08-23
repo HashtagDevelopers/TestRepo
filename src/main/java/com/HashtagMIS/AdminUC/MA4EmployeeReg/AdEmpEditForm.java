@@ -34,12 +34,12 @@ public class AdEmpEditForm {
 	@FindBy(xpath = "//input[@class='select__input']")
 	private WebElement departmentInp;
 	@FindBy(xpath = "//div[@class='select__multi-value__label css-1y7rh0y-MultiValueGeneric2']")
-	private List<WebElement>  departmentLst;
+	private List<WebElement> departmentLst;
 	@FindBy(xpath = "//div[contains(@class,'select__value-container')]")
 	private WebElement departmentContainerInp;
 	@FindBy(xpath = "//div[contains(@class,'select__multi-value')]")
 	private List<WebElement> departmentMultiValue;
-	
+
 	@FindBy(xpath = "//input[@name='shiftStartTime']")
 	private WebElement shiftStart;
 	@FindBy(xpath = "//input[@name='shiftEndTime']")
@@ -48,7 +48,7 @@ public class AdEmpEditForm {
 	private WebElement dojInp;
 	@FindBy(xpath = "//select[@name='access']")
 	private WebElement accessSel;
-	
+
 	@FindBy(xpath = "//button[text()='Update']")
 	private WebElement updateBtn;
 	@FindBy(xpath = "//button[text()='Cancel']")
@@ -91,19 +91,19 @@ public class AdEmpEditForm {
 	}
 
 	public List<String> getAdEmpEditFormData() throws InterruptedException {
-		ArrayList<String> ar = new ArrayList<String>();	
+		ArrayList<String> ar = new ArrayList<String>();
 		ar.add(getAdEmpEditFormName());
 		ar.add(getAdEmpEditFormEmail());
 		ar.add(getAdEmpEditFormPwD());
 		ar.add(getAdEmpEditFormAccess());
-		for(WebElement d:departmentLst) {
+		for (WebElement d : departmentLst) {
 			ar.add(d.getText());
 		}
 		ar.add(getAdEmpEditFormDesgni());
 		ar.add(getAdEmpEditFormShiftStart());
 		ar.add(getAdEmpEditFormShiftEnd());
 		ar.add(getAdEmpEditFormDoJ());
-		
+
 		Collections.sort(ar);
 		return ar;
 	}
@@ -128,28 +128,35 @@ public class AdEmpEditForm {
 		designationInp.clear();
 		designationInp.sendKeys(dsign);
 	}
-   public  void selAdEmpEditFormAccess(String access) {
-		
-		 UtilityClass.selectByVisibleTxt(accessSel, access);
+
+	public void selAdEmpEditFormAccess(String access) {
+
+		UtilityClass.selectByVisibleTxt(accessSel, access);
 	}
 
-	public void inpEmpEditFormDept(String dept1,String dept2, String dept3,String dept4) throws InterruptedException {
-		System.out.println("sixsfsf "+departmentMultiValue.size());
-		System.out.println("sixsfsf "+departmentMultiValue.isEmpty());
+	public void inpEmpEditFormDept(String dept1, String dept2, String dept3, String dept4) throws InterruptedException {
+		System.out.println("sixsfsf " + departmentMultiValue.size());
+		System.out.println("sixsfsf " + departmentMultiValue.isEmpty());
 		while (!departmentMultiValue.isEmpty()) {
 			departmentInp.click();
 			act.sendKeys(Keys.BACK_SPACE).perform();
 			Thread.sleep(500);
-		}	
+		}
 		Thread.sleep(500);
 		departmentInp.sendKeys(dept1);
 		act.sendKeys(Keys.ENTER).perform();
-		departmentInp.sendKeys(dept2);
-		act.sendKeys(Keys.ENTER).perform();
-		departmentInp.sendKeys(dept3);
-		act.sendKeys(Keys.ENTER).perform();
-		departmentInp.sendKeys(dept4);
-		act.sendKeys(Keys.ENTER).perform();
+		if (!dept2.isBlank()) {
+			departmentInp.sendKeys(dept2);
+			act.sendKeys(Keys.ENTER).perform();
+		}
+		if (!dept3.isBlank()) {
+			departmentInp.sendKeys(dept3);
+			act.sendKeys(Keys.ENTER).perform();
+		}
+		if (!dept4.isBlank()) {
+			departmentInp.sendKeys(dept4);
+			act.sendKeys(Keys.ENTER).perform();
+		}
 	}
 
 	public void inpAdEmpEditFormShiftStart(String start) {
@@ -160,7 +167,7 @@ public class AdEmpEditForm {
 		shiftEnd.sendKeys(end);
 	}
 
-	public void inpAdEmpEditFormDoJ(String ddmm) {		
+	public void inpAdEmpEditFormDoJ(String ddmm) {
 		dojInp.sendKeys(ddmm);
 		act.sendKeys(Keys.ARROW_RIGHT).perform();
 		act.sendKeys("2024").perform();
@@ -206,14 +213,15 @@ public class AdEmpEditForm {
 		return designationInp.getAttribute("value");
 	}
 
-	public  String getAdEmpEditFormAccess() {
-		
+	public String getAdEmpEditFormAccess() {
+
 		return UtilityClass.getSelectedOption(accessSel);
 	}
 
 	public String getAdEmpEditFormShiftStart() {
-		return shiftStart.getAttribute("value");		
+		return shiftStart.getAttribute("value");
 	}
+
 	public String getAdEmpEditFormShiftEnd() {
 		return shiftEnd.getAttribute("value");
 	}

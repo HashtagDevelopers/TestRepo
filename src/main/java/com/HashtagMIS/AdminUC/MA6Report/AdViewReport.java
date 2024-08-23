@@ -112,7 +112,7 @@ public class AdViewReport {
 	public LinkedHashMap<String, String> getAdViewReportTaskAndValue(WebDriver driver) {
 		 lmp=new LinkedHashMap<String, String>();
 		 for (int i = 1; i <= taskList.size(); i++) {
-				String task = driver.findElement(By.xpath("(//div[@class='sc-dhKdPU jFfAhm rdt_TableRow'] )["+i+"]/child::div[2]/div")).getText().trim();
+				String task = driver.findElement(By.xpath("(//div[@id='cell-2-undefined'])["+i+"]/child::div")).getText().trim();
 				String value = driver.findElement(By.xpath("(//div[@id='cell-3-undefined'])["+i+"]/child::div")).getText().trim();		
 				lmp.put(task, value);
 				

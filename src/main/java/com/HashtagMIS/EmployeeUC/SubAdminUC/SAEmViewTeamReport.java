@@ -96,11 +96,11 @@ public class SAEmViewTeamReport {
 		for (int i = 1; i <= taskList.size(); i++) {
 			String task = driver
 					.findElement(
-							By.xpath("(//div[@class='sc-dhKdPU jFfAhm rdt_TableRow'] )[" + i + "]/child::div[2]/div"))
+							By.xpath("(//div[@class='sc-dhKdPU imnTDN rdt_TableRow'] )[" + i + "]/child::div[2]/div"))
 					.getText().trim();
 			String value = driver
 					.findElement(By.xpath(
-							"(//div[@class='sc-dhKdPU jFfAhm rdt_TableRow'] )[" + i + "]/child::div[3]/textarea"))
+							"(//div[@class='sc-dhKdPU imnTDN rdt_TableRow'] )[" + i + "]/child::div[3]/textarea"))
 					.getText().trim();
 			lmp.put(task, value);
 

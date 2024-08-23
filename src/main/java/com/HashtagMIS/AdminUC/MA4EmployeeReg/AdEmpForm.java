@@ -145,12 +145,17 @@ public class AdEmpForm {
 	public void seleAdEmpFormDept(String dept1, String dept2, String dept3, String dept4) {
 		departmentInp.sendKeys(dept1);
 		act.sendKeys(Keys.ENTER).perform();
+		if (!dept2.isBlank()) {
 		departmentInp.sendKeys(dept2);
 		act.sendKeys(Keys.ENTER).perform();
+		}
+		if (!dept3.isBlank()) {
 		departmentInp.sendKeys(dept3);
 		act.sendKeys(Keys.ENTER).perform();
+		}
+		if (!dept4.isBlank()) {
 		departmentInp.sendKeys(dept4);
-		act.sendKeys(Keys.ENTER).perform();
+		act.sendKeys(Keys.ENTER).perform();}
 	}
 
 	public void inpAddEmpFormDesgni(String dsign) {

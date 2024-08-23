@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.hashTagMIS.Test.EmployeeUC.c2Report.SubmitMultipleReportTC">
+      <class name="com.hashTagMIS.Test.Flow.CheckUncheckFlow.F1AdCheckTC">
         <methods>
-          <include name="openLogIn"/>
-          <include name="FillReportTest"/>
+          <include name="LogIn"/>
           <include name="openBrowser"/>
+          <include name="Flow1SubadminCheckAfterFormSubmitAndAdminUncheckTest"/>
         </methods>
-      </class> <!-- com.hashTagMIS.Test.EmployeeUC.c2Report.SubmitMultipleReportTC -->
+      </class> <!-- com.hashTagMIS.Test.Flow.CheckUncheckFlow.F1AdCheckTC -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

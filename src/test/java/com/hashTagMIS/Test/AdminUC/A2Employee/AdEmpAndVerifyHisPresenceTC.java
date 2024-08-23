@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -22,17 +23,13 @@ import org.testng.asserts.SoftAssert;
 import com.HashtagMIS.AdminUC.MA1Login.AdLogin1;
 import com.HashtagMIS.AdminUC.MA1Login.AdLogin2;
 import com.HashtagMIS.AdminUC.MA2SideMenu.AdSideMenu;
-
 import com.HashtagMIS.AdminUC.MA4EmployeeReg.AdEmpDashboard;
 import com.HashtagMIS.AdminUC.MA4EmployeeReg.AdEmpEditForm;
 import com.HashtagMIS.AdminUC.MA4EmployeeReg.AdEmpForm;
-
-
 import com.HashtagMIS.EmployeeUC.ME1Login.EmLogin;
 import com.HashtagMIS.EmployeeUC.ME3Report.EmHistory;
 
 import DataProviders.A1DSAddDeptAndEmp;
-import DataProviders.C1DSLoginPage;
 import LibraryFiles.BaseClass;
 import LibraryFiles.UtilityClass;
 import LibraryFiles.UtilsClass;
@@ -50,17 +47,17 @@ public class AdEmpAndVerifyHisPresenceTC extends BaseClass {
 	EmHistory hp;
 	String msg;
 	EmLogin lp;
-	public String sheetName; 
+	public String sheetName;
 	Logger log = LogManager.getLogger(AdEmpAndVerifyHisPresenceTC.class);
 	ArrayList<String> expEmpDataInDashboard, expEmpDataInEdit;
 
 	@BeforeClass
 	public void openBrowser() throws IOException, InterruptedException {
-		
+
 		initialiseBrowser();
-		sheetName="StaffFunctional";
-		A1DSAddDeptAndEmp.setSheetName(sheetName,2,2);
-		
+		sheetName = "StaffFunctional";
+		A1DSAddDeptAndEmp.setSheetName(sheetName, 2, 2);
+
 		lp1 = new AdLogin1(driver);
 		lp2 = new AdLogin2(driver);
 		sm = new AdSideMenu(driver);
@@ -102,9 +99,9 @@ public class AdEmpAndVerifyHisPresenceTC extends BaseClass {
 			String acc, String Dept1, String Dept2, String Dept3, String Dept4, String Designation, String shiftStart,
 			String shiftEnd, String doj, String toastmsg) throws IOException, InterruptedException {
 
-		expEmpDataInDashboard.addAll(Arrays.asList(Name, Dept1, Dept2, Dept3, Dept4,
-				Email, Designation));
+		expEmpDataInDashboard.addAll(Arrays.asList(Name, Dept1, Dept2, Dept3, Dept4, Email, Designation));
 		Collections.sort(expEmpDataInDashboard);
+		expEmpDataInDashboard.removeIf(String::isBlank);
 		sd.clickAdEmpDashboardAddEmpBtn();
 		Thread.sleep(300);
 		ef.inpAdEmpFormName(Name);
@@ -142,8 +139,9 @@ public class AdEmpAndVerifyHisPresenceTC extends BaseClass {
 
 		Reporter.log("<== Verify data in Emp edit Page ==>", true);
 
-		expEmpDataInEdit.addAll(Arrays.asList(Name, Email, pwd,acc ,Dept1, Dept2,
-				Dept3, Dept4, Designation, start, end, doj1));
+		expEmpDataInEdit.addAll(
+				Arrays.asList(Name, Email, pwd, acc, Dept1, Dept2, Dept3, Dept4, Designation, start, end, doj1));
+		expEmpDataInEdit.removeIf(String::isBlank);
 		Collections.sort(expEmpDataInEdit);
 		sd.clickAdEmpDashboardEditBtnForName(driver, Name);
 		List<String> actEmpDataInEdit = ee.getAdEmpEditFormData();
@@ -158,7 +156,7 @@ public class AdEmpAndVerifyHisPresenceTC extends BaseClass {
 
 		soft.assertAll();
 	}
-	
+
 	@AfterMethod
 	public void FailedTCSS(ITestResult s1) throws IOException {
 		String rs = RandomString.make(2);
@@ -171,8 +169,9 @@ public class AdEmpAndVerifyHisPresenceTC extends BaseClass {
 	public void closeBrowser() {
 		// driver.close();
 	}
+
 	public void employeeSignIn() throws IOException {
-		lp.EmLoginPageSignIn(driver, UtilityClass.getPFData("Email"), UtilityClass.getPFData("Password"));	
+		lp.EmLoginPageSignIn(driver, UtilityClass.getPFData("Email"), UtilityClass.getPFData("Password"));
 	}
 
 	public void adminSignIn() throws IOException {

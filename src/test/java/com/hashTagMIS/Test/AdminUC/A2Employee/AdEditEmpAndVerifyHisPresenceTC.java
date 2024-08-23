@@ -55,7 +55,7 @@ public class AdEditEmpAndVerifyHisPresenceTC extends BaseClass {
 	@BeforeClass
 	public void openBrowser() throws IOException, InterruptedException {
 		sheetName="StaffEdit";
-		A1DSAddDeptAndEmp.setSheetName(sheetName,1,1);
+		A1DSAddDeptAndEmp.setSheetName(sheetName,2,2);
 	
 		initialiseBrowser();
 		lp1 = new AdLogin1(driver);
@@ -109,6 +109,7 @@ public class AdEditEmpAndVerifyHisPresenceTC extends BaseClass {
 
 		expEmpDataInDashboard.addAll(Arrays.asList(Name, Dept1, Dept2, Dept3, Dept4,
 				Email, Designation));
+		expEmpDataInDashboard.removeIf(String::isBlank);
 		Collections.sort(expEmpDataInDashboard);
 
 		sd.clickAdEmpDashboardEditBtnForName(driver,"Adam");
@@ -131,11 +132,11 @@ public class AdEditEmpAndVerifyHisPresenceTC extends BaseClass {
 		Thread.sleep(300);
 		ee.inpAdEmpEditFormDoJ(doj);
 
-		Thread.sleep(2000);
+		Thread.sleep(300);
 		String doj1 = ef.getAdEmpFormDate();
 		String start = ef.getAdEmpFormShiftStart();
 		String end = ef.getAdEmpFormShiftEnd();
-
+		Thread.sleep(2000);
 		ee.clickAdEmpEditFormUpdateBtn();
 		String tm = ee.getAdEmpEditFormToastMsg(driver);
 		Reporter.log(tm + "<====>" + toastmsg, true);
@@ -150,7 +151,9 @@ public class AdEditEmpAndVerifyHisPresenceTC extends BaseClass {
 
 		expEmpDataInEdit.addAll(Arrays.asList(Name, Email, pwd, Dept1, Dept2,
 				Dept3, Dept4, Designation, start, end, doj1, acc));
+		expEmpDataInEdit.removeIf(String::isBlank);
 		Collections.sort(expEmpDataInEdit);
+		
 		sd.clickAdEmpDashboardEditBtnForName(driver, Name);
 		List<String> actEmpDataInEdit = ee.getAdEmpEditFormData();
 		UtilsClass.compareTwoList(actEmpDataInEdit, expEmpDataInEdit, soft);

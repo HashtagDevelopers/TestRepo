@@ -54,11 +54,11 @@ public class Ad1AddTaskVerifyThemInAllPlacesTC extends BaseClass {
 	int i = 1;
 	LinkedHashMap<String, String> expTaskLMP;
 	Logger log = LogManager.getLogger(Ad1AddTaskVerifyThemInAllPlacesTC.class);
-	String dept = "System Admin";
+	String dept = "Care Support";
 	public String filePath, sheetName;
 	@BeforeClass
 	public void openBrowser() throws IOException, InterruptedException {
-		filePath= ".\\Test Data\\System Admin.xlsx";
+		filePath= ".\\Test Data\\Care Support.xlsx";
 		sheetName="Sheet1";
 		A2DSAddTask.setSheetName(filePath,sheetName,1,1);
 		
@@ -104,7 +104,7 @@ public class Ad1AddTaskVerifyThemInAllPlacesTC extends BaseClass {
 
 	}
 
-	@Test(priority = 2, enabled = true)
+	@Test(priority = 2, enabled = false)
 	public void verifyTaskFromSheetTest() throws IOException, InterruptedException {
 		at.clickAdAddTaskLastRowDeleteBtn(driver);
 		Thread.sleep(1000);

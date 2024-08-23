@@ -51,7 +51,7 @@ public class AdEmpFunctional extends BaseClass {
 	String msg;
 	EmLogin lp;
 	Logger log = LogManager.getLogger(AdEmpFunctional.class);
-	ArrayList<String> expEmpDataInDashboard, expEmpDataInEdit;
+	
 	public String sheetName;
 	@BeforeClass
 	public void openBrowser() throws IOException, InterruptedException {
@@ -87,8 +87,6 @@ public class AdEmpFunctional extends BaseClass {
 	public void setUp() throws InterruptedException {
 		// Clear or reset the state before each test
 		soft = new SoftAssert();
-		expEmpDataInDashboard = new ArrayList<String>();
-		expEmpDataInEdit = new ArrayList<String>();
 		Thread.sleep(500);
 		sm.clickAdSideMenuEmpBtn();
 		Thread.sleep(300);

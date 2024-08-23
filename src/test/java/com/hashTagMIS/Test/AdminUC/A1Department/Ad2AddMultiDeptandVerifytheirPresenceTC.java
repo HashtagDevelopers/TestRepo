@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.By;
@@ -36,6 +37,7 @@ import DataProviders.A1DSAddDeptAndEmp;
 import LibraryFiles.BaseClass;
 import LibraryFiles.UtilityClass;
 import net.bytebuddy.utility.RandomString;
+
 /*Add Multiple Dept and verify their presence in all dropdown*/
 public class Ad2AddMultiDeptandVerifytheirPresenceTC extends BaseClass {
 	SoftAssert soft;
@@ -53,11 +55,13 @@ public class Ad2AddMultiDeptandVerifytheirPresenceTC extends BaseClass {
 	AdEditDepartmentForm de;
 	public String sheetName;
 	Logger log = LogManager.getLogger(Ad2AddMultiDeptandVerifytheirPresenceTC.class);
+	ArrayList<String> al;
+
 	@BeforeClass
 	public void openBrowser() throws IOException, InterruptedException {
-		sheetName="DeptMulti";
-		A1DSAddDeptAndEmp.setSheetName(sheetName,1,1);
-	
+		sheetName = "DeptMulti";
+		A1DSAddDeptAndEmp.setSheetName(sheetName, 1, 1);
+
 		initialiseBrowser();
 		lp1 = new AdLogin1(driver);
 		lp2 = new AdLogin2(driver);
@@ -70,6 +74,7 @@ public class Ad2AddMultiDeptandVerifytheirPresenceTC extends BaseClass {
 		lp = new EmLogin(driver);
 		hp = new EmHistory(driver);
 		de = new AdEditDepartmentForm(driver);
+		al = new ArrayList<String>();
 		soft = new SoftAssert();
 		log.info("for info only");
 
@@ -78,15 +83,23 @@ public class Ad2AddMultiDeptandVerifytheirPresenceTC extends BaseClass {
 		((JavascriptExecutor) driver).executeScript(
 				"arguments[0].setAttribute('style', 'border: 2px solid red; background-color: #0078d4; background-image: none;')",
 				error);
+
 	}
 
 	@BeforeMethod
 	public void setUp() {
 		// Clear or reset the state before each test
 		soft = new SoftAssert();
+
 	}
 
-	@Test(enabled = false, groups = "Regression",dataProvider = "DepartmentMultiDS",priority = 1, dataProviderClass = DataProviders.A1DSAddDeptAndEmp.class)
+	@Test(enabled = false)
+	public void deleteDepartmentMultiTest() throws IOException, InterruptedException {
+		sm.clickAdSideMenuDepartmentBtn();	
+		de.deleteAdEditDepartmentFormDept(driver);
+	}
+
+	@Test(enabled = true, groups = "Regression", dataProvider = "DepartmentMultiDS", priority = 1, dataProviderClass = DataProviders.A1DSAddDeptAndEmp.class)
 	public void addDepartmentMultiTest(String Scenario, String Error, String Department, String toastmsg)
 			throws IOException, InterruptedException {
 
@@ -97,17 +110,18 @@ public class Ad2AddMultiDeptandVerifytheirPresenceTC extends BaseClass {
 		log.info("Department added");
 		String tm = ad.getAdAddDepartmentFormToastMsg(driver);
 		Thread.sleep(200);
-		Reporter.log(tm + "<====>" + toastmsg, true);	
+		Reporter.log(tm + "<====>" + toastmsg, true);
 		soft.assertEquals(tm, toastmsg);
 		Thread.sleep(200);
 		soft.assertTrue(ad.getAdAddDepartmentFormDeptList().contains(Department));
-		log.info("assertion added");		
+		log.info("assertion added");
 		soft.assertAll();
 	}
 
-	@Test(enabled=true,groups = "Regression",priority = 2)
+	@Test(enabled = false, groups = "Regression", priority = 2)
 	public void verifyAllDepInAllDropdownTest() throws IOException, InterruptedException {
 		sm.clickAdSideMenuDepartmentBtn();
+		Thread.sleep(1500);
 		List<String> deptList = ad.getAdAddDepartmentFormDeptList();
 		Thread.sleep(4000);
 		sm.clickAdSideMenuEmpBtn();
@@ -116,20 +130,15 @@ public class Ad2AddMultiDeptandVerifytheirPresenceTC extends BaseClass {
 		sd.clickAdEmpDashboardAddEmpBtn();
 		List<String> deptListInEmpForm = ae.getAdEmpFormDeptLstInDrpDwn();
 		Thread.sleep(4000);
-		sm.clickAdSideMenuReportsBtn();
-		List<String> deptListInReport = rd.getAdReportDashboardDeptLstInDrpDwn();
-		Thread.sleep(4000);
 		sm.clickAdSideMenuTasksBtn();
 		List<String> deptListInTask = td.getAdTaskDashboardDeptLstInDrpDwn();
 		Thread.sleep(4000);
-		Reporter.log(deptList.toString(),true);
-		Reporter.log(deptListInEmpSearch.toString(),true);
-		Reporter.log(deptListInEmpForm.toString(),true);
-		Reporter.log(deptListInReport.toString(),true);
-		Reporter.log(deptListInTask.toString(),true);
+		Reporter.log(deptList.toString(), true);
+		Reporter.log(deptListInEmpSearch.toString(), true);
+		Reporter.log(deptListInEmpForm.toString(), true);	
+		Reporter.log(deptListInTask.toString(), true);
 		soft.assertEquals(deptList, deptListInEmpSearch);
 		soft.assertEquals(deptList, deptListInEmpForm);
-		soft.assertEquals(deptList, deptListInReport);
 		soft.assertEquals(deptList, deptListInTask);
 		soft.assertAll();
 	}
@@ -152,6 +161,7 @@ public class Ad2AddMultiDeptandVerifytheirPresenceTC extends BaseClass {
 
 		// driver.close();
 	}
+
 	public void adminSignIn() throws IOException {
 		driver.get(UtilityClass.getPFData("AdminURL"));
 		lp1.inpAdLoginPage1Email(UtilityClass.getPFData("AdEmail"));

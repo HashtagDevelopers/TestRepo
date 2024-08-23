@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -59,16 +60,17 @@ public class F2AdEditReportTC extends BaseClass {
 	SAEmTeamReport satr;
 	SAEmViewTeamReport savr;
 	SoftAssert soft;
-	String CnDtTime, cntDate,  StaffName = "Krunal", admin = "DEVELOPERS";
+	String CnDtTime, cntDate, StaffName = "Krunal", admin = "DEVELOPERS";
 	Logger log = LogManager.getLogger(F2AdEditReportTC.class);
 	PrintWriter pw, pw1;
 	StringBuilder sb;
-	ArrayList<String> ExpEmHPDLst2,ExpAdRpDLst2,ExpSATRpDLst2,ExpAdVRUI2;
-	public String sheetName; 
+	ArrayList<String> ExpEmHPDLst2, ExpAdRpDLst2, ExpSATRpDLst2, ExpAdVRUI2;
+	public String sheetName;
+
 	@BeforeClass
 	public void openBrowser() throws IOException, InterruptedException {
-		sheetName="ReportMulti";
-		C2DSEmReport.setSheetName(sheetName,2,2);
+		sheetName = "ReportMulti";
+		C2DSEmReport.setSheetName(sheetName, 2, 2);
 
 		initialiseBrowser();
 		elp = new EmLogin(driver);
@@ -98,13 +100,13 @@ public class F2AdEditReportTC extends BaseClass {
 		ExpAdVRUI2 = new ArrayList<String>();
 		sb = new StringBuilder();
 
-		elp.EmLoginPageSignIn(driver,UtilityClass.getPFData("Email"), UtilityClass.getPFData("Password"));
+		elp.EmLoginPageSignIn(driver, UtilityClass.getPFData("Email"), UtilityClass.getPFData("Password"));
 		log.info("Login success");
 	}
 
-	@Test(enabled = true,groups = "Regression", dataProvider = "ReportFlowDS", dataProviderClass = DataProviders.C2DSEmReport.class)
-	public void AdEditReportTest(String Scenario, String textarea, String Department, String dd, String mm, String toastmsg)
-			throws IOException, InterruptedException, ParseException {
+	@Test(enabled = true, groups = "Regression", dataProvider = "ReportFlowDS", dataProviderClass = DataProviders.C2DSEmReport.class)
+	public void AdEditReportTest(String Scenario, String textarea, String Department, String dd, String mm,
+			String toastmsg) throws IOException, InterruptedException, ParseException {
 
 		log.info("Report Form Opening by Selecting Department and Date...");
 		esm.clickEmSideMenuDailyReportBtn();
@@ -114,29 +116,35 @@ public class F2AdEditReportTC extends BaseClass {
 		log.info("Filling Report and collecting entered task....");
 		erp.inpEmReportFormAllTask(Department);
 
-		log.info("Submitting Report....");
-		// Function to repeatedly check millisecond value and click if it's 1
-		while (true) {
-			// Get current millisecond value using JavaScript (adjust if needed)
-			if ((int) (System.currentTimeMillis() % 1000) == 1) {
-				System.out.println("Button clicked at millisecond 1!");
-				long currentTimeMillis1 = System.currentTimeMillis();
-				int milliseconds1 = (int) (currentTimeMillis1 % 1000);
-				// Extract milliseconds (0-999)
-				System.out.println(milliseconds1);
-				break;
-				// Exit the loop after clicking
-			}
-			// Adjust sleep time based on your needs (consider shorter intervals)
-			Thread.sleep(1); // Sleep for 10 milliseconds
-		}
-		CnDtTime = getTimeDate();
+		System.out.println("rp start time= " + getTimeDateSs());
 		erp.clickEmReportPageSendBtn();
-		epp.clickEmReportPreviewPageConfirmBtn();
-	
-		
-		erp.clickEmReportPageAreYouSureOKBtn();
+		System.out.println("rp end time= " + getTimeDateSs());
 
+		log.info("Submitting Report....");
+		while (true) {
+			// Get the current time in seconds
+			int seconds = LocalTime.now().getSecond();
+
+			// Check if the seconds are less than 45
+			if (seconds < 40) {
+				// button.click(); // Perform the click
+				CnDtTime = getTimeDate();
+				System.out.println("cndt=" + CnDtTime);
+				System.out.println("cndt time= " + getTimeDateSs());
+				Thread.sleep(5000);
+				System.out.println("pp start time= " + getTimeDateSs());
+				epp.clickEmReportPreviewPageConfirmBtn();
+				System.out.println("pp end time= " + getTimeDateSs());
+				System.out.println("Button clicked at seconds: " + seconds);
+				break; // Exit the loop after clicking
+			}
+
+			// Sleep for a short time to prevent excessive CPU usage
+			Thread.sleep(500); // Adjust the sleep time if necessary
+		}
+		System.out.println("ok start time= " + getTimeDateSs());
+		erp.clickEmReportPageAreYouSureOKBtn();
+		System.out.println("ok end time= " + getTimeDateSs());
 //Admin Scenario		
 		log.info("Admin Signing in...");
 		adminSignIn();
@@ -145,7 +153,7 @@ public class F2AdEditReportTC extends BaseClass {
 		log.info("Selecting current Report...");
 		asm.clickAdSideMenuReportsBtn();
 		Thread.sleep(500);
-		ard.selAdReportDashboardDepartmentName(Department);
+		ard.inpAdReportDashboardDepartmentName(Department);
 		Thread.sleep(500);
 		ard.selAdReportDashboardDepartmentStaff(StaffName);
 		Thread.sleep(500);
@@ -184,13 +192,16 @@ public class F2AdEditReportTC extends BaseClass {
 		log.info("comparing Admin Dashboard....");
 		ExpAdRpDLst2.addAll(Arrays.asList(StaffName, CnDtTime, expRpedt, Department, "Checked"));
 		List<String> ActAdDashRD2 = ard.getAdReportDashboardReportInfoList(driver, CnDtTime);
+
+		System.out.println(ActAdDashRD2.toString());
+
 		UtilsClass.compareTwoList(ActAdDashRD2, ExpAdRpDLst2, soft);
 		ard.clickAdReportDashboardViewBtnForDateTime(driver, CnDtTime);
 		soft.assertTrue(avr.getAdViewReportChkBoxIsSelected(driver));
 
 		log.info("SubAdmin Signing in...");
 		driver.get(UtilityClass.getPFData("URL"));
-		elp.EmLoginPageSignIn(driver,UtilityClass.getPFData("SAEmail"), UtilityClass.getPFData("SAPassword"));
+		elp.EmLoginPageSignIn(driver, UtilityClass.getPFData("SAEmail"), UtilityClass.getPFData("SAPassword"));
 		esm.clickEmSideMenuTeamReportBtn();
 		log.info("SubAdmin TR Dashboard...");
 
@@ -212,12 +223,12 @@ public class F2AdEditReportTC extends BaseClass {
 
 		log.info("Moving Employee Sign In...");
 		driver.get(UtilityClass.getPFData("URL"));
-		elp.EmLoginPageSignIn(driver,UtilityClass.getPFData("Email"), UtilityClass.getPFData("Password"));
+		elp.EmLoginPageSignIn(driver, UtilityClass.getPFData("Email"), UtilityClass.getPFData("Password"));
 
 		log.info("Collecting report data in EmHistory Page...");
 		soft.assertTrue(ehp.getEmHistoryPageTitle(driver));
 		Thread.sleep(1000);
-		ExpEmHPDLst2.addAll(Arrays.asList(expRpedt, Department, getTimeDate(), "Checked"));
+		ExpEmHPDLst2.addAll(Arrays.asList(expRpedt, Department, CnDtTime, "Checked"));
 		List<String> ActEmHistoryEleLst2 = ehp.getEmHistoryPageCurrentReportData(driver, CnDtTime);
 		UtilsClass.compareTwoList(ActEmHistoryEleLst2, ExpEmHPDLst2, soft);
 
@@ -263,11 +274,11 @@ public class F2AdEditReportTC extends BaseClass {
 			Reporter.log(m3, true);
 			Reporter.log(m4, true);
 			Reporter.log(m5, true);
-			
+
 			logAndAssert(eSrNo1, entry1, entry2, "AdEd Report and AdEdit Entered valued Report");
 			logAndAssert(eSrNo1, entry1, entry3, "Ad view Report and AdEdit Entered");
 			logAndAssert(eSrNo1, entry1, entry4, "SA View and AdEdit Entered");
-			logAndAssert(eSrNo1, entry1, entry5, "Em View Report and AdEdit Entered");		
+			logAndAssert(eSrNo1, entry1, entry5, "Em View Report and AdEdit Entered");
 			eSrNo1++;
 		}
 		soft.assertAll();
@@ -286,6 +297,10 @@ public class F2AdEditReportTC extends BaseClass {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
 		cntDate = currentDate.format(formatter);
 		return cntDate.toUpperCase();
+	}
+
+	public String getTimeDateSs() {
+		return LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss.SSS a")).toUpperCase();
 	}
 
 	public void adminSignIn() throws IOException {

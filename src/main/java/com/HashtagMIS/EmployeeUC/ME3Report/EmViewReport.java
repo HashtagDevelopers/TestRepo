@@ -58,8 +58,8 @@ public class EmViewReport {
 	public LinkedHashMap<String, String> getEmViewReportTaskAndValue(WebDriver driver) {
 		 lmp=new LinkedHashMap<String, String>();
 		 for (int i = 1; i <= taskList.size(); i++) {
-				String task = driver.findElement(By.xpath("(//div[@class='sc-dhKdPU jFfAhm rdt_TableRow'] )["+i+"]/child::div[2]/div")).getText().trim();
-				String value = driver.findElement(By.xpath("(//div[@class='sc-dhKdPU jFfAhm rdt_TableRow'] )["+i+"]/child::div[3]/textarea")).getText().trim();		
+				String task = driver.findElement(By.xpath("(//div[@id='cell-2-undefined']/child::div)["+i+"]")).getText().trim();
+				String value = driver.findElement(By.xpath("(//div[@id='cell-3-undefined']/*)["+i+"]")).getText().trim();		
 				lmp.put(task, value);
 				
 			}

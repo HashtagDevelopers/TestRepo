@@ -1,31 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="1" total="2" passed="1" failed="0" skipped="0">
   <reporter-output>
+    <line>
+      <![CDATA[OTP has been sent successfully<===>OTP has been sent successfully]]>
+    </line>
+    <line>
+      <![CDATA[55Checked by: DEVELOPERS = Checked by: DEVELOPERS]]>
+    </line>
+    <line>
+      <![CDATA[58Checked by: DEVELOPERS = Checked by: DEVELOPERS]]>
+    </line>
+    <line>
+      <![CDATA[OTP has been sent successfully<===>OTP has been sent successfully]]>
+    </line>
+    <line>
+      <![CDATA[63Unchecked by : DEVELOPERS = Unchecked by : DEVELOPERS]]>
+    </line>
+    <line>
+      <![CDATA[66Unchecked by : DEVELOPERS = Unchecked by : DEVELOPERS]]>
+    </line>
     <line>
       <![CDATA[<=======================================>]]>
     </line>
   </reporter-output>
-  <suite started-at="2024-08-21T15:35:43 IST" name="Default suite" finished-at="2024-08-21T16:11:47 IST" duration-ms="2163719">
+  <suite started-at="2024-08-23T16:36:34 IST" name="Default suite" finished-at="2024-08-23T16:39:12 IST" duration-ms="157945">
     <groups>
+      <group name="Regression">
+        <method signature="F1AdCheckTC.Flow2AdminCheckAfterFormSubmitAndSubAdminCheckTest()[pri:0, instance:com.hashTagMIS.Test.Flow.CheckUncheckFlow.F1AdCheckTC@7642df8f]" name="Flow2AdminCheckAfterFormSubmitAndSubAdminCheckTest" class="com.hashTagMIS.Test.Flow.CheckUncheckFlow.F1AdCheckTC"/>
+      </group> <!-- Regression -->
     </groups>
-    <test started-at="2024-08-21T15:35:43 IST" name="Default test" finished-at="2024-08-21T16:11:47 IST" duration-ms="2163719">
-      <class name="com.hashTagMIS.Test.EmployeeUC.c2Report.SubmitMultipleReportTC">
-        <test-method is-config="true" signature="openBrowser()[pri:0, instance:com.hashTagMIS.Test.EmployeeUC.c2Report.SubmitMultipleReportTC@1c32386d]" started-at="2024-08-21T15:35:43 IST" name="openBrowser" finished-at="2024-08-21T15:35:49 IST" duration-ms="6497" status="PASS">
+    <test started-at="2024-08-23T16:36:34 IST" name="Default test" finished-at="2024-08-23T16:39:12 IST" duration-ms="157945">
+      <class name="com.hashTagMIS.Test.Flow.CheckUncheckFlow.F1AdCheckTC">
+        <test-method is-config="true" signature="openBrowser()[pri:0, instance:com.hashTagMIS.Test.Flow.CheckUncheckFlow.F1AdCheckTC@7642df8f]" started-at="2024-08-23T16:36:34 IST" name="openBrowser" finished-at="2024-08-23T16:36:38 IST" duration-ms="3504" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- openBrowser -->
-        <test-method is-config="true" signature="openLogIn()[pri:0, instance:com.hashTagMIS.Test.EmployeeUC.c2Report.SubmitMultipleReportTC@1c32386d]" started-at="2024-08-21T15:35:50 IST" name="openLogIn" finished-at="2024-08-21T15:35:52 IST" duration-ms="1996" status="PASS">
+        <test-method is-config="true" signature="LogIn()[pri:0, instance:com.hashTagMIS.Test.Flow.CheckUncheckFlow.F1AdCheckTC@7642df8f]" started-at="2024-08-23T16:36:38 IST" name="LogIn" finished-at="2024-08-23T16:37:13 IST" duration-ms="35472" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- openLogIn -->
-        <test-method signature="FillReportTest()[pri:0, instance:com.hashTagMIS.Test.EmployeeUC.c2Report.SubmitMultipleReportTC@1c32386d]" started-at="2024-08-21T15:35:52 IST" name="FillReportTest" finished-at="2024-08-21T16:11:47 IST" duration-ms="2154978" status="PASS">
+        </test-method> <!-- LogIn -->
+        <test-method signature="Flow2AdminCheckAfterFormSubmitAndSubAdminCheckTest()[pri:0, instance:com.hashTagMIS.Test.Flow.CheckUncheckFlow.F1AdCheckTC@7642df8f]" started-at="2024-08-23T16:37:13 IST" name="Flow2AdminCheckAfterFormSubmitAndSubAdminCheckTest" finished-at="2024-08-23T16:39:12 IST" duration-ms="118895" status="PASS">
           <reporter-output>
+            <line>
+              <![CDATA[OTP has been sent successfully<===>OTP has been sent successfully]]>
+            </line>
+            <line>
+              <![CDATA[55Checked by: DEVELOPERS = Checked by: DEVELOPERS]]>
+            </line>
+            <line>
+              <![CDATA[58Checked by: DEVELOPERS = Checked by: DEVELOPERS]]>
+            </line>
+            <line>
+              <![CDATA[OTP has been sent successfully<===>OTP has been sent successfully]]>
+            </line>
+            <line>
+              <![CDATA[63Unchecked by : DEVELOPERS = Unchecked by : DEVELOPERS]]>
+            </line>
+            <line>
+              <![CDATA[66Unchecked by : DEVELOPERS = Unchecked by : DEVELOPERS]]>
+            </line>
             <line>
               <![CDATA[<=======================================>]]>
             </line>
           </reporter-output>
-        </test-method> <!-- FillReportTest -->
-      </class> <!-- com.hashTagMIS.Test.EmployeeUC.c2Report.SubmitMultipleReportTC -->
+        </test-method> <!-- Flow2AdminCheckAfterFormSubmitAndSubAdminCheckTest -->
+      </class> <!-- com.hashTagMIS.Test.Flow.CheckUncheckFlow.F1AdCheckTC -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

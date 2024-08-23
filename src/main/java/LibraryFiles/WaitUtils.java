@@ -11,14 +11,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WaitUtils {
 	 private WebDriver driver;
-	    private WebDriverWait wait;
+	    private static WebDriverWait wait;
 
-	    public WaitUtils(WebDriver driver, Duration timeout) {
+	    public WaitUtils(WebDriver driver) {
 	        this.driver = driver;
-	        this.wait = new WebDriverWait(driver, timeout);
+	        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	    }
 
-	    public WebElement waitForElementToBeVisible(WebElement element) {
+	    public static WebElement waitForElementToBeVisible(WebElement element) {
 	        return wait.until(ExpectedConditions.visibilityOf(element));
 	    }
 

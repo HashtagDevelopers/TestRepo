@@ -1,6 +1,5 @@
 package com.hashTagMIS.Test.EmployeeUC.c2Report;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
@@ -40,7 +39,6 @@ import com.HashtagMIS.EmployeeUC.ME3Report.EmViewReport;
 import com.HashtagMIS.EmployeeUC.SubAdminUC.SAEmTeamReport;
 import com.HashtagMIS.EmployeeUC.SubAdminUC.SAEmViewTeamReport;
 
-import DataProviders.C1DSLoginPage;
 import DataProviders.C2DSEmReport;
 import LibraryFiles.BaseClass;
 import LibraryFiles.UtilityClass;
@@ -97,7 +95,6 @@ public class F1EmSubmitReportTC extends BaseClass {
 
 		satr = new SAEmTeamReport(driver);
 		savr = new SAEmViewTeamReport(driver);
-
 	}
 
 	@BeforeMethod
@@ -112,6 +109,17 @@ public class F1EmSubmitReportTC extends BaseClass {
 
 		elp.EmLoginPageSignIn(driver,UtilityClass.getPFData("Email"), UtilityClass.getPFData("Password"));
 		log.info("Login success");
+	}
+	@Test(enabled = false)
+	public void inputDept() throws IOException, InterruptedException {
+		adminSignIn();
+		asm.clickAdSideMenuReportsBtn();
+		Thread.sleep(500);
+	    ard.inpAdReportDashboardDepartmentName("Care Support");
+		Thread.sleep(500);
+		ard.selAdReportDashboardDepartmentStaff("Krunal");
+		
+	
 	}
 
 	@Test(enabled = true,groups = "Regression", dataProvider = "ReportFlowDS", dataProviderClass = DataProviders.C2DSEmReport.class)
@@ -184,8 +192,9 @@ public class F1EmSubmitReportTC extends BaseClass {
 		soft.assertTrue(ehp.getEmHistoryPageTitle(driver), "HP Title");
 		Thread.sleep(1000);
 		ExpEmHPDLst.addAll(Arrays.asList(rpdt, Department, getTimeDate(), "Unchecked"));
+		
 		List<String> ActEmHistoryEleLst = ehp.getEmHistoryPageCurrentReportData(driver, CnDtTime);
-
+		System.out.println(ActEmHistoryEleLst.toString());
 		log.info("comparing EmHistory dashboard...");
 		UtilsClass.compareTwoList(ActEmHistoryEleLst, ExpEmHPDLst, soft);
 
@@ -222,7 +231,7 @@ public class F1EmSubmitReportTC extends BaseClass {
 		log.info("Selecting current Report...");
 		asm.clickAdSideMenuReportsBtn();
 		Thread.sleep(500);
-		ard.selAdReportDashboardDepartmentName(Department);
+	    ard.inpAdReportDashboardDepartmentName(Department);
 		Thread.sleep(500);
 		ard.selAdReportDashboardDepartmentStaff(StaffName);
 		Thread.sleep(500);
@@ -237,19 +246,17 @@ public class F1EmSubmitReportTC extends BaseClass {
 		log.info("Moving to admin view Report....");
 		ard.clickAdReportDashboardViewBtnForDateTime(driver, CnDtTime);
 		
-
 		log.info("collecting data in admin view report....");
 		Thread.sleep(1000);
 		soft.assertFalse(avr.getAdViewReportChkBoxIsSelected(driver), "AdViewReport checkbox");
 		List<String> AdVRUpperInfo = avr.getAdViewReportUpperInfo();
 		LinkedHashMap<String, String> TVinAdViewReport = avr.getAdViewReportTaskAndValue(driver);
 		avr.getAdViewReportBackBtn();
-		Thread.sleep(500);
+		Thread.sleep(4500);
 
 		log.info("Moving to admin Edit report....");
 		ard.clickAdReportDashboardEditBtnForDateTime(driver, CnDtTime);
 		
-
 		log.info("collecting data in admin Edit report....");
 		List<String> AdERUpperInfo = aer.getAdEditReportUpperInfo();
 		LinkedHashMap<String, String> TVinAdEditReport = aer.getAdEditReportTaskAndValue(driver);
@@ -414,7 +421,8 @@ public class F1EmSubmitReportTC extends BaseClass {
 			eSrNo1++;
 		}
 		soft.assertAll();
-*/		Reporter.log("<=======================================>", true);
+*/	
+		Reporter.log("<=======================================>", true);
 	}
 
 	private void logAndAssert(int eSrNo, Map.Entry<String, String> entry1, Map.Entry<String, String> entryX,
@@ -446,9 +454,7 @@ public class F1EmSubmitReportTC extends BaseClass {
 	public void employeeSignIn(WebDriver driver) throws IOException {
 		elp.EmLoginPageSignIn(driver,UtilityClass.getPFData("Email"), UtilityClass.getPFData("Password"));
 	}
-
-	public void SubadminSignIn(WebDriver driver) throws IOException {
-		
+	public void SubadminSignIn(WebDriver driver) throws IOException {		
 		elp.EmLoginPageSignIn(driver,UtilityClass.getPFData("SAEmail"), UtilityClass.getPFData("SAPassword"));
 	}
 }

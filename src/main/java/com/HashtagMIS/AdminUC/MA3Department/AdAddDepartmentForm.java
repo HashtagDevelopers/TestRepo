@@ -31,6 +31,8 @@ public class AdAddDepartmentForm {
 	private WebElement cancelBtn;
 	@FindBy(xpath = "//button[text()='OK']")
 	private WebElement okBtn;
+	
+	
 	@FindBy(xpath = "//div[@class='errorMark']")
 	private WebElement errorMsg;
 	@FindBy(xpath = "//div[@class='errorMark']")

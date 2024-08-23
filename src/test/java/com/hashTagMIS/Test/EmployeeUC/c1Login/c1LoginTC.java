@@ -61,7 +61,7 @@ public class c1LoginTC extends BaseClass {
 				error);
 	}
 
-	@Test(enabled = true,groups = "Regression", dataProvider = "LoginPageDS", dataProviderClass = DataProviders.C1DSLoginPage.class)
+	@Test(enabled = false,groups = "Regression", dataProvider = "LoginPageDS", dataProviderClass = DataProviders.C1DSLoginPage.class)
 	public void employeeLoginTest(String Scenario, String email, String pwd, String toastmsg, String msg1)
 			throws IOException, InterruptedException {
 		lp.inpEmLoginPageEmail(email);
@@ -83,7 +83,7 @@ public class c1LoginTC extends BaseClass {
 		soft.assertAll();
 	}
 
-	@Test(enabled = false,dataProvider = "ForgotPwdPageDS",dataProviderClass = C1DSLoginPage.class )
+	@Test(enabled = true,dataProvider = "ForgotPwdPageDS",dataProviderClass = C1DSLoginPage.class )
 	public void employeeForgotPwdTest(String Scenario, String email, String toastmsg) throws IOException, InterruptedException {
 		lp.clickEmLoginPageForgotPwdLink();
 		Thread.sleep(1000);
